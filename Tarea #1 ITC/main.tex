@@ -1,0 +1,700 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\title{Homework 1}
+\author{Leonard David Vivas Dallos \\ Mariana Valencia Cubillos \\ Samuel Mira Álvarez}
+\date{August 23, 2023}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Exercise 3}
+Prove the following useful fact about substrings. An arbitrary string $x$ is a substring of another arbitrary string $w = u \text{ • } v$ if and only if at least one of the following conditions holds:
+
+\begin{itemize}
+    \item $x$ is a substring of $u$.
+    \item $x$ is a substring of $v$
+    \item $x=yz$ where $y$ is a suffix of $u$ and $z$ is a prefix of $v$.
+\end{itemize}
+
+\subsection{Proof}
+$\Rightarrow$
+Let $x$ be an arbitrary string, substring from other arbitrary string $w = u \text{ • } v$. Let's see that one of the three conditions described above holds.
+As $x$ is a substring of $w$, there are strings $r, s$ such that:
+\begin{equation*}
+    w=rxs
+\end{equation*}
+But, by definition, $w = uv$, then
+\begin{equation*}
+    rxs = uv
+\end{equation*}
+So, we have 3 possibilities for $rxs$;
+\begin{enumerate}
+    \item $|r| \geq |u|$. Then, $|xs| \leq |v|$, which means that $x$ and $s$ are substrings of $v$.
+    \item $|s| \geq |v|$. Then, $|rx| \leq |u|$, which means that $r$ and $x$ are substrings of $u$.
+    \item $|s| < |v|$ and $|r| < |u|$. Then, (assuming $x$ non-empty), $s$ must be a proper suffix of $v$ and $r$ must be a proper preffix of $u$. Besides, by the strict inequality and the position of $r$ and $s$, which are at the ends of the string, we have a remaining space in which $x$ is located, the string that connects them ($u$ and $v$). In other words, $x$ is part of $u$ and $v$. Let $x=yz$ where $y$ is the part of $x$ in $u$ and $z$ the part in $v$. As $x$ is a string, substring of $w$, $y$ will be suffix of $u$ and $z$ preffix of $v$ because $x$ is at the part that concatenates $u$ with $v$. 
+\end{enumerate}
+
+$\Leftarrow$
+Let $x$ be an arbitrary string, that holds one of the conditions described above. Let's see that $x$ is a substring of the string $w=uv$
+\begin{enumerate}
+    \item \textbf{CASE 1:} $x$ is a substring of $u$. \\
+        As $x$ is a substring of $u$, there are strings $r, s$ such that $u=rxs$. This in $w$ is
+        \begin{equation*}
+            w = rxsv
+        \end{equation*}
+        It is clear then, that $x$ is a substring of $w$
+
+    \item \textbf{CASE 2:} $x$ is a substring of $v$. \\
+        As $x$ is a substring of $v$, there are strings $r, s$ such that $v=rxs$. This in $w$ is
+        \begin{equation*}
+            w = urxs
+        \end{equation*}
+        It is clear then, that $x$ is a substring of $w$
+
+    \item \textbf{CASE 3:} $x=yz$ where $y$ is a suffix of $u$ and $z$ is a preffix of $v$. \\
+        As $y$ is a suffix of $u$, there is a string $r$ such that
+        \begin{equation*}
+            u=ry
+        \end{equation*}
+        As $z$ is a preffix of $v$, there is a string $s$ such that
+        \begin{equation*}
+            v=zs
+        \end{equation*}
+        Then, $w$ can be written as the concatenation of $u, v$, i.e.
+        \begin{equation*}
+            w = uv = (ry)(zs)
+        \end{equation*}
+        By the associativity property we have $w=r(yz)s$, which by hypothesis is $W=rxs$. So, $x$ is a substring of $w$
+\end{enumerate}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\section{Exercise 7}
+For any string $w$ and any non-negative integer $n$, let $\mathbf{w^n}$ denote the string obtained by
+concatenating $n$ copies of $w$; more formally, we define
+\[
+w^n :=
+\begin{cases}
+    \varepsilon & \text{if } n=0 \\
+    w \text{ • } w^{n-1} & \text{otherwise}
+\end{cases}
+\]
+
+For example, $(
+\textcolor{red}{BLAH}
+)^5=
+\textcolor{red}{BLAHBLAHBLAHBLAHBLAH}$
+and 
+\\
+$
+\varepsilon
+^{374}=
+\varepsilon
+$
+.
+
+\begin{enumerate}
+[label=\alph*)]
+    \item Prove that $w^m \text{ • } w^n = w^{m+n}$ for every string $w$  and all non-negative integers $n$ and $m$.
+    \item Prove that $\#(a,w^n)=n * \#(a,w)$ for every string $w$, every symbol $a$, and every non-negative integer $n$.
+    \item Prove that $(w^R)^n=(w^n)^R$ for every string $w$ and every non-negative integer $n$.
+    \item Prove that for all strings $x$ and $y$ that if $x \text{ • } y=y \text{ • } x$, then $x=w^m$ and $y=w^n$ for some string $w$ and some non-negative integers $m$ and $n$. \emph{[Hint: Careful with $\varepsilon$!]}
+\end{enumerate}
+
+\subsection{Proof}
+By induction over $m$.
+Let $m,n \geq 0$
+
+\textbf{Base Case:}
+Let $m=0$.
+\begin{equation*}
+    w^m \text{ • } w^n = w^0 \text{ • } w^n
+    = \varepsilon \cdot w^n
+    =w^n
+    =w^{0+n}
+    =w^{m+n}
+\end{equation*}
+
+\textbf{Inductive Hypothesis (IH):}
+Assume that for every string $w$ and all non-negative integers $n$ and $m$
+\begin{equation*}
+    w^m \text{ • } w^n = w^{m+n}
+\end{equation*}
+
+\textbf{Inductive Step:}
+Let's see the $m+1$ case, i.e. let's see what is $w^{m+1} \text{ • } w^n$
+\begin{equation*}
+    w^{m+1} = w \text{ • } w^{m+1-1} = w \text{ • } w^m \quad \text{(By definition)}
+\end{equation*}
+\begin{flalign*}
+    w^{m+1} \text{ • } w^n &= (w \text{ • } w^m) \text{ • } w^n \\
+    &=w \text{ • } (w^m \text{ • } w^n) \quad \text{(By associative property)}  \\
+    &=w \text{ • } w^{m+n} \quad \text{(By IH)} \\
+    &=w^{m+n+1} \quad \text{(By definition)} 
+\end{flalign*}
+
+Hence, for every string $w$ and all non-negative integers $n$ and $m$: $w^m \text{ • } w^n = w^{m+n}$, completing the inductive step.
+
+We conclude that for all strings, the property holds with the conditions given. This completes the proof.
+
+\subsection{Proof}
+By induction over $n$. Let $n \geq 0$
+
+\textbf{Base Case:}
+Let $n=0$.
+\begin{equation*}
+    \# (a, w^0)= \# (a, \varepsilon) \quad \text{(By definition)}
+\end{equation*}
+
+As the function $\#$ denotes the number of occurrences of $a$ in $w$, we know that the number of occurrences of $a$ in the empty string is $0$. Hence
+\begin{equation*}
+    \# (a, w^0)= \# (a, \varepsilon) = 0 = 0 * \# (a,w)
+\end{equation*}
+
+\textbf{Inductive Hypothesis (IH):}
+Assume that for every string $w$, every symbol $a$ and every positive integer $n$
+\begin{equation*}
+    \# (a, w^n) = n * \# (a,w)
+\end{equation*}
+
+\textbf{Inductive Step:}
+Let's see the $n+1$ case, i.e. let's see what is $\# (a,w^{n+1})$
+\begin{flalign*}
+    \# (a, w^{n+1}) &= \# (a, w \text{ • } w^n) \quad \text{(By definition)} \\
+    &= \# (a,w) + \# (a, w^n)\quad \text{(By 5.b)} \\
+    &= \# (a,w) + n * \# (a, w)\quad \text{(By IH)} \\
+    &=(1+n) * \# (a,w) \quad \text{(Factoring)} \\
+    &=(n+1) * \# (a,w)
+\end{flalign*}
+
+Hence, for every string $w$, every symbol $a$ and every positive integer $n$: $\# (a, w^n) = n * \# (a,w)$, completing the inductive step.
+
+We conclude that for all strings, the property holds with the conditions given. This completes the proof.
+
+\subsection{Proof}
+By induction over $n$. Let $n \geq 0$
+
+\textbf{Base Case:}
+Let $n=0$.
+\begin{equation*}
+    (w^R)^0=\varepsilon=\varepsilon^R=(w^0)^R
+\end{equation*}
+
+\textbf{Inductive Hypothesis (IH):}
+Assume that for every string $w$ and every non-negative integer $n$
+\begin{equation*}
+    (w^R)^n=(w^n)^R
+\end{equation*}
+
+\textbf{Inductive Step:}
+Let's see the $n+1$ case, i.e. let's see what is $(w^R)^{n+1}$
+\begin{flalign*}
+    (w^R)^{n+1} &= w^R \text{ • } (w^R)^n \quad \text{(By definition)} \\
+    &= w^R \text{ • } (w^n)^R \quad \text{(By IH)} \\
+    &=(w^n \text{ • } w)^R\\
+    &=(w^{n+1})^R
+\end{flalign*}
+
+Hence, for every string $w$ and every non-negative integer $n$: $(w^R)^n=(w^n)^R$, completing the inductive step.
+
+We conclude that for all strings, the property holds with the conditions given. This completes the proof.
+
+\subsection{Proof}
+By induction over $|x \text{ • } y|$.
+
+\textbf{Base Case:}
+Let $|x \text{ • } y| = 0$. Then, $|x|=0$ and $|y|=0$ In other words, $|x|$ and $|y|$ are empty strings. As by definition, $w^0= \varepsilon$, where $w$ is any string, at this case, let $w$ an arbitrary string, $n=m=0$. With this election, we can express $x$ and $y$ as follows.
+\begin{equation*}
+    x=\varepsilon=w^0=w^m
+\end{equation*}
+\begin{equation*}
+    y=\varepsilon=w^0=w^n
+\end{equation*}
+At other election, let $w=\varepsilon$ and $m,n \in \mathbb{Z}$ such that $m,n \geq 0$, so we can express $x$ and $y$ as follows.
+\begin{equation*}
+    x=\varepsilon=\varepsilon^m=w^m
+\end{equation*}
+\begin{equation*}
+    y=\varepsilon=\varepsilon^n=w^n
+\end{equation*}
+
+\textbf{Inductive Hypothesis (IH):}
+Assume that for all strings $u$ and $v$ such that $|u \text{ • } v| < |x \text{ • } y|$, $u \text{ • } v = v \text{ • } u$ implies that exists string $w$ and non-negative integers $m$ and $n$ such that
+\begin{equation*}
+    u=w^m
+\end{equation*}
+\begin{equation*}
+    v=w^n
+\end{equation*}
+
+\textbf{Inductive Step:}
+Let's see the case of the $x \text{ • } y$ string. As 
+\begin{equation}
+    x \text{ • } y=y \text{ • } x
+\end{equation}
+We have three options:
+\begin{itemize}
+    \item $|x|=|y|$, then $x=y$ and with $w=x$, $n=m=1$, we have
+        \begin{equation*}
+            x=x^1=w^1=w^m
+        \end{equation*}
+        \begin{equation*}
+            y=x=w=w^1=w^n
+        \end{equation*}
+
+    \item $|x|<|y|$, then $x$ is a proper preffix of $y$
+        \begin{equation*}
+            y=x\text{ • }u
+        \end{equation*}
+        With $u$ a string. Replacing at $(1)$
+        \begin{flalign*}
+            x\text{ • }y&=x\text{ • }u\text{ • }x \\
+            y&=u\text{ • }x \\
+            \therefore x \text{ • } u &= u \text{ • } x
+        \end{flalign*}
+        As $|x \text{ • } u|<|x \text{ • } y|$ and as $x \text{ • } u=u \text{ • }x$, by IH there exists string $w$ and integers $m,n$ such that $x=w^m$, $u=w^n$
+        \begin{equation*}
+            y=u\text{ • }x=w^n\text{ • }w^m=w^{n+m}
+        \end{equation*}
+        Let $k=n+m$, then exists string $w$ and non-negative integers $m,k$ such that if $x\text{ • }y=y\text{ • }x$, then $x=w^m$, $y=w^k$
+
+    \item $|x|>|y|$, then $y$ is a proper preffix of $x$
+        \begin{equation*}
+            x=y\text{ • }u
+        \end{equation*}
+        With $u$ a string. Replacing at $(1)$
+        \begin{flalign*}
+            y\text{ • }u\text{ • }y&=y\text{ • }x \\
+            u\text{ • }y&=x \\
+            \therefore y \text{ • } u &= u \text{ • } y
+        \end{flalign*}
+        As $|y \text{ • } u|<|x \text{ • } y|$ and as $y \text{ • } u=u \text{ • }y$, by IH there exists string $w$ and integers $m,n$ such that $y=w^m$, $u=w^n$
+        \begin{equation*}
+            x=y\text{ • }u=w^m\text{ • }w^n=w^{m+n}
+        \end{equation*}
+        Let $k=m+n$, then exists string $w$ and non-negative integers $m,k$ such that if $x\text{ • }y=y\text{ • }x$, then $x=w^k$, $y=w^m$
+        
+\end{itemize}
+
+Hence, for all string $x$ and $y$, if $x \text{ • } y=y \text{ • } x$, then $x=w^m$ and $y=w^n$ for some string $w$ and some non-negative integers $m$ and $n$, completing the inductive step.
+
+We conclude that for all strings $x$ and $y$, the property holds with the conditions given. This completes the proof.
+
+\section{Exercise 12}
+Consider the following recursively defined function:
+\[
+merge(x,y):=
+\begin{cases}
+    y & \text{if } x=\varepsilon \\
+    x & \text{if } y=\varepsilon \\
+    \textcolor{red}{0} \cdot merge(w,y) & \text{if } x= \textcolor{red}{0}w \\
+    \textcolor{red}{0} \cdot merge(x,z) & \text{if } y= \textcolor{red}{0}z \\
+    \textcolor{red}{1} \cdot merge(w,y) & \text{if } x= \textcolor{red}{1}w \text{ and } y= \textcolor{red}{1}z
+\end{cases}
+\]
+
+For example:
+\begin{equation*}
+    merge( \textcolor{red}{10}, \textcolor{red}{10} )= \textcolor{red}{1010}
+\end{equation*}
+\begin{equation*}
+    merge( \textcolor{red}{10}, \textcolor{red}{010} )= \textcolor{red}{01010}
+\end{equation*}
+\begin{equation*}
+    merge( \textcolor{red}{010}, \textcolor{red}{0001100} )= \textcolor{red}{0000101100}
+\end{equation*}
+
+\begin{enumerate}
+[label=\alph*)]
+    \item Prove that $merge(x,y) \in \textcolor{red}{0} \text{*} \textcolor{red}{1} \text{*}$ for all strings $x, y \in \textcolor{red}{0} \text{*} \textcolor{red}{1} \text{*}$. (The regular expression $\textcolor{red}{0} \text{*} \textcolor{red}{1} \text{*}$ is shorthand for the language $\{ \textcolor{red}{0}^a \textcolor{red}{1}^b | a,b \geq 0 \}$.)
+    \item Prove that $sort(x \text{ • } y)=merge(sort(x),sort(y))$ for all strings $x,y \in \{ \textcolor{red}{0} , \textcolor{red}{1} \} \text{*}$.
+\end{enumerate}
+
+\subsection{Proof}
+Induction over $a, b$, quantity of $0$s in the string.
+
+Let $x=0^a1^c$, $y = 0^b1^d$ con $a, b, c, d \in \mathbb{Z}$. As so, $x, y \in 0 \text{*} 1 \text{*}$
+
+\textbf{Base Case:}
+Let $a,b=0$. Then,
+\begin{equation*}
+    x=1^c, y=1^d
+\end{equation*}
+This leads to
+\begin{equation*}
+    merge(x,y) = merge(1^c,1^d)
+\end{equation*}
+And so, it is clear that, for every instance of the merge function, the following is true;
+\begin{flalign*}
+    merge(1^c, 1^d) &= 1 \cdot merge(1^{c-1}, 1^d) \\
+    &= 11 \text{ • } merge(1^{c-2}, 1^d) \\
+    &\substack{\cdot \\ \cdot \\ \cdot} \\
+    &= 1^{c-1} \text{ • } merge(1, 1^d) \\
+    &= 1^c \text{ • } merge(\varepsilon, 1^d) \\
+    &= 1^c \text{ • } 1^d \in 0 \text{*} 1 \text{*}
+\end{flalign*}
+
+And so, it holds true.
+
+\textbf{Inductive Hypothesis (IH):}
+Suppose that this holds true for $a=n$, $b=m$. That is, that for two strings $w=0^n1^p$, $z=0^m1^q$ it is true that $merge(w,z) \in 0 \text{*} 1 \text{*}$
+
+\textbf{Inductive Step:}
+Let $x=0^{n+1}1^p$, $y=0^{m+1}1^q$. We want to prove that, if $w=0^n1^p$, $z=0^m1^q \rightarrow merge(w,z) \in 0 \text{*} 1 \text{*}$, then $merge(x,y) \in 0 \text{*} 1 \text{*}$.
+\begin{flalign*}
+    merge(x,y) &= merge(0^{n+1}1^p, 0^{m+1}1^q) \\
+    &= 0 \cdot merge(0^n1^p, 0^{m+1}1^q) \\
+    &= 00 \text{ • } merge(0^n1^p, 0^m1^q)
+\end{flalign*}
+
+By induction hypothesis, $merge(0^n1^p, 0^m1^q) \in 0 \text{*} 1 \text{*}$, and it's clear that
+\begin{equation*}
+    00 \text{ • } merge(0^n1^p, 0^m1^q) \in 0 \text{*} 1 \text{*}
+\end{equation*}
+Finally proving, by induction, that the property is true. 
+
+\subsection{Proof}
+Induction over the quantity of $0$s in $x$
+
+\textbf{Base Case:}
+Let $x = \varepsilon$. Then,
+\begin{flalign*}
+    sort(x \text{ • } y) &= sort(\varepsilon \text{ • } y) \\
+    &= sort(y)
+\end{flalign*}
+
+And,
+\begin{flalign*}
+    merge(sort(x), sort(y)) &= merge(sort(\varepsilon), sort(y) \\
+    &= merge(\varepsilon, sort(y)) \\
+    &= sort(y)
+\end{flalign*}
+
+It then holds true.
+
+\textbf{Inductive Hypothesis (IH):}
+Suppose that it holds true for strings $x, y \in \{ 0,1 \} \text{*}$ that,
+\begin{equation*}
+    sort(x \text{ • } y) = merge(sort(x), sort(y))
+\end{equation*}
+
+And $sort(x \text{ • } y) = 0^{m+n}1^{p+q}$, where $m = \# (0,x)$, $n = \# (0,y)$, $p = \# (1,x)$, $q = \# (1,y)$.
+
+\textbf{Inductive Step:}
+We want to prove that for string $w, y \in \{ 0,1 \} \text{*}$, with $w = ax$; $a \in \{ 0,1 \}$, if $sort(x \text{ • } y) = merge(sort(x), sort(y))$, then $sort(w \text{ • } y) = merge(sort(w), sort(y))$.
+
+First, it is clear that $sort(w \text{ • } y) \in 0 \text{*} 1 \text{*}$ (check previous exercise). More specifically,
+
+\begin{enumerate}
+    [label=\Roman*.]
+    \item If $a=0$:
+    
+        Then, with $m = \# (0,x)$, $n = \# (0,y)$, $p = \# (1,x)$, $q = \# (1,y)$,
+        \begin{flalign*}
+            sort(w \text{ • } y) &= sort(0x,y) \\
+            &= 0 \cdot sort(x,y) \\
+            &= 0 \cdot 0^{m+n}1^{p+q} \\
+            &= 0^{m+n+1}1^{p+q}
+        \end{flalign*}
+        And, on the other side,
+        \begin{flalign*}
+            merge(sort(w), sort(y)) &= merge(0^{m+1}1^p, 0^n1^q) \\
+            &= 0 \cdot merge(0^m1^p, 0^n1^q) \\
+            &= 0 \cdot merge(sort(x), sort(y)) \\
+            &= 0 \cdot sort(x \text{ • } y) \\
+            &= 0 \cdot 0^{m+n}1^{p+q} \\
+            &= 0^{m+n+1}1^{p+q}
+        \end{flalign*}
+        It holds true.
+
+    \item If $a = 1$:
+
+        Then, with $m = \# (0,x)$, $n = \# (0,y)$, $p = \# (1,x)$, $q = \# (1,y)$,
+        \begin{flalign*}
+            sort(w \text{ • } y) &= sort(1x,y) \\
+            &= sort(x,y) \text{ • } 1 \\
+            &= 0^{m+n}1^{p+q} \text{ • } 1 \\
+            &= 0^{m+n}1^{p+q+1}
+        \end{flalign*}
+        And, on the other side,
+        \begin{flalign*}
+            merge(sort(w), sort(y)) &= merge(0^m1^{p+1}, 0^n1^q) \\
+            &= 0 \cdot merge(0^{m-1}1^{p+1}, 0^n1^q) \\
+            &= 0^2 \text{ • } merge(0^{m-1}1^{p+1}, 0^{n-1}1^q) \\
+            &= 0^3 \text{ • } merge(0^{m-2}1^{p+1}, 0^{n-1}1^q) \\
+            &\substack{\cdot \\ \cdot \\ \cdot} \\
+            &= 0^{m+n} \text{ • } merge(1^{p+1}, 1^q) \\
+            (From (a)) \rightarrow &= 0^{m+n}1^{p+q+1}
+        \end{flalign*}
+        It holds true.
+\end{enumerate}
+
+In any case, the equation holds true.
+
+\section{Exercise 18}
+Consider the following recursively defined function
+\[
+slog(w)=
+\begin{cases}
+    \varepsilon & \text{if } w=\varepsilon \\
+    a \cdot slog(evens(w)) & \text{if } w=ax \\
+\end{cases}
+\]
+Prove that $|slog(w)|= \lceil \log_2(|w|+1) \rceil$ for every string $w$
+
+\subsection{Proof}
+Induction over the length of the string $w$
+
+\textbf{Base Case:}
+Let $w = \varepsilon$. As so, $slog(w)= \varepsilon$ and $|w|=|slog(w)|=0$
+\begin{flalign*}
+    \lceil \log_2(|w|+1) \rceil &= \lceil \log_2(0+1) \rceil \\
+    &= \lceil \log_2(1) \rceil \\
+    &= 0
+\end{flalign*}
+It holds true.
+
+\textbf{Inductive Hypothesis (IH):}
+Suppose any string $x$ for which $|slog(x)|= \lceil \log_2(|x|+1) \rceil$
+
+\textbf{Inductive Step:}
+We want to prove that it holds true for a string $w=ax$. That is, that $|slog(w)|= \lceil \log_2(|w|+1) \rceil$.
+
+First, let $y=evens(w)$. As so, $|y|=|evens(w)|= \left\lfloor \frac{|w|}{2} \right\rfloor$
+\begin{flalign*}
+    |slog(w)| &= |slog(ax)| \\
+    &= |a \cdot slog(evens(ax))| \\
+    &= 1+|slog(evens(ax))|
+\end{flalign*}
+
+\begin{enumerate}
+    [label=\Roman*.]
+    \item If $w=a$:
+        \begin{flalign*}
+            &= 1+|slog(evens(a))| \\
+            &= 1+|slog(odds(\varepsilon))| \\
+            &= 1+|slog(\varepsilon)| \\
+            &= 1
+        \end{flalign*}
+        On the other hand,
+        \begin{flalign*}
+            \lceil \log_2(|w|+1) \rceil &= \lceil \log_2(1+1) \rceil \\
+            &= \lceil \log_2(1+1) \rceil \\
+            &= \lceil \log_22 \rceil \\
+            &= 1
+        \end{flalign*}
+
+    \item If $|w|$ is even: $|y|=|evens(w)|= \left\lfloor \frac{|w|}{2} \right\rfloor = \left\lceil \frac{|w|-1}{2} \right\rceil$, since $|w|$ is an integer. As $|y| < |w|$, induction hypothesis works for $y$.
+        \begin{flalign*}
+            &= 1+|slog(evens(w))| \\
+            &= 1+|slog(y)| \\
+            &= 1+\lceil \log_2(|y|+1) \rceil \\
+            &= 1+ \left\lceil \log_2 \left( \left\lceil \frac{|w|-1}{2} \right\rceil +1 \right) \right\rceil \\
+            &= 1+ \left\lceil \log_2 \left( \left\lceil \frac{|w|-1}{2} +1 \right\rceil \right) \right\rceil \\
+            &= 1+ \left\lceil \log_2 \left( \left\lceil \frac{|w|+1}{2} \right\rceil \right) \right\rceil \\
+            &= 1+ \left\lceil \log_2 \left( \frac{|w|+1}{2} \right) \right\rceil \\
+            &= 1+ \lceil \log_2(|w|+1)-1 \rceil \\
+            &= \lceil \log_2(|w|+1) \rceil
+        \end{flalign*}
+        It holds true!
+
+    \item If $|w|$ is odd: $|y|=|evens(w)= \left\lfloor \frac{|w|}{2} \right\rfloor = \frac{|w|-1}{2}$, since $|w|$ is an odd integer. As $|y|<|w|$, induction hypothesis works for $y$.
+        \begin{flalign*}
+            &= 1+|slog(evens(w))| \\
+            &= 1+|slog(y)| \\
+            &= 1+\lceil \log_2(|y|+1) \rceil \\
+            &= 1+ \left\lceil \log_2 \left( \frac{|w|-1}{2} +1 \right) \right\rceil \\
+            &= 1+ \left\lceil \log_2 \left( \frac{|w|+1}{2} \right) \right\rceil \\
+            &= 1+ \lceil \log_2(|w|+1)-1 \rceil \\
+            &= \lceil \log_2(|w|+1) \rceil
+        \end{flalign*}
+        It holds true!
+\end{enumerate}
+In any case, the equation holds true.
+
+\section{Exercise 21}
+Recursively define a set $L$ of strings over the alphabet $\{ \textcolor{red}{0} , \textcolor{red}{1} \}$ as follows:
+\begin{itemize}
+    \item The empty string $\varepsilon$ is in $L$.
+    \item For any two strings $x$ and $y$ in $L$, the string $\textcolor{red}{0} x \textcolor{red}{1} y$ is also in $L$.
+    \item For any two strings $x$ and $y$ in $L$, the string $\textcolor{red}{1} x \textcolor{red}{0} y$ is also in $L$.
+    \item These are the only strings in $L$.
+\end{itemize}
+
+\begin{enumerate}
+[label=\alph*)]
+    \item Prove that the string $\textcolor{red}{01000110111001}$ is in $L$.
+    \item Prove by induction that every string in $L$ has exactly the same number of $\textcolor{red}{0}$s and $\textcolor{red}{1}$s. (You may assume the identity $\# (a,xy)= \# (a,x)+ \# (a,y)$ for any symbol $a$ and any strings $x$ and $y$)
+    \item Prove by induction that $L$ contains every string with the same number $\textcolor{red}{0}$s and $\textcolor{red}{1}$s.
+\end{enumerate}
+
+\subsection{Proof}
+Given the string \(w = 01000110111001\), we can decompose it as follows:
+\begin{equation*}
+    w = 0 \cdot (1000) \cdot 1 \cdot (10111001)
+\end{equation*}
+
+Let \(x = 1000\) and \(y = 10111001\), so \(w = 0x1y\).
+
+Further decompose \(x\) and \(y\): \(x = 1 \cdot u \cdot 0 \cdot v\) with \(u = 0\) and \(v = 0\), and \(y = 1 \cdot t \cdot 0 \cdot s\) with \(t = 0111\) and \(s = 01\).
+
+Decompose \(t\) and \(s\) even further: \(t = 0 \cdot j \cdot 1 \cdot k\) with \(j = 1\) and \(k = 1\), and \(s = 1 \cdot a \cdot 0 \cdot b\) with \(a = \varepsilon\) and \(b = \varepsilon\).
+
+Since each of these components can be generated using the given rules of \(L\), \(w\) can be represented as a concatenation of such components, showing that \(w\) belongs to \(L\)
+
+
+\subsection{Proof}
+
+\textbf{Base Case:}
+
+Let \(w = \varepsilon\) (empty string). In this case, \(w\) has no 0s and no 1s, and hence it satisfies the property that it has the same number of 0s and 1s. Additionally, \(w\) is in \(L\) by definition.
+
+\textbf{Inductive Hypothesis (IH):}
+
+Assume that for any two strings \(x\) and \(y\) in \(L\), both \(x\) and \(y\) have the same number of 0s and 1s.
+
+\textbf{Inductive Step:}
+
+We want to prove that for any two strings \(x\) and \(y\) in \(L\), the strings \(0x1y\) and \(1x0y\) have the same number of 0s and 1s.
+
+Consider the string \(0x1y\). Using the identity in Exercise 5, it follows:
+\[
+\#(0,0x1y) = \#(0,0) + \#(0,x) + \#(0,1) + \#(0,y)
+\]
+\[
+= 1 + \#(0,x) + 0 + \#(0,y)
+\]
+\[
+= 1 + \#(0,x) + \#(0,y)
+\]
+
+Similarly, we have:
+\[
+\#(1,0x1y) = \#(1,0) + \#(1,x) + \#(1,1) + \#(1,y)
+\]
+\[
+= 0 + \#(1,x) + 1 + \#(1,y)
+\]
+\[
+= 1 + \#(1,x) + \#(1,y)
+\]
+
+Using the Inductive Hypothesis, then \(\#(1,x) = \#(0,x)\) and \(\#(1,y) = \#(0,y)\), thus showing that \(\#(1,0x1y) = \#(0,0x1y)\).
+
+Similarly, for the string \(1x0y\):
+\[
+\#(0,1x0y) = \#(0,1) + \#(0,x) + \#(0,0) + \#(0,y)
+\]
+\[
+= 1 + \#(0,x) + 1 + \#(0,y)
+\]
+\[
+= 1 + \#(0,x) + \#(0,y)
+\]
+
+\[
+\#(1,1x0y) = \#(1,1) + \#(1,x) + \#(1,0) + \#(1,y)
+\]
+\[
+= 1 + \#(1,x) + 0 + \#(1,y)
+\]
+\[
+= 1 + \#(1,x) + \#(1,y)
+\]
+
+Again using the IH, \(\#(1,x) = \#(0,x)\) and \(\#(1,y) = \#(0,y)\), thus showing that \(\#(1,1x0y) = \#(0,1x0y)\).
+
+Hence, for any strings \(x\) and \(y\) in \(L\), the strings \(0x1y\) and \(1x0y\) have the same number of 0s and 1s, completing the inductive step.
+
+We conclude that for all strings in \(L\), the property holds that they have the same number of 0s and 1s. This completes the proof.
+
+\subsection{Proof}
+
+Let's prove this by induction over the length of a string $w$ such that $\#(0,w)=\#(1,w)$.
+
+\textbf{Base Case:}
+For $w = \varepsilon$, then $\#(0,w)=\#1,w)=0$. Thus, it has the same number of $0$s and $1$s and by definition $L$ contains $w$.
+
+\textbf{Inductive Hypothesis (IH):}
+
+Suppose that for any string $x$ such that $|x|<|w|$, the number of $0$s and $1$s is the same and it belongs to $L$.
+
+\textbf{Inductive Step:}
+
+Let's consider $p$ such that $p$ is the smallest preffix of $w$ and $\#(0,p)=\#(1,p)$. We can say that $p$ exists because if we consider $D =$ \{ $|d|$ / $d$ is a prefix of $w$ and $\#(0,d)=\#(1,d)$ \}. We know that $D \neq \emptyset$ because $|w| \in D$ as $w$ is a preffix of itself and $\#(0,w)=\#(1,w)$ by IH. Thus $w \in D$. Now, by the well ordering principle we know that $|p|$ exists, hence $p$ exists.
+
+Thus, we can write $w=p \text{ • } v$. We can consider 3 cases for $w$:
+\begin{enumerate}
+    \item $|p|<|w|$ and $v\neq\varepsilon$
+
+        Now, $|w|=|p|+|v|$. Then as $|p|<|w|$ and $|v|<|w|$. Also it is clear that $\#(1,p)=\#(0,p)$ and $\#(1,v)=\#(0,v)$. Then $p$ and $v$ belong to $L$.
+
+        We can say $p \text{ • } v$ belongs to $w$ because of the construction of $L$ we should be able to write $p \text{ • } v$ as $1x0y$ or $0x1y$.
+
+    \item $|p|=|w|$
+
+        We can write $w=p=azb$ with $a \neq b$ because of how $p$ is defined. In any case we would be able to write $w=1z0y$ of $w=0z1y$ with $y=\varepsilon$. Thus $L$ contains $w$.
+
+\end{enumerate}
+
+Thus $L$ contains $w$ if $\#(0,w)=\#(1,w)$
+
+\section{Exercise 22(c)}
+Recursively define a set $L$ of strings over the alphabet $\{ \textcolor{red}{0} , \textcolor{red}{1} \}$ as follows:
+\begin{itemize}
+    \item The empty string $\varepsilon$ is in $L$.
+    \item For any strings $x$ in $L$, the strings $\textcolor{red}{0} x \textcolor{red}{1}$ and $\textcolor{red}{1} x \textcolor{red}{0}$ are also in $L$.
+    \item For any two strings $x$ and $y$ in $L$, the string $x \text{ • } y$ is also in $L$.
+    \item These are the only strings in $L$.
+\end{itemize}
+
+\begin{enumerate}
+[label=\alph*), start=3]
+    \item Prove by induction that every string with the same number of $\textcolor{red}{0}$s and $\textcolor{red}{1}$s is in$L$.
+\end{enumerate}
+
+\setcounter{subsection}{2}
+
+\subsection{Proof}
+
+Let's prove this by induction over the length of a string $w$ such that $\#(0,w)=\#(1,w)$.
+
+\textbf{Base Case:}
+For $w = \varepsilon$, then $\#(0,w)=\#1,w)=0$. Thus, it has the same number of $0$s and $1$s and by definition $L$ contains $w$.
+
+\textbf{Inductive Hypothesis (IH):}
+
+Suppose that for any string $x$ such that $|x|<|w|$, the number of $0$s and $1$s is the same and it belongs to $L$.
+
+\textbf{Inductive Step:}
+
+Let's consider $p$ such that $p$ is the smallest preffix of $w$ and $\#(0,p)=\#(1,p)$. We can say that $p$ exists because if we consider $D =$ \{ $|d|$ / $d$ is a prefix of $w$ and $\#(0,d)=\#(1,d)$ \}. We know that $D \neq \emptyset$ because $|w| \in D$ as $w$ is a preffix of itself and $\#(0,w)=\#(1,w)$ by IH. Thus $w \in D$. Now, by the well ordering principle we know that $|p|$ exists, hence $p$ exists.
+
+Thus, we can write $w=p\text{ • }v$. We can consider 3 cases for $w$:
+\begin{enumerate}
+    \item $|p|<|w|$ and $v\neq\varepsilon$
+
+        Now, $|w|=|p|+|v|$. Then as $|p|<|w|$ and $|v|<|w|$. Also it is clear that $\#(1,p)=\#(0,p)$ and $\#(1,v)=\#(0,v)$. Then $p$ and $v$ belong to $L$.
+
+        We can say $p \text{ • } v$ belongs to $w$ because of the construction of $L$.
+
+    \item $|p|=|w|$
+
+        We can write $w=p=azb$ with $a \neq b$ because of how $p$ is defined. In any case we would be able to write $w=1z0y$ or $w=0z1y$ with $y=\varepsilon$. Thus $L$ contains $w$.
+\end{enumerate}
+
+Thus $L$ contains $w$ if $\#(0,w)=\#(1,w)$.
+
+\end{document}
