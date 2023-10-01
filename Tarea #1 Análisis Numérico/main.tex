@@ -1,0 +1,219 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\title{Tarea 1}
+\author{Leonard David Vivas Dallos \\ Tomás Escobar Rivera \\ Grupo 13}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Ejercicio 2}
+Una sucesión se dice que converge \textit{superlinealmente} a $\alpha$ si
+\begin{equation*}
+    | \alpha - x_{n+1} | \leq c_n | \alpha - x_n |
+\end{equation*}
+con $c_n \rightarrow{} 0$ as $n \rightarrow \infty$
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que en este caso
+        \begin{equation*}
+            \lim_{n \to \infty} \frac{|\alpha-x_n|}{|x_{n+1}-x_n|}=1
+        \end{equation*}
+    \item De la parte $(a)$ se concluye que $|\alpha-x_n|\approx|x_{n+1}-x_n|$ es "crecientemente" válido cuando n es grande. ¿Para qué puede ser útil esto?
+\end{enumerate}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\subsection{Solución}
+Se dice que una sucesión converge \textit{superlinealmente}  a $\alpha$ si
+\begin{equation}
+    \lim_{n \to \infty} \frac{|\alpha - x_{n+1}|}{|\alpha - x_n|} = 0
+\end{equation}
+Ahora, $\forall n$ tenemos que:
+\begin{flalign*}
+    |x_{n+1} - x_n| &= |x_{n+1} - \alpha + \alpha - x_n| \\
+    &\leq |x_{n+1} - \alpha| + |x_n - \alpha|
+\end{flalign*}
+\begin{flalign*}
+    |x_n - \alpha| - |x_{n+1} - \alpha| &\leq |x_n - \alpha - (x_{n+1} - \alpha)| \\
+    &= |x_n - x_{n+1}| \\
+    &= |x_{n+1} - x_n|
+\end{flalign*}
+De donde,
+\begin{equation}
+    |x_{n+1} - x_n| \leq |x_{n+1} - \alpha| + |x_n - \alpha|
+\end{equation}
+\begin{equation}
+    |x_n - \alpha| - |x_{n+1} - \alpha| \leq |x_{n+1} - x_n|
+\end{equation}
+De $(2)$ y $(3)$ tenemos:
+\begin{flalign*}
+    |x_n - \alpha| - |x_{n+1} - \alpha| &\leq |x_{n+1} - x_n| \leq |x_{n+1} - \alpha| + |x_n - \alpha| \\    
+    \frac{|x_n - \alpha|}{|x_n - \alpha|} - \frac{|x_{n+1} - \alpha|}{|x_n - \alpha|} &\leq \frac{|x_{n+1} - x_n|}{|x_n - \alpha|} \leq \frac{|x_{n+1} - \alpha|}{|x_n - \alpha|} + \frac{|x_n - \alpha|}{|x_n - \alpha|} \\
+    1 - \frac{|x_{n+1} - \alpha|}{|x_n - \alpha|} &\leq \frac{|x_{n+1} - x_n|}{|x_n - \alpha|} \leq \frac{|x_{n+1} - \alpha|}{|x_n - \alpha|} + 1
+\end{flalign*}
+Por $(1)$ y sacando límite, tenemos que:
+\begin{equation*}
+    1 \leq \lim_{n \to \infty} \frac{|x_{n+1} - x_n|}{|x_n - \alpha|} \leq 1
+\end{equation*}
+\begin{equation*}
+    \therefore \lim_{n \to \infty} \frac{|x_{n+1} - x_n|}{|x_n - \alpha|} = 1
+\end{equation*}
+Lo que quiere decir que, por comportamiento en el infinito de la sucesión, $|x_{n+1} - x_n| \approx |x_n - \alpha|$. Luego, se cumple que
+\begin{equation*}
+    \lim_{n \to \infty} \frac{|x_n - \alpha|}{|x_{n+1}-x_n|} = \lim_{n \to \infty} \frac{|\alpha-x_n|}{|x_{n+1}-x_n|} = 1
+\end{equation*}
+
+\subsection{Utilidad}
+Una vez hemos concluido que $|\alpha - x_n| \approx |x_{n+1} - x_n|$, nos damos cuenta de que a medida que avanzamos en el número de iteraciones, la distancia entre el valor del término actual y el valor al que converge la sucesión es aproximadamente igual a la distancia entre el término siguiente y el término actual. Esta conclusión nos puede servir para estudiar el comportamiento de la sucesión y poder hacer estimaciones en la cantidad de iteraciones necesarias para llegar a una precisión que nos llegue a servir. Además de esto, puede ser importante su uso para el análisis de error, pues esta medida puede llegar a ser de uso para el análisis de la propagación del mismo. Sea cual sea el caso, es un resultado útil para determinar el comportamiento de la sucesión y evidenciar que poco a poco, cuando tendemos al infinito, vamos reduciendo las distancias entre la raíz y nuestros términos, pues con pocas iteraciones estaremos aproximándonos mucho mejor y posiblemente llegando a la raíz buscada, o disminuyendo el error hasta donde sea útil.
+
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+
+\section{Ejercicio 9}
+Muestre que la función
+\begin{equation*}
+    f(x) = x + e^{-Bx^2}\cos{x} \quad \text{para } B>0
+\end{equation*}
+tiene una única raíz en todos los reales.
+\subsection{Solución}
+Primero veamos su existencia. Como $f(x)$ es continua, estudiemos su comportamiento en los infinitos, es decir, cuando $x \to \infty$ y $x \to -\infty$.
+\begin{flalign*}
+    \lim_{x \to \infty} x + e^{-Bx^2}\cos{x} &= \lim_{x \to \infty} x + \lim_{x \to \infty} e^{-Bx^2}\cos{x} \\
+    = \infty
+\end{flalign*}
+\begin{flalign*}
+    \lim_{x \to -\infty} x + e^{-Bx^2}\cos{x} &= \lim_{x \to -\infty} x + \lim_{x \to -\infty} e^{-Bx^2}\cos{x} \\
+    = -\infty
+\end{flalign*}
+Vemos que existe un cambio de signo en la función a lo largo de los reales, como es una función continua, por el Teorema de Valor Intermedio tenemos que existe al menos una raíz.
+Veamos ahora que la raíz es única. Razonando por el absurdo, supongamos que hay 2, $r_1$ y $r_2$, tales que $r_1 \neq r_2$
+
+Sin pérdida de generalidad, supongamos que $r_1 < r_2$. Consideremos el intervalo $[r_1, r_2]$. Sabemos que $f(x)$ es continua. Además, $f(r_1)=f(r_2)=0$. Veamos su derivada:
+\begin{equation*}
+    f'(x)=1-2Bxe^{-Bx^2}\cos{x}-e^{-Bx^2}\sin{x}
+\end{equation*}
+Es claro que la derivada en mención es continua en los reales y en específico en $(r_1, r_2)$. Luego, por el Teorema de Rolle existe $\xi \in (r_1, r_2)$ tal que $f'(\xi)=0$. Luego, tenemos que
+\begin{flalign*}
+    f'(c) = 0 &= 1-2Bce^{-Bc^2}\cos{c}-e^{-Bc^2}\sin{c} \\
+    1 &= 2Bce^{-Bc^2}\cos{c}+e^{-Bc^2}\sin{c}
+\end{flalign*}
+Ahora, como $e^{-Bc^2} > 0$,  $\forall c\in \mathbb{R}$ y como $\cos{c}$ y $\sin{c}$ están acotados entre $-1$ y $1$, no podemos tener $1 = 2Bce^{-Bc^2}\cos{c}+e^{-Bc^2}\sin{c}$ para ningún $c \in \mathbb{R}$, lo cual nos lleva a una contradicción. Luego, la raíz de la función $f(x)$ será única.
+
+\section{Sección 1.2 Ejercicio 22}
+\setcounter{equation}{0}
+Pruebe que si $0<\theta<1$, entonces $\frac{1+a\theta^n}{1+a\theta^{n-1}}$ converge a $1$ linealmente.
+\subsection{Solución}
+Sabemos que si una sucesión $\{ x_n \}$ converge a $L$, entonces converge linealmente si:
+\begin{equation*}
+    \lim_{n \to \infty} \frac{|x_{n+1} - L|}{|x_n - L|} = c \quad \text{con } c < 1
+\end{equation*}
+Sea $x_n = \frac{1+a\theta^n}{1+a\theta^{n-1}}$
+\begin{equation*}
+    \therefore \lim_{n \to \infty} x_n = 1
+\end{equation*}
+Entonces $\{ x_n \}$ converge a $1$. Ahora,
+\begin{flalign*}
+    \lim_{n \to \infty} \frac{|x_{n+1} - 1|}{|x_n - 1|} &= \lim_{n \to \infty} \frac{\left| \frac{1+a\theta^{n+1}}{1+a\theta^n} - 1 \right|}{\left| \frac{1+a\theta^n}{1+a\theta^{n-1}} - 1 \right|} \\
+    &= \lim_{n \to \infty} \frac{|a\theta^{n+1} - a\theta^n|}{|1+a\theta^n|} * \frac{| 1+a\theta^{n-1} |}{| a\theta^n - a\theta^{n-1} |} \\
+    &= \lim_{n \to \infty} \frac{|a\theta^n|}{|a\theta^{n-1}|}*\frac{|\theta - 1|}{|1 + a\theta^n|} * \frac{|1+a\theta^{n-1}|}{|\theta - 1|} \\
+    &= \lim_{n \to \infty} |\theta| * \frac{|1+a\theta^{n-1}|}{|1 + a\theta^n|} \\
+    &= \theta * \lim_{n \to \infty} \frac{|1+a\theta^{n-1}|}{|1 + a\theta^n|} \\
+    &= \theta * 1 \\
+    &= \theta
+\end{flalign*}
+Como $0 < \theta < 1$, la sucesión $\{ x_n \}$ converge linealmente.
+
+\section{Sección 2.3 Ejercicio 3}
+Las \textbf{integrales exponenciales} son las funciones $E_n$ definidas por
+\begin{equation*}
+    E_n(x)=\int_{1}^{\infty}(e^{xt}t^n)^{-1}dt \quad (n \geq 0, x > 0)
+\end{equation*}
+Estas funciones satisfacen la ecuación
+\begin{equation*}
+    nE_{n+1}(x)=e^{-x}-xE_n(x)
+\end{equation*}
+Si $E_1(x)$ es conocido, ¿puede esta ecuación ser usada para computar $E_2(x), E_3(x), \ldots$ precisamente?
+
+\textit{Hint:} Determine si $E_n(x)$ es creciente o decreciente como función de $n$.
+\subsection{Solución}
+Para $t > 1$, tenemos que:
+\begin{flalign*}
+    t^{n+1} &\leq t^n \\
+    e^{xt}t^{n+1} &\leq e^{xt}t^n \\
+    (e^{xt}t^{n+1})^-1 &\leq (e^{xt}t^n)^-1 \\
+    E_{n+1}(x) = \int_1^\infty (e^{xt}t^{n+1})^-1 dt &\leq \int_1^\infty (e^{xt}t^n)^-1 dt = E_n(x)
+\end{flalign*}
+Luego, $E_n(x)$ es decreciente y conociendo $E_1(x)$, podremos computar dichos valores con precisión, pues decrece a medida que aumenta $n$.
+
+\section{Sección 3.1 Ejercicio 13}
+En el método de bisección, ¿el $\lim_{n \to \infty} \frac{|r-c_{n+1}|}{|r-c_n|}$ existe? Explique.
+\subsection{Solución}
+El $\lim_{n \to \infty} \frac{|r-c_{n+1}|}{|r-c_n|}$ denota el límite de la relación entre el error en el paso $(n+1)$ y el error en el paso $n$. Sabemos que $\lim_{n\to\infty} {c_n} = r$. Por tanto sabemos que cuando $n\to\infty$, el numerador en cuestión se vuelve $0$. Un procedimiento análogo nos dice que el denominador del mismo se comporta de la misma manera. Ahora bien, sabemos también que por propiedades del método, $|r-c_{n+1}| \leq |r-c_n|$, lo que nos dice que el numerador del límite siempre es menor que el denominador del mismo. Por el comportamiento del método de bisección, sabemos que este error se reduce a la mitad en cada uno de los pasos que se dan, por lo que el denominador será por lo menos la mitad del numerador. Así pues, en condiciones ideales, el método de bisección va acercándose a la raíz, y por lo tanto el cociente se hace cada vez más pequeño, tendiendo a 0 a medida que avanzamos. Empero, esta convergencia puede ser afectada por errores de redondeo o por las mismas condiciones en que se aplica el método, por lo que es importante tener en cuenta las condiciones que hacen que el método funcione, tales como continuidad de la función.
+
+\section{Sección 3.2 Ejercicio 15}
+Considere una variación del método de Newton en el cual solo una derivada es necesaria; esto es,
+\begin{equation*}
+    x_{n+1} = x_n-\frac{f(x_n)}{f'(x_0)}
+\end{equation*}
+Encuentre $C$ y $s$ tales que
+\begin{equation*}
+    e^{n+1}=Ce_n^s
+\end{equation*}
+\subsection{Solución}
+Sea $e_n = x_n - r$ el error cometido en el paso $n$, donde $r$ es la raíz buscada. ($e_0 = x_0 - r$). Supongamos que $f''$ es continua y que $r$ es un cero simple de $f$. Así, tenemos que
+\begin{flalign*}
+    e_{n+1} = x_{n+1} - r &= x_n - \frac{f(x_n)}{f'(x_0)} - r \\
+    &= e_n - \frac{f(x_n)}{f'(x_0)}
+\end{flalign*}
+\begin{equation}
+    e_{n+1} = \frac{e_nf'(x_0)-f(x_n)}{f'(x_0)}
+\end{equation}
+Por el Teorema de Taylor, con $e_0 = x_0 - r$
+\begin{equation*}
+    0 = f(r) = f(x_0 - e_0) = f(x_0) - e_0f'(x_0) + \frac{1}{2}e_0^2f''(\xi_0)
+\end{equation*}
+con $\xi_0$ entre $x_0$ y $x_0 - e_0$
+
+De donde,
+\begin{flalign*}
+    e_0f'(x_0) &= f(x_0) + \frac{1}{2}e_0^2f''(\xi_0) \\
+    e_nf'(x_0) &= \frac{e_n}{e_0}f(x_0) + \frac{1}{2}e_ne_0f''(\xi_0)
+\end{flalign*}
+Reemplazando en $(1)$ tenemos,
+\begin{equation*}
+    e_{n+1} = \frac{\frac{e_n}{e_0}f(x_0)+\frac{1}{2}e_ne_0f''(\xi_0)-f(x_n)}{f'(x_0)}
+\end{equation*}
+Supongamos que $x_0$ es una buena aproximación de la raíz $r$, por tanto $x_0$ también está cerca de la raíz, tenemos que:
+\begin{equation*}
+    e_{n+1} \approx \frac{1}{2} \frac{e_ne_0f''(r)}{f'(r)}
+\end{equation*}
+Luego, con $s=1$ y $c= \frac{f''(r)e_0}{f'(r)}$
+
+\section{Sección 3.4 Ejercicio 5}
+La ecuación de Kepler en astronomía dice $x = y - \varepsilon \sin{y}$, con $0 < \varepsilon < 1$. Muestre que para cada $x \in [0, \pi]$, esto es una $y$ que satisface la ecuación. Interprete esto como un problema de punto fijo.
+\subsection{Solución}
+Sea $y=x+\varepsilon\sin{y}$. Veamos que para cada $x \in [0, \pi]$, existe $y$ tal que $y = f(y)$.
+
+Como $\sin{y}$ es continuo en $[0, \pi]$, $\varepsilon$ constante y $f(y)$ continua en dicho intervalo, evaluando en los extremos del intervalo tenemos:
+\begin{itemize}
+    \item Para $y=0$, tenemos $f(0) = x+\varepsilon\sin{0} = x \in [0, \pi]$
+    \item Para $y=\pi$, tenemos $f(\pi) = x+\varepsilon\sin{\pi} = x \in [0, \pi]$
+\end{itemize}
+
+Por el Teorema del Valor Intermedio, $f(y)$ es un mapeo contractivo de $[0, \pi]$ en sí mismo. Ahora, por el Teorema del Punto Fijo de Banach, existe un único punto fijo $y_0 \in [0, \pi]$ tal que $y_0 = f(y_0)$.
+
+Luego, para cada $x$ hay una $y$ que cumple la ecuación de Kepler.
+
+\end{document}
