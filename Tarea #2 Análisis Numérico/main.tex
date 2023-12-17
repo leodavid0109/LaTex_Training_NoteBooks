@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\title{Tarea 2}
+\author{Leonard David Vivas Dallos \\ Tomás Escobar Rivera \\ Grupo 13}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Ejercicio 28 Sección 4.4}
+
+Pruebe que si $A$ tiene un punto fijo no trivial (esto es, $Ax = x \neq 0$), luego $\| A \| \geq 1$ para cualquier norma de matriz subordinada.
+
+\subsection{Solución}
+
+Supongamos que $A$ tiene un punto fijo no trivial $x \neq 0$ tal que $Ax = x$. Consideremos cualquier norma matricial subordinada $||A||_s$. Veamos que $||A||_s \geq 1$. Por definición,
+\begin{equation*}
+    ||A||_s = \max\{||Ax||_s : \quad ||x||_s, x \neq 0\} = \sup_{x\neq0} \frac{||Ax||}{||x||}
+\end{equation*}
+
+Ahora, veamos que $||A||_s \geq 1$. Usando la hipótesis, estimemos $||A||_s$
+\begin{equation*}
+    \frac{||Ax||_s}{||x||_s} = \frac{||x||_s}{||x||_s} \quad \text{pues } Ax = x
+\end{equation*}
+
+Como $x\neq 0$, $||x||_s > 0$. Luego,
+\begin{equation*}
+    \frac{||Ax||_s}{||x||_s} = 1
+\end{equation*}
+
+Luego, para esta $x$ específica, el radio $\frac{||Ax||_s}{||x||_s}$ es $1$. Como estamos mirando el valor máximo de este radio sobre todo vector $x\neq 0$, se sigue que el máximo valor es al menos $1$. Por tanto,
+\begin{equation*}
+    ||A||_s \geq 1
+\end{equation*}
+
+\section{Ejercicio 1 Sección 4.6}
+
+Pruebe que si $A$ es diagonalmente dominante y si $Q$ es escogido como en el método de Jacobi, entonces
+\begin{equation*}
+    \rho (I - Q^{-1}A) < 1
+\end{equation*}
+
+\subsection{Solución}
+
+Como $A$ es diagonalmente dominante,
+\begin{equation}
+    |a_{ii}| > \sum_{\substack{j=1 \\ j\neq i}}^n |a_{ij}| \quad \text{para } i=1, 2, \ldots, n
+\end{equation}
+
+Supongamos que $Q$ es escogido como en el método de Jacobi, es decir, supongamos que $Q$ es la matriz conformada por la diagonal de $A$ (resto de entradas fuera de la diagonal son $0$). Veamos que
+\begin{equation*}
+    \rho (I - Q^{-1}A) < 1
+\end{equation*}
+
+Recordemos $\rho(B) = \underset{1 \leq i \leq n}{\max} |\sigma_i|$ con $\sigma_i$ valor propio de $B$, denominado el radio espectral de $B$. Además, tenemos que
+\begin{equation}
+    \rho(B) = \underset{||\cdot||}{\inf} ||B||
+\end{equation}
+
+De $(1)$ tenemos
+\begin{flalign*}
+    |a_{ii}| &> \sum_{\substack{j=1 \\ j\neq i}}^n |a_{ij}| \quad 1 \leq i \leq n \\
+    &\therefore \sum_{\substack{j=1 \\ j\neq i}}^n \frac{|a_{ij}|}{|a_{ii}|} < 1 \quad 1 \leq i \leq n \\
+    &\therefore \underset{1 \leq i \leq n}{\max} \sum_{\substack{j=1 \\ j\neq i}}^n \frac{|a_{ij}|}{|a_{ii}|} < 1 \\
+    &\therefore ||I-Q^{-1}A||_\infty < 1
+\end{flalign*}
+
+Luego, de $(2)$ tenemos, por propiedades del ínfimo, que
+\begin{equation*}
+    \rho(I-Q^{-1}A) \leq ||I-Q^{-1}A||_\infty < 1
+\end{equation*}
+Por tanto, $\rho(I-Q^{-1}A) < 1$
+
+\section{Ejercicio 11 Sección 6.1}
+
+Pruebe que para cualquier polinomio $q$ de grado $\leq n-1$,
+\begin{equation*}
+    \sum_{i=0}^n q(x_i) \prod_{\substack{j=0 \\ j\neq i}}^n (x_i - x_j)^{-1}=0
+\end{equation*}
+
+\subsection{Solución}
+
+Sea
+\begin{equation*}
+    p(x) = \sum_{i=0}^n q(x_i) \prod_{\substack{j=0 \\ j\neq i}}^n (x - x_j)
+\end{equation*}
+
+Notemos que $p(x)$ es de grado a lo más $n$. Veamos que $p(x)$ tiene $n+1$ raíces, $x_0, x_1, \ldots, x_n$. Notemos que para cualquier $x_i$
+\begin{equation*}
+    p(x_i) = \sum_{j=0}^n q(x_j) \prod_{\substack{k=0 \\ k\neq j}}^n (x_i - x_k)
+\end{equation*}
+
+Tenemos dos casos, cuando $j = i$, el término en la suma es
+\begin{equation*}
+    q(x_i) \prod_{\substack{k=0 \\ k\neq j}}^n (x_i - x_k)
+\end{equation*}
+y cuando $j \neq i$ tenemos
+\begin{equation*}
+    q(x_i) \prod_{\substack{k=0 \\ k\neq j}}^n (x_i - x_k) = 0 \quad (x_i - x_j = 0)
+\end{equation*}
+
+Luego, la suma tiene sólo un término distinto de $0$,
+\begin{equation*}
+    p(x_i) = q(x_i) \prod_{\substack{k=0 \\ k\neq j}}^n (x_i - x_k)
+\end{equation*}
+
+Como $q(x_i)$ es de grado $\leq n-1$, tiene a lo más $n-1$ raíces. Luego, hay al menos un $x_i$ tal que $q(x_i) \neq 0$. Para este $x_i$, $p(x_i) \neq 0$ y por tanto $p(x)$ tiene $n+1$ raíces.
+
+Veamos que $p(x) = 0$. Como $p(x)$ es de grado $\leq 0$ con $n+1$ raíces, el polinomio debe ser $0$.
+\begin{equation*}
+    0 = p(x) = \sum_{i=0}^n q(x_i) \prod_{\substack{j=0 \\ j\neq i}}^n (x - x_j)
+\end{equation*}
+
+Dividiendo por el producto de diferencias obtenemos la igualdad deseada.
+
+\section{Ejercicio 4 Sección 6.2}
+
+Pruebe que si $f$ es un polinomio de grado $k$, entonces para $n > k$,
+\begin{equation*}
+    f[x_0,x_1, \ldots, x_n] = 0
+\end{equation*}
+
+\subsection{Solución}
+
+Sea $p(x)$ un polinomio de interpolación de grado $\leq n$ para $f$, luego
+\begin{equation}
+    p(x_i)=f(x_i), \quad i=0, 1, \ldots, n
+\end{equation}
+Sea $q(x) = p(x) - f(x)$ un polinomio de grado $\leq n$. De $(3)$, sabemos que $q(x)$ tiene al menos $n+1$ raíces. Luego, $q(x)$ solo puede ser el polinomio $0$
+\begin{flalign*}
+    q(x) &= 0 \\
+    \Rightarrow p(x) - f(x) &= 0 \\
+    \Leftrightarrow p(x) &= f(x)
+\end{flalign*}
+Esto, por hipótesis implica que $p(x)$ es un polinomio de grado $k$. Ahora, por diferencias divididas tenemos
+\begin{equation*}
+    p(x) = \sum_{i=0}^n f[x_0,x_1, \ldots, x_n] \prod_{j=0}^{i-1} (x - x_j)
+\end{equation*}
+Luego, $f[x_0,x_1, \ldots, x_n]$ es el coeficiente de $x^n$. Por tanto,
+\begin{equation*}
+    f[x_0,x_1, \ldots, x_n] = 0 \quad \text{cuando} n > k
+\end{equation*}
+
+\end{document}

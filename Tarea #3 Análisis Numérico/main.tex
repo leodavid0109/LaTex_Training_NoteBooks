@@ -1,0 +1,452 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amssymb}
+
+\title{Tarea 3}
+\author{Leonard David Vivas Dallos \\ Tomás Escobar Rivera \\ Grupo 13}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+
+\section{Ejercicio 12 Sección 7.2}
+
+Derive una fórmula para aproximar
+\begin{equation*}
+    \int_1^3 f(x)dx
+\end{equation*}
+en términos de $f(0)$, $f(2)$, y $f(4)$. Debería ser exacta para toda $f$ en $\Pi_2$.
+
+\subsection{Solución:}
+
+Como se pide que debe ser exacta para todo $f$ en $\Pi_2$, podemos usar los polinomios que forman una base para esta, pues basta con que sea exacta para estos. Así, usamos $f(x) = 1, x, x^2$. Tenemos,
+
+\begin{equation*}
+    \int_1^3 f(x)dx = A_0 f(0) + A_1 f(2) + A_2 f(4)
+\end{equation*}
+Para $f(x)=1$
+\begin{flalign*}
+    \int_1^3 1dx &= A_0 + A_1 + A_2 \\
+    \therefore 2 &= A_0 + A_1 + A_2 \quad (1)
+\end{flalign*}
+Para $f(x) = x$
+\begin{flalign*}
+    \int_1^3 xdx &= A_0(0) + A_1(2) + A_2(4) \\
+    \left( \frac{x^2}{2} \right|_1^3 &= 2A_1 + 4A_2 \\
+    \therefore 4 &= 2A_1 + 4A_2 \quad (2)
+\end{flalign*}
+Para $f(x) = x^2$
+\begin{flalign*}
+    \int_1^3 x^2dx &= A_0(0) + A_1(4) + A_2(16) \\
+    \left( \frac{x^3}{3} \right|_1^3 &= 4A_1 + 16A_2 \\
+    \therefore \frac{26}{3} &= 4A_1 + 16A_2 \quad (3)
+\end{flalign*}
+$(3) - 4(2)$:
+\begin{flalign*}
+    \frac{26}{3} - 16 &= 4A_1 - 8A_1 \\
+    -\frac{22}{3} &= -4A_1 \\
+    \therefore A_1 &= \frac{11}{6}
+\end{flalign*}
+En $(2)$:
+\begin{flalign*}
+    4 &= 2(\frac{11}{6}) + 4A_2 \\
+    4 - \frac{11}{3} &= 4A_2 \\
+    \therefore A_2 &= \frac{1}{12}
+\end{flalign*}
+En $(1)$:
+\begin{flalign*}
+    2 &= A_0 + \frac{11}{6} + \frac{1}{12} \\
+    2 - \frac{11}{6} - \frac{1}{12} &= A_0 \\
+    \therefore A_0 &= \frac{1}{12}
+\end{flalign*}
+Luego,
+\begin{equation*}
+    \int_1^3 f(x)dx = \frac{1}{12} f(0) + \frac{11}{6} f(2) + \frac{1}{12} f(4)
+\end{equation*}
+
+\section{Ejercicio 7 Sección 7.3}
+
+\begin{enumerate}[label=\alph*)]
+    \item Halle una fórmula de la forma
+        \begin{equation*}
+            \int_0^1 xf(x)dx \approx \sum_{i=0}^n A_if(x_i)
+        \end{equation*}
+        con $n=1$, que sea exacta para todo polinomio de grado $3$.
+    \item Repita con $n=2$, haciendo la fórmula exacta en $\Pi_5$.
+\end{enumerate}
+
+\subsection{Solución:}
+
+Con ayuda del Teorema de Cuadratura Gaussiana, sabemos que para $n=1$, la fórmula es exacta para todo polinomio de grado $2n + 1 = 3$. Así, sea $q(x) = x^2 + ax + b$, $q_0(x) = 1$, $q_1(x) = x$. Necesitamos que $q(x)$ sea w-ortogonal a $q_0, q_1$, donde $w(x) = x$. Ahora
+
+\begin{flalign*}
+    \int_0^1 q(x)q_0(x)w(x)dx &= \int_0^1 (x^2 + ax + b)*1*x dx \\
+    \int_0^1 q(x)q_0(x)w(x)dx &= \left( \frac{x^4}{4} + \frac{ax^3}{3} + \frac{bx^2}{2} \right|^1_0 = \frac{1}{4} + \frac{a}{3} + \frac{b}{2} = 0
+\end{flalign*}
+Además, tenemos
+
+\begin{flalign*}
+    \int_0^1 q(x)q_0(x)w(x)dx &= \int_0^1 (x^2 + ax + b)*x*x dx \\
+    \int_0^1 q(x)q_0(x)w(x)dx &= \left( \frac{x^5}{5} + \frac{ax^4}{4} + \frac{bx^}{3} \right|^1_0 = \frac{1}{5} + \frac{a}{4} + \frac{b}{3} = 0
+\end{flalign*}
+
+Resolviendo el sistema tenemos: $a = -\frac{6}{5}$ y $b = \frac{3}{10}$, por lo que reemplazando en nuestra $q(x)$ tenemos:
+
+\begin{equation*}
+    q(x) = x^2 + ax + b = x^2 - \frac{6}{5} x + \frac{3}{10} = 0
+\end{equation*}
+
+Resolviendo la ecuación cuadrática tenemos dos raíces $x_0$ y $x_1$, que serán los nodos de nuestra fórmula. $x_0 = \frac{6 - \sqrt{6}}{10}$ y $x_1 = \frac{6 + \sqrt{6}}{10}$. Ahora, solucionamos para $A_0$ y $A_1$.
+
+Sea $f_0(x) = 1$ y $f_1(x) = x$, luego tenemos:
+\begin{flalign}
+    A_0 + A_1 &= \frac{1}{2} \\
+    \frac{6 - \sqrt{6}}{10} A_0 + \frac{6 + \sqrt{6}}{10} A_1 &= \frac{1}{3}
+\end{flalign}
+Resolviendo, tenemos $A_0 =  \frac{9 - \sqrt{6}}{36}$ y  $A_1 = \frac{9 - \sqrt{6}}{36}$. Luego, la fórmula es:
+
+\begin{equation*}
+    \int_0^1 xf(x)dx \approx \frac{9 - \sqrt{6}}{36} f \left( \frac{6 - \sqrt{6}}{10} \right) + \frac{9 - \sqrt{6}}{36} f \left( \frac{9 - \sqrt{6}}{36} \right)
+\end{equation*}
+
+\subsection{Solución:}
+
+Con ayuda del Teorema de Cuadratura Gaussiana, sabemos que para $n=2$, la fórmula es exacta para todo polinomio de grado $2n + 1 = 5$. Así, sea $q(x) = x^3 + ax^2 + bx + c$, $q_0(x) = 1$, $q_1(x) = x$, $q_2(x) = x^2$. Necesitamos que $q(x)$ sea w-ortogonal a $q_0, q_1, q_2$, donde $w(x) = x$. Ahora
+
+\begin{flalign*}
+    \int_0^1 q(x)q_0(x)w(x)dx &= \int_0^1 (x^3 + ax^2 + bx + c)*1*x dx \\
+    \int_0^1 q(x)q_0(x)w(x)dx &= \left(\frac{x^5}{5} + \frac{ax^4}{4} + \frac{bx^3}{3} + \frac{cx^2}{2} \right|^1_0 \\ &= \frac{1}{5} + \frac{a}{4} + \frac{b}{3} + \frac{c}{2} = 0
+\end{flalign*}
+Además, tenemos
+
+\begin{flalign*}
+    \int_0^1 q(x)q_0(x)w(x)dx &= \int_0^1 (x^3 + ax^2 + bx + c)*x*x dx \\
+    \int_0^1 q(x)q_0(x)w(x)dx &= \left( \frac{x^6}{6} + \frac{ax^5}{5} + \frac{bx^4}{4} + \frac{cx^3}{3} \right|^1_0 \\ &= \frac{1}{6} + \frac{a}{5} + \frac{b}{4} + \frac{c}{3} = 0
+\end{flalign*}
+Por último, tenemos
+
+\begin{flalign*}
+    \int_0^1 q(x)q_0(x)w(x)dx &= \int_0^1 (x^3 + ax^2 + bx + c)*x*x^2 dx \\
+    \int_0^1 q(x)q_0(x)w(x)dx &= \left( \frac{x^7}{7} + \frac{ax^6}{6} + \frac{bx^5}{5} + \frac{cx^4}{4} \right|^1_0 \\ &= \frac{1}{7} + \frac{a}{6} + \frac{b}{5} + \frac{c}{4} = 0
+\end{flalign*}
+
+Resolviendo el sistema tenemos: $a = -\frac{12}{7}$, $b = \frac{6}{7}$ y $c = -\frac{4}{35}$, por lo que reemplazando en nuestra $q(x)$ tenemos:
+
+\begin{equation*}
+    q(x) = x^3 + ax^2 + bx + c = x^3 -\frac{12}{7}x^2 + \frac{6}{7}x -\frac{4}{35} = 0
+\end{equation*}
+
+Resolviendo la ecuación tenemos tres raíces $x_0$, $x_1$ y $x_2$, que serán los nodos de nuestra fórmula. $x_0 \approx 0.21$, $x_1 \approx 0.59$ y $x_2 \approx 0.91$. Ahora, solucionamos para $A_0$, $A_1$ y $A_2$.
+
+Sea $f_0(x) = 1$, $f_1(x) = x$ y $f_2(x) = x^2$, luego tenemos:
+\begin{flalign}
+    A_0 + A_1 + A_2&= \frac{1}{2} \\
+    0.21 A_0 + 0.59 A_1 + 0.91 A_2 &= \frac{1}{3} \\
+    0.0441 A_0 + 0.3481 A_1 + 0.8281 A_2 &= \frac{1}{4}
+\end{flalign}
+Resolviendo, tenemos $A_0 =  0.069$ y  $A_1 = 0.202$ y $A_2 = 0.228$. Luego, la fórmula es:
+
+\begin{equation*}
+    \int_0^1 xf(x)dx \approx 0.069 f(0.21) + 0.202 f(0.59) + 0.228 f(0.91)
+\end{equation*}
+
+\section{Ejercicio 1 Lista}
+
+\begin{enumerate}[label=\alph*)]
+    \item Encuentre el polinomio cúbico $p_3(x)$ que interpola a una función $f(x)$ en los nodos $x = -1, 0, 1$ y satisface $p_3'(0)=f'(0)$.
+    \item Evalúe $S=\int_{-1}^1 p_3(x)dx$ como una aproximación a $\int_{-1}^1 f(x)dx$. ¿Qué método se obtiene?
+    \item Aplique la identidad
+        \begin{equation*}
+            \int uv'''dx = uv'' - u'v' + u''v - \int u'''vdx
+        \end{equation*}
+        para el caso de
+        \begin{equation*}
+            u(x)= \frac{1}{6}x(1-x)^2, \quad v(x) = f(x)+f(-x)
+        \end{equation*}
+        para obtener el resultado
+        \begin{equation*}
+            \int_{-1}^1 f(x)dx = S - \int_0^1 u(x)v'''(x)dx.
+        \end{equation*}
+    \item Muestre que si $f \in C^4[-1,1]$, entonces
+        \begin{equation*}
+            \left|\int_{-1}^1 f(x)dx - S\right| \leq \frac{||f^{(4)}||_\infty}{90}
+        \end{equation*}
+\end{enumerate}
+
+\subsection{Solución:}
+
+Sea $p_3 = ax^3 + bx^2 + cx + d$. Sabemos que $p_3(-1)=f(-1), p_3(0)=f(0), p_3(1)=f(1)$
+\begin{flalign*}
+    p_3(-1) &= -a+b-c+d = f(-1) \\
+    p_3(0) &= d = f(0) \\
+    p_3(1) &= a+b+c+d = f(1)
+\end{flalign*}
+\begin{align*}
+    p_3(-1) &= -a+b-c+d = f(-1) \\
+    p_3(0) &= d = f(0) \\
+    p_3(1) &= a+b+c+d = f(1)
+\end{align*}
+Además, $p_3'(0) = f'(0)$
+\begin{flalign*}
+    p_3'(x) &= 3ax^2 + 2bx + c \\
+    p_3'(0) &= c = f'(0)
+\end{flalign*}
+
+\begin{flalign*}
+    \therefore -a+b &= f(-1) + f'(0) - f(0) \\
+    a+b &= f(1)-f'(0)-f(0)
+\end{flalign*}
+
+\begin{flalign*}
+    (+) 2b &= f(-1) - 2 f(0) + f(1) \\
+    \therefore b &= \frac{f(-1)}{2} - f(0) + \frac{f(1)}{2} \\
+    \therefore a &= \frac{f(1)}{2} - f'(0) - \frac{f(-1)}{2}
+\end{flalign*}
+Por tanto, el polinomio queda
+\begin{equation*}
+    p_3(x) = \left(\frac{f(1)}{2} - f'(0) - \frac{f(-1)}{2}\right)x^3 + \left(\frac{f(-1)}{2} - f(0) + \frac{f(1)}{2} \right) x^2 + f'(0)x + f(0)
+\end{equation*}
+
+\subsection{Solución:}
+Sea $A = \left(\frac{f(1)}{2} - f'(0) - \frac{f(-1)}{2}\right)$ y $B = \left(\frac{f(-1)}{2} - f(0) + \frac{f(1)}{2} \right)$
+\begin{flalign*}
+    \int_{-1}^1 f(x)dx &= \int_{-1}^1 p_3(x)dx = \int_{-1}^1 Ax^3 + B x^2 + f'(0)x + f(0)dx \\
+    &= \left( \frac{ax^4}{4} + \frac{bx^3}{3} + \frac{f'(0)x^2}{2} + f(0)x \right|_{-1}^1 \\
+    &= \frac{a}{4} + \frac{b}{3} + \frac{f'(0)}{2} + f(0) - \frac{a}{4} + \frac{b}{3} - \frac{f'(0)}{2} + f(0) \\
+    &= \frac{2b}{3} + 2f(0) \\
+    &= \frac{2}{3} \left(\frac{f(-1)}{2} - f(0) + \frac{f(1)}{2} \right) + 2f(0) \\
+    &= \frac{f(-1)}{3} - \frac{2f(0)}{3} + \frac{f(1)}{3} + 2f(0) \\
+    &= \frac{f(-1)}{3} + \frac{4f(0)}{3} + \frac{f(1)}{3} \\
+    &= \frac{1}{3} (f(-1) + 4f(0) + f(1))
+\end{flalign*}
+Como vemos, se obtiene el método de Simpson 1/3 con $a = -1, b=1$
+
+\subsection{Solución:}
+
+\begin{flalign*}
+    \int_0^1 u v''' dx &= \frac{1}{6}x(1-x)^2(f(x)+f(-x))'' - \frac{3x^2-4x+1}{6}(f(x)-f(-x))' \\
+    &+ \frac{3x-2}{3}(f(x)-f(-x)) - \int_0^1 \frac{3x-2}{3} (f(x)+f(-x)) dx \\
+    &= \frac{1}{6}x(1-x)^2(f''(x)+f''(-x))- \frac{3x^2-4x+2}{6}(f'(x)-f'(-x)) \\
+    &+ \frac{3x-2}{3}(f(x)-f(-x)) - \int_0^1 \frac{3x-2}{4}(f(x)+f(-x))dx
+\end{flalign*}
+Evaluando en los intervalos tenemos
+\begin{flalign*}
+    \int_0^1 u v''' dx &= - \frac{1}{6}(f'(1)-f'(-1)) + \frac{1}{3}(f(1)-f(-1)) + \frac{2}{6}(f'(0)-f'(0)) \\
+    &+ \frac{2}{3}(f(0)-f(0)) - \int_0^1 \frac{3x-2}{4}(f(x)+f(-x))dx \\
+    &= - \frac{1}{6}(f'(1)-f'(-1))+\frac{1}{3}(f(1)-f(-1))-\int_0^1 \frac{3x-2}{4}(f(x)+f(-x))dx
+\end{flalign*}
+por lo que nos queda:
+
+\begin{flalign*}
+    \int_{-1}^1 f(x)dx &= \frac{1}{3} (f(-1) + 4f(0) + f(1)) \\
+    &- \left( - \frac{1}{6}(f'(1)-f'(-1))+\frac{1}{3}(f(1)-f(-1))-\int_0^1 \frac{3x-2}{4}(f(x)+f(-x))dx \right)
+\end{flalign*}
+
+\subsection{Solución:}
+
+Por b), tenemos que el método obtenido es el método de Simpson 1/3 para extremos $a = -1, b=1$. De la teoría del método sabemos que su error es
+\begin{equation*}
+    -\frac{1}{90} \left( \frac{b-a}{2} \right)^5 f^{(4)}(\xi) = -\frac{1}{90}f^{(4)}(\xi)
+\end{equation*}
+De donde, por definición de norma infinito tenemos
+\begin{equation*}
+    \left|\int_{-1}^1 f(x)dx - S\right| \leq \frac{||f^{(4)}||_\infty}{90}
+\end{equation*}
+
+\section{Ejercicio 7 Lista}
+
+Determine las constantes $a$ y $b$ en términos del parámetro $\alpha$ de tal manera que el método multipaso
+\begin{equation*}
+    y_{n+1} = -a y_n - \alpha y_{n-1} + h b y_n'
+\end{equation*}
+tenga el orden más grande posible. Para qué rangos de valores de $\alpha$ es el método estable?
+
+\subsection{Solución:}
+
+Observemos el error de truncamiento global $\tau(h)$. Sabemos que para $\tau = O(h^m)$ es necesario y suficiente con que
+\begin{equation*}
+    \sum_{j=0}^p (-j)^i a_j + i \sum_{j=-1}^p (-j)^{i-1} b_j = 1 \ \text{para cualquier } i=1,2, \ldots , m
+\end{equation*}
+así, debemos hallara los coeficientes y resolver el sistema lineal de ecuaciones en términos de estos coeficientes.
+Expandamos la forma general del método multipaso con $p = 1$ y comparemos con el método dado:
+
+\begin{align*}
+y_{n+1} & = \sum_{j=0}^p a_jy_{n-j} + h\sum_{j=-1}^p b_jf(x_{n-j},y_{n-j}) \\
+& = \sum_{j=0}^p a_jy_{n-j} + h\sum_{j=-1}^p b_jy_{n-j}' \\
+& = a_0y_n + a_1y_{n-1} + h\left(b_{-1}y_{n+1}' + b_0y_n' + b_1y_{n-1}'\right) \\
+& = -ay_n -\alpha y_{n-1} + hby_n'.
+\end{align*}
+
+De donde, por igualación tenemos:
+\begin{align*}
+a_0 & = -a \\
+a_1 & = -\alpha \\
+b_{-1} & = 0 \\
+b_0 & = b \\
+b_1 & = 0. 
+\end{align*}
+
+Además, por el mismo teorema tenemos para que el método sea consistente es necesario y suficiente con que (usando $p=1$:
+\begin{equation*}
+    \sum_{j=0}^1 a_j = 1 \ \ \textrm{ y } \ \ -\sum_{j=0}^1 ja_j + \sum_{j=-1}^1 b_j = 1
+\end{equation*}
+Luego, tenemos:
+\begin{flalign*}
+    \sum_{j=0}^1 a_j &= a_0 + a_1 = -a -\alpha = 1 \\
+    \therefore a &= -1 - \alpha
+\end{flalign*}
+Además,
+\begin{flalign*}
+    -\sum_{j=0}^1 ja_j + \sum_{j=-1}^1 b_j &= - a_1 + b_0 = - \alpha + b = 1 \\
+    \therefore b &= 1 + \alpha
+\end{flalign*}
+
+Para ver los rangos de valores de $\alpha$ para los cuales el método es estable basta con ver la condición de raíz.
+\begin{align*}
+\rho(r) & = r^{p+1} - \sum_{j=0}^p a_jr^{p-j} \\
+& = r^2 - \sum_{j=0}^1 a_jr^{1-j} \\
+& = r^2 + ar + \alpha
+\end{align*}
+el cual tiene raíz
+\begin{equation*}
+    r = \frac{-a\pm\sqrt{a^2 - 4\alpha}}{2}
+\end{equation*}
+Reemplazando $a$ con los valores obtenidos para $\alpha$ en la primer parte tenemos
+\begin{align*}
+r & = \frac{(1 + \alpha)\pm \sqrt{(1+\alpha)^2 - 4\alpha}}{2} \\
+& = \frac{(1+\alpha)\pm \sqrt{1 + 2\alpha + \alpha^2 - 4\alpha}}{2} \\
+& = \frac{(1+\alpha)\pm \sqrt{1 - 2\alpha + \alpha^2}}{2} \\
+& = \frac{(1+\alpha)\pm \sqrt{(1-\alpha)^2}}{2} \\
+& = \frac{(1+\alpha)\pm (1-\alpha)}{2}.
+\end{align*}
+Luego, las raíces son
+\begin{equation*}
+    r_+ = \frac{1+\alpha+1-\alpha}{2} = 1 \ \ \textrm{ y } \ \ r_- = \frac{1+\alpha-(1-\alpha)}{2} = \alpha
+\end{equation*}
+Luego, el método es estable para $\alpha \in [-1, 1]$, pues de esta manera cumple la condición $|\alpha| \leq 1$
+
+\section{Ejercicio 11 Lista}
+
+Considere el método implícito de Runge-Kutta:
+\begin{equation*}
+    y_{n+1} = y_n + hf\left(t_n + \frac{2}{3}h, \frac{1}{3}(y_n + 2y_{n+1})\right)
+\end{equation*}
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que el error de truncamiento local es $O(h^2)$.
+    \item Muestre que el método es A-estable.
+\end{enumerate}
+
+\subsection{Solución:}
+
+Sea $z = \frac{1}{3}(y_n + 2y_{n+1})$, luego
+\begin{flalign*}
+    2y_{n+1} + y_n &= 3y_n + 2h f(z) \\
+    z &= y_n + \frac{2h}{3}f(z)
+\end{flalign*}
+lo cual es una fórmula del método de Euler implícito. El resto del paso puede ser escrito como
+\begin{equation*}
+    y_{n+1} = y_n + hf(z) = z+ \frac{h}{3}f(z)
+\end{equation*}
+El cual es un método de Euler hacia adelante. Así, estamos considerando un método implícito de tamaño de paso $k$ seguido de uno explícito de paso $l$, en donde $k+l = h$
+
+Comenzando con un análisis del método implícito, para una solución exacta que vaya a través de $(t_n, y_n)$, sabemos que expandido en $y(t_n+k)=z+w$ para obtener las derivadas de $z$
+
+\begin{align}
+y(t_n)&=y((t_n+k)-k)\\&=(z+w)
+\begin{aligned}[t]&-kf(z+w)+\frac{k^2}2f^{[1]}(z+w)\\&-\frac{k^3}{6}f^{[2]}(z+w)+...\end{aligned}\tag{A2}
+\end{align}
+donde $y^{(k+1)}(t)=f^{[k]}(y(t))$ es la base para el método numérico, las derivadas parciales de una solución exacta pueden ser expresadas en $f$ y sus derivadas espaciales. Las primeras son:
+\begin{equation*}
+    f^{[1]}(z)=f'(z)f(z), ~~
+f^{[2]}(z)=f''(z)[f(z),f(z)]+f'(z)^2f(z).
+\end{equation*}
+
+Usando (A2) como fórmula recursiva para $w$, la diferencia del punto medio entre el valor numérico y la solución exacta.
+\begin{equation*}
+    w-kf'(z)w=k(f(z+w)-f(z)-f'(z)w)-\frac{k^2}2f^{[1]}(z+w)+\frac{k^3}{6}f^{[2]}(z+w)+...
+\end{equation*}
+Todo término de la derecha tiene al menos segundo orden en $k\sim h$, luego también $w$ es de segundo orden. Usando esto y dejando fuera términos de orden 4 o mayor
+\begin{align*}
+(I-kf'(z))w
+&=-\frac{k^2}2f^{[1]}(z)+\frac{k^3}{6}f^{[2]}(z)+O(k^4)\\
+w&=-\frac{k^2}2f^{[1]}(z)-\frac{k^3}2f'(z)f^{[1]}(z)+\frac{k^3}{6}f^{[2]}(z)+O(k^4)
+\end{align*}
+
+Ahora, analizando el método explícito y tomando Taylor en (A2) tenemos
+\begin{align*}
+y(t_{n+1})&=y((t_n+k)+\ell)\\
+&=(z+w)\begin{aligned}[t]
+&+\ell f(z+w)+\frac{\ell^2}2f^{[1]}(z+w)\\
+&+\frac{\ell^3}{6}f^{[2]}(z+w)+...
+\end{aligned}\tag{B2}
+\\
+&=z+\ell f(z) \begin{aligned}[t]
+&+w+\frac{\ell^2}2f^{[1]}(z)\\
+&+\ell f'(z)w + \frac{\ell^3}{6}f^{[2]}(z)+O(h^4)
+\end{aligned}
+\end{align*}
+Insertando $w$
+\begin{align*}
+y(t_{n+1})
+&=z+\ell f(z) \begin{aligned}[t]
+&+\frac{h(\ell-k)}2f^{[1]}(z)-\frac{hk^2}{2} f'(z)f^{[1]}(z) \\
+&+ \frac{h(k^2+k\ell+\ell^2)}{6}f^{[2]}(z)+O(h^4)
+\end{aligned}
+\\
+&=y(t_n)+h f(z) \begin{aligned}[t]
+&+\frac{h(\ell-k)}2f'(z)f(z)\\
+&+\frac{h(\ell-k)(h+k)}{6} f'(z)^2f(z) \\
+&+ \frac{h(k^2+k\ell+\ell^2)}{6}f''(z)[f(z),f(z)]+O(h^4)
+\end{aligned}
+\end{align*}
+
+Concluyendo, podemos decir que
+\begin{align*}
+\tau_n&=\frac{y(t_{n+1})-y(t_n)}h-f(z)
+\\
+&=\frac{\ell-k}2f'(z)f(z)
++\frac{(\ell-k)(h+k)}{6} f'(z)^2f(z) \\
+&~~~~+ \frac{k^2+k\ell+\ell^2}{6}f''(z)[f(z),f(z)]+O(h^3).
+\end{align*}
+
+Solo para $k=l=\frac{h}{2}$ el primer término desaparece. También el primer término de segundo orden se va. Pero incluso el segundo término de segundo orden no tiene término incluyendo la segunda derivada de $f$ que compense el orden 2 del método implícito de punto medio. Para la $k = \frac{2}{3}h$, el método tiene orden uno.
+
+
+\subsection{Solución:}
+\begin{flalign*}
+    y_{n+1} &= y_n + hf\left(t_n + \frac{2}{3}h, \frac{1}{3}(y_n + 2y_{n+1})\right) \\
+    \dot y_{n+1} &= \dot y_n + hf\left(t_n + \frac{2}{3}h, \frac{1}{3}(\dot y_n + 2 \dot y_{n+1})\right)
+\end{flalign*}
+
+\begin{equation*}
+    \left| f\left(t_n + \frac{2}{3}h, \frac{1}{3}(y_n + 2y_{n+1})\right) - f\left(t_n + \frac{2}{3}h, \frac{1}{3}(\dot y_n + 2 \dot y_{n+1})\right) \right|
+\end{equation*}
+\begin{equation*}
+    \leq M \left| \frac{1}{3}(y_n + 2y_{n+1}) - \frac{1}{3}(\dot y_n + 2 \dot y_{n+1}) \right|
+\end{equation*}
+
+Supongamos así que la función incremental del método $(f\left(t_n + \frac{2}{3}h, \frac{1}{3}(y_n + 2y_{n+1})\right))$ satisface una condición uniforme de Lipschitz en su segunda variable
+
+\begin{flalign*}
+    |y_{n+1} - \dot y_{n+1}| &\leq |y_n - \dot y_n| + h \left|f\left(t_n + \frac{2}{3}h, \frac{1}{3}(y_n + 2y_{n+1})\right) -  f\left(t_n + \frac{2}{3}h, \frac{1}{3}(\dot y_n + 2y_{n+1})\right)\right| \\
+    &\leq |y_n - \dot y_n| + h M ||y_n - \dot y_n| \\
+    &\leq (1+hM)^M | y_0 - \dot y_0 | \\
+    &\leq e^{nhM} |y_0 - \dot y_0| \\
+    &= c |y_0 - \dot y_0|
+\end{flalign*}
+De donde tenemos que el método es estable.
+
+\end{document}

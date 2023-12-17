@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+\title{Homework 5}
+\author{Leonard David Vivas Dallos \\ Mariana Valencia Cubillos \\ Samuel Mira Álvarez}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\textbf{\textit{Assignment:}}  Grammar for $L=\{1^k / k \text{ is composite}\}$
+
+Any compound number is given by one of the following equations:
+\begin{flalign*}
+    c_1 &= 2(n+2) \\
+    c_2 &= 3(n+2) \\
+    c_3 &= (1+6n)(1+6m) = 1+6n+6m+36mn = 1+6(m+n)+36mn \quad n,m \neq 0 \\
+    c_4 &= (5+6n)(5+6m) = 25+30m+30n+36mn = 25+30(m+n)+36mn \\
+    c_5 &= (1+6n)(5+6m) = 5+30n+6m+36mn \quad n \neq 0
+\end{flalign*}
+
+A grammar for each equation
+
+\begin{align*}
+    S_1 &\to  S_1' I I \\
+    S_1' &\to  S_1'I\,|\, M_2 \\
+    M_2I &\to 11M_2 \\
+    M_2 &\to \varepsilon \\
+\end{align*}
+
+\begin{align*}
+    S_2 &\to  S_2' I I \\
+    S_2' &\to  S_2'I\,|\, M_3 \\
+    M_3I &\to 111M_3 \\
+    M_3 &\to \varepsilon \\
+\end{align*}
+
+\begin{align*}
+    S_3 &\to  1S_3' \\
+    S_3' &\to  S_3''III_{mn}\\
+    S_3'' &\to  S_3''II_{mn}\,|\, M_{1x1} \\
+    M_{1x1}I &\to 1^6M_{1x1} \\
+    M_{1x1} I_{mn} &\to 1^{36} M_{1x1} \\
+    M_{1x1} &\to \varepsilon
+\end{align*}
+
+\begin{align*}
+    S_4 &\to  1^{25} S_4' \\
+    S_4' &\to  S_4'II_{mn} \,|\, M_{5x5} \\
+    M_{5x5}I &\to 1^{30} M_{5x5} \\
+    M_{5x5} I_{mn} &\to 1^{36} M_{5x5} \\
+    M_{5x5} &\to \varepsilon
+\end{align*}
+
+\begin{align*}
+    S_5 &\to  1^5 S_5' I_n I_{mn} \\
+    S_5' &\to  S_5'I_n I_{mn} \,|\, S_5'I_m I_{mn} \,|\, M_{1x5} \\
+    M_{1x5}I_n &\to 1^{30} M_{1x5} \\
+    M_{1x5} I_m &\to 1^6 M_{1x5} \\
+    M_{1x5} I_{mn} &\to 1^{36} M_{1x5} \\
+    M_{1x5} &\to \varepsilon
+\end{align*}
+
+The grammar with starting rule
+\begin{equation*}
+    A \to S_1 \,|\, S_2 \,|\, S_3 \,|\, S_4 \,|\, S_5
+\end{equation*}
+generates all strings $1^k$ where $k$ is composite
+
+\end{document}
+
+

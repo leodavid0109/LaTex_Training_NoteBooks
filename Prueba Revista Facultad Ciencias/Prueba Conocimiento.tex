@@ -1,0 +1,868 @@
+\documentclass[11pt,twoside]{article}
+	\usepackage{amsfonts,amsmath,amssymb,latexsym,amsthm}
+	\usepackage[spanish, es-tabla]{babel}
+	\usepackage[latin1]{inputenc}
+	\usepackage[round]{harvard}
+	\usepackage{fancyhdr}
+	\usepackage[dvips]{graphicx}
+	\usepackage{ae}
+	\usepackage{multirow}
+	\usepackage{threeparttable}
+	\usepackage{tabularx}
+	\usepackage{booktabs}
+	\usepackage{rotating}
+	\usepackage{lscape}
+	\usepackage{epstopdf}
+	\usepackage[justification=centering, font=footnotesize]{caption}
+	
+	
+\setlength{\parindent}{0cm}
+\renewcommand{\baselinestretch}{3.0}
+\renewcommand{\thefootnote}{\alph{footnote}}
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+%\newcommand{\footstar}[1]{$^*$ \footnotetext{$^*$#1}}
+
+\topmargin 0.02cm
+\headheight 0.02cm
+\textheight 21.65cm
+\textwidth 16.50cm
+\oddsidemargin .0in
+\evensidemargin .0in
+
+\linespread{1.2}
+
+\def\tablename{Cuadro}
+\renewcommand{\tablename}{name}
+\def\refname{Referencias}
+\def\figurename{Figura}
+
+%\usepackage{ifpdf}
+
+\usepackage[usenames]{color}
+%\fi \ifpdf \DeclareGraphicsExtensions{.png,.jpg,.pdf,.mps,.gif,.bmp}
+%\else \DeclareGraphicsExtensions{.eps,.ps} \fi
+
+% utilizado para determinar el estilo de la bibliografia
+% Â¡ No modificar!
+\citationstyle{dcu}
+
+%OpciÃ³n para espacio sencillo
+\hyphenation{propuestos modelo literatura}
+
+\usepackage{float}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Headers and Footers
+\pagestyle{fancy}
+\lhead[]{{\tiny ALTERNATIVAS PARA EL MEJORAMIENTO DE BIOCOMBUSTIBLES GASEOSOS EN MOTORES}}
+\chead[]{}
+%En la siguiente lÃ­nea: Los autores conservan solo la primera inicial de nombre y apellido en mayÃºscula
+\rhead[\tiny{Héctor H. Riojas-González, Liborio Bortoni-Anzures, Juan Martínez-Torres, Héctor A. Ruiz}]{}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+\lfoot[\thepage]{{\tiny V° 12  N° 2 julio - diciembre 2023 $\bullet$ ISSN-e 2357-5749 $\bullet$ DOI: https://doi.org/10.15446/rev.fac.cienc.v12n1.97888 $\bullet$ Artí­culo Investigación}}
+\cfoot[]{}
+\rfoot[{\tiny Revista Facultad de Ciencias Universidad Nacional de Colombia, Sede Medellín}]{\thepage}
+\renewcommand{\footrulewidth}{0pt}
+
+%Encabezado y Pie Primera PÃ¡gina
+\fancypagestyle{firststyle}
+{
+	\fancyhead[R]{ \tiny{Revista Facultad de Ciencias Universidad Nacional de Colombia, Sede Medell\'{i}n \\V 12 N° 2 julio - diciembre  2023 $\bullet$ ISSN-e 2357-5749 $\bullet$ 
+	Art\'{i}culo de Investigaci\'{o}n $\bullet$ P\'{a}ginas \pageref{firstpagelabelArt1} a \pageref{lastpagelabelArt1}\\ DOI: https://doi.org/10.15446/rev.fac.cienc.v12n1.97888}}
+	\fancyhead[L]{}
+	\fancyfoot[LO,RE]{}
+	\fancyfoot[LE,RO]{ \vspace{10pt}\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{firststyle}
+\begin{center}
+\label{firstpagelabelArt1}			%Esta etiqueta indica la primera pÃ¡gina del artÃ­culo. Se debe reemplazar nombre de la nueva etiqueta en la lÃ­nea 90.
+\Large{{\bf ALTERNATIVAS PARA EL MEJORAMIENTO DE BIOCOMBUSTIBLES GASEOSOS EN MOTORES\\
+\vspace{20pt} ALTERNATIVES FOR IMPROVING GASEOUS BIOFUELS IN ENGINES\\
+\vspace{10pt}}}
+
+
+
+\begin{center}
+
+{\normalsize{
+Héctor H. Riojas-González					\footnote{\footnotesize{\textit{Profesor investigador, Universidad Politécnica de Victoria, Ciudad Victoria, Tamaulipas, México}}}		\symbolfootnote[1]{{\footnotesize \textit{Autor de correspondencia: hriojasg@upv.edu.mx}}},
+Liborio Bortoni-Anzures					\footnote{\footnotesize{\textit{Profesor investigador, Universidad Politécnica de Victoria, Ciudad Victoria, Tamaulipas, México}}},
+Juan Martínez-Torres					\footnote{\footnotesize{\textit{Profesor catedrático, Universidad Politécnica de Victoria, Ciudad Victoria, Tamaulipas, México}}},
+Héctor A. Ruiz					\footnote{\footnotesize{\textit{Investigador líder del Grupo de Biorrefinería, Departamento de Investigación en Alimentos, Facultad de Ciencias Químicas, Universidad Autónoma de Coahuila, Saltillo, Coahuila, México}}}
+}}
+
+%**********************************************************************************
+%DescripciÃ³n: Primer nombre y apellido, MayÃºscula, superÃ­ndice literal minÃºscula al final del apellido para la filiaciÃ³n de cada autor.
+%**********************************************************************************
+
+\end{center}
+
+\vspace{10pt}
+\small{Recibido M-D-A, aceptado M-D-A, versión final M-D-A.\\}
+\small{Artículo Investigación\\}
+
+\end{center}
+
+\small{{\bfseries{RESUMEN:}} La generaci\'{o}n del gas a partir de la biomasa se considera como la gran opci\'{o}n en sustituci\'{o}n el gas convencional (gas natural y gas licuado de petr\'{o}leo). Ya sea el biog\'{a}s o el syngas (gas de s\'{i}ntesis) a partir de residuos, en donde no tienen efectos da\~ninos en el uso de la tierrra, puesto que los procesos de siembra son innecesarios, el biog\'{a}s puede ser utilizado sin un tratamiento de purificaci\'{o}n, sobre todo para usarlo en zonas rurales, en donde no se justifica una gran inversi\'{o}n en los tratamientos. El motivo de elegir este tema de investigaci\'{o}n, es el de ayudar a contribuir a las energ\'{i}as renovables en su aplicaci\'{o}n, la metodolog\'{i}a aplicada para esta investigaci\'{o}n es de revisi\'{o}n bibliogr\'{a}fica exhaustiva, los resultados muestran que para mejorar las propiedades de combusti\'{o}n del biog\'{a}s y del syngas, se deben usar una serie de estrategias, entre las cuales se encuentra el agregar O$_2$, H$_2$, GN, CH$_4$ y EGR, tambi\'{e}n se encuentra la opci\'{o}n del empleo de supercargador, quemadura magra y la mejora de la calidad del biog\'{a}s a trav\'{e}s de su purificaci\'{o}n, en este \'{u}ltimo caso tiene algunas aplicaciones como lo es bio-CNG en veh\'{i}culos de transporte.\\}
+
+\small{{\bfseries{PALABRAS CLAVE}:} Biog\'{a}s; syngas; gas natural; purificaci\'{o}n; motor de combusti\'{o}n.\\}
+
+\small{{\bfseries{ABSTRACT:}} The generation of gas from biomass is considered as the great option to replace conventional gas (natural gas and liquefied petroleum gas). Either biogas or syngas from waste, where they have no harmful effects on land use, since planting processes are unnecessary, biogas can be used without a purification treatment, especially for use in rural areas, where a large investment in treatments is not justified. The reason for choosing this research topic is to help contribute to renewable energy in its application, the methodology applied for this research is exhaustive bibliographic review, the results show that to improve the combustion properties of biog\'{a}s  and syngas, a series of strategies must be used, among which is the addition of O$_2$, H$_2$, GN, CH$_4$ and EGR, is also the option of the use of superchargers, lean burn and the improvement of the quality of biogas through its purification, in the latter case has some applications such as bio-CNG in transport vehicles.\\}
+
+\small{{\bfseries{KEYWORDS}:} Biog\'{a}s; syngas; natural gas; purification; combustion engine.}
+
+\normalsize{
+\section{INTRODUCCI\'{O}N}
+La generaci\'{o}n de gas a partir de la biomasa se considera una opci\'{o}n prometedora para substituir o combinar con los gases convencionales (gas natural y gas licuado de petr\'{o}leo). De hecho, se producir\'{a}n nuevas categor\'{i}as de gases, como el syngas (gas de s\'{i}ntesis), biog\'{a}s y biometano a partir de varias v\'{i}as de transformaci\'{o}n de biomasa, como la digesti\'{o}n anaerobia, gasificaci\'{o}n, pirolisis y metanizaci\'{o}n \cite{HI17}. En comparaci\'{o}n con los biocombustibles l\'{i}quidos (biodi\'{e}sel y etanol) el biog\'{a}s producido a partir de residuos, no tiene efectos da\~ninos en el uso de la tierra, porque los procesos de siembra son innecesarios \cite{UU13}. De hecho, los aceites no comestibles que se extraen de las semillas de fruta, como la Jatropha curcas, pongamia pinnata (Millettia pinnata), moha (Setaria italica), saemaruba (Bursera simaruba), contienen aproximadamente el $25\%$ de aceite mientras que el restante $75\%$ se compone de residuo de semillas, este residuo de semillas podr\'{i}a utilizarse para la producci\'{o}n de biog\'{a}s \cite{CH12}. Un kg de semilla de pongamia pinnata es un producto que despu\'{e}s de la extracci\'{o}n de aceite puede producir alrededor de $0.738$ m$^3$ de rendimiento de biog\'{a}s, con un contenido de metano de $62.5\%$ \cite{AS15}. El biog\'{a}s es un combustible muy adecuado para la combusti\'{o}n dual, esto es debido al hecho de que el biog\'{a}s tiene altas propiedades de anti-golpe, con una creciente relaci\'{o}n de compresi\'{o}n \cite{MA15}, se puede utilizar con biodi\'{e}sel como combustible piloto \cite{GO19}. Las formas que nos ayudan para mejorar la eficiencia térmica en el motor son cuando se agrega el biog\'{a}s con O$_2$, otra manera seria en un supercargador o en un sistema de mezcla en la l\'{i}nea de entrada, o tambi\'{e}n en un precalentamiento con la mezcla de entrada \cite{YG17}. La mezcla de biog\'{a}s con combustibles de mayor velocidad de combusti\'{o}n laminar como H$_2$, NG, C$_3$H$_8$ y GLP son una forma confiable y econ\'{o}mica para aumentar la mejora del biog\'{a}s y as\'{i} aplicarlo en los motores \cite{PI16}. Otra estrategia para mejorar el biog\'{a}s es aplicando la quemadura magra la cual es eficaz para reducir el consumo de combustible y reducir el NO$_\text{x}$ o la aplicaci\'{o}n de EGR con el biog\'{a}s para la regulaci\'{o}n del NO$_\text{x}$ \cite{YA13}.
+
+\section{BIOG\'{A}S CRUDO COMO BIOCOMBUSTIBLE}
+La eliminaci\'{o}n del CO$_2$ en el biog\'{a}s es un proceso costoso y requiere una cantidad sustancial de energ\'{i}a \cite{VE17}. En plantas grandes, el CO$_2$ del biog\'{a}s se puede reducir a trav\'{e}s de m\'{e}todos de lavado \cite{YO16}, sin embargo, en peque\~nas plantas de biog\'{a}s utilizadas en \'{a}reas rurales, esto puede no ser viable, por lo tanto, en zonas rurales, es posible que haya que encontrar m\'{e}todos para utilizar el biog\'{a}s sin eliminar el CO$_2$ \cite{RA17}. Es claro que el aumentar la concentraci\'{o}n de CO$_2$ se reduce el valor del combustible, lo que aumenta el consumo de combustible, sin embargo, el impacto de la concentraci\'{o}n de CO$_2$ en el funcionamiento del motor sigue sin estar claro, en la Tabla 1 se muestran las desventajas en usar CO$_2$ en motores.
+
+\begin{table}[h]
+	\centering
+	\small{
+		\caption{Desventajas que afectan el motor en usar el CO$_2$}
+		\vspace{5pt}
+		\begin{tabular}{lll}
+			\hline
+			Como afecta al motor & Argumento & Referencia
+			\\ \hline
+			Deterioro en la estabilidad & Conduce a un deterioro en el & Chen et al., 2016 \\
+			&  funcionamiento y aumenta el CO \\
+			\\
+			\hline
+			Baja eficiencia t\'{e}rmica & Genera una baja eficiencia e incrementa & Duarte et al., 2014, \\
+			& el HC & Rahman et al., 2017 \\
+			\\
+			\hline
+			Disminuye la velocidad & Reduce la velocidad de la propagaci\'{o}n & Byun et al., 2015 \\
+			& de la llama \\
+			\hline
+			Absorbe energ\'{i}a & Absorbe la llama de combusti\'{o}n & Bari, 1996 \\
+			& reduciendo su velocidad \\
+			\hline
+			Incrementa el consumo & Genera un aument\'{o} en el consumo de & Kim et al., 2016 \\
+			& combustible \\
+			\hline
+			Reduce el valor calor\'{i}fico & Se disminuye el valor calor\'{i}fico y reduce & Shigarkanthi et al., \\
+			& la propagaci\'{o}n de la flama & 2005 \\
+			\hline
+			
+			
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+Si este impacto es bajo, puede ser razonable y econ\'{o}micamente eficiente eliminar solo parcialmente el CO$_2$ y no eliminar el CO$_2$ del biog\'{a}s para su uso en motores di\'{e}sel en la Tabla 2 se presentan las ventajas de usar el CO$_2$ en un motor.
+
+\begin{table}[h]
+	\centering
+	\small{
+		\caption{Ventajas de la presencia del CO$_2$ con el biog\'{a}s}
+		\vspace{5pt}
+		\begin{tabular}{lll}
+			\hline
+			Mejora en el motor & Argumento & Referencia
+			\\ \hline
+			Reduce el NO$_\text{x}$ & Es adecuado para reducir los NO$_\text{x}$ & Kim et al., 2016, \\
+			& & Korakianitis et al., 2011, \\
+			& & Kan et al., 2018 \\
+			\hline
+			Reduce el humo & Reduce la velocidad del proceso de oxidaci\'{o}n  & Verma et al., 2017 \\
+			& de hidrocarburos \\
+			\hline
+			El CO$_2$ no es nocivo & El CO$_2$ del biog\'{a}s se considera carbono neutral & Jaber-Nizar et al., 2008, \\
+			& por lo que no afecta al ambiente & Barik et al., 2017 \\
+			\hline
+			Previene golpes & Por ser gas inerte limita la posibilidad de una  & Duarte et al., 2014, Kan \\
+			& detonaci\'{o}n en el motor & et al., 2018 \\
+			\hline
+			Permite mayores RC & Por su resistencia a los fen\'{o}menos como el & Tricase et al., 2009 \\
+			& golpe, puede emplear mayores relaciones de \\
+			& compresi\'{o}n \\
+			\hline
+			El rendimiento & En modo de mezcla mejora el rendimiento & Kan et al., 2018 \\
+			energ\'{e}tico mejora & energ\'{e}tico de MBT (par de frenado m\'{a}ximo) \\
+			& mejor\'{o} \\
+			\hline
+			
+			
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+De acuerdo con \citeasnoun{KT10}, han observado que cuando es menor el contenido de metano en el biog\'{a}s, mayor es el CO$_2$, el cual se refleja en los gases del escape. De acuerdo con \citeasnoun{LE10}, mostr\'{o} que la presencia de CO$_2$ en el combustible disminuye el rendimiento del motor y produce m\'{a}s contaminantes en comparaci\'{o}n con el CH$_4$ puro, la eficiencia del motor se reduce al mezclarlo con el CO$_2$ bajo las mismas condiciones de carga, a medida que aumenta la fracción de CO$_2$ en el combustible, necesitar\'{a} m\'{a}s combustible, para generar la misma potencia de salida. En altas temperaturas de combusti\'{o}n, el CO$_2$ absorbe una gran cantidad de calor y, por lo tanto, reduce significativamente la temperatura de la llama. Sin embargo, el precalentamiento de la mezcla aumenta la temperatura de la llama, lo que el CO$_2$ se disocia y emitir\'{a} m\'{a}s CO a trav\'{e}s del escape de compresi\'{o}n, el cual puede aumentar hasta $16:1$. El aument\'{o} de la relaci\'{o}n de compresi\'{o}n, puede mejorar la eficiencia del motor, y tambi\'{e}n puede causar una mejor conversi\'{o}n de energ\'{i}a en la c\'{a}mara de combusti\'{o}n, lo que da como resultado menores esfuerzos t\'{e}rmicos \cite{RA11}. La degradaci\'{o}n del motor debido al biog\'{a}s no tratado, puede ser contrarrestado con un tratamiento de superficie, como los recubrimientos cer\'{a}micos, los cuales son m\'{a}s resistentes qu\'{i}micamente \cite{JE19}, desafortunadamente esto implica altos costos. Una soluci\'{o}n de bajo costo ideal para peque\~nas fincas, es tomar precauciones b\'{a}sicas del motor sin tratar el biog\'{a}s, pero aplicando el uso de lubricantes de alto TBN (n\'{u}mero total de base), para que el aceite contrarreste el ambiente \'{a}cido \cite{MAI13}. Fabricantes de motores como Waukesha, Caterpillar, Deutz, GE Jenbacher, recomiendan que la concentraci\'{o}n m\'{a}xima de H$_2$S en el biog\'{a}s no tratado, no debe ser m\'{a}s de $100$ ppmv a 1000 ppmv, dependiendo del tama\~no y la robustez del motor. Los fabricantes tambi\'{e}n recomiendan encarecidamente evitar cualquier condensaci\'{o}n de agua que va en el motor \cite{MAI13}. La inserci\'{o}n de anillos de corte en la parte superior de las paredes del cilindro, evita la formaci\'{o}n de dep\'{o}sitos, tambi\'{e}n se puede emplear el uso de materiales de resistencia a la corrosi\'{o}n para rodamientos, una estructura de superficie m\'{a}s densa, ayudar\'{a} a protegerse de un entorno corrosivo, esto tambi\'{e}n mejora la aceptaci\'{o}n de la carga del rodamiento del motor, por lo que se podr\'{i}a alcanzar una mayor carga del motor \cite{RA11}. Las resinas fen\'{o}licas podr\'{i}an prevenir la corrosi\'{o}n de los intercambiadores de calor de cobre, y proporcionar una buena conducci\'{o}n de calor al mismo tiempo. Si esto fuera insuficiente en un ambiente muy corrosivo, el cobre podr\'{i}a remplazarse con acero inoxidable y tambi\'{e}n se preferir\'{a}n los pistones de acero forjado en lugar del aluminio, por lo que el revestimiento debe dise\~narse desde cero \cite{RA11}. La presencia de CO$_2$ puede generar menor ox\'{i}geno disponible en la combusti\'{o}n, esto se traduce en una p\'{e}rdida de eficiencia, puesto que la mezcla tiende a ser demasiado rica con altas cargas y grandes flujos de biog\'{a}s. Por lo que con la eliminaci\'{o}n del CO$_2$, mejora el rendimiento energ\'{e}tico, pero no mejora la reducci\'{o}n de emisiones como el NO$\text{x}$. Por lo que puede ser razonable y econ\'{o}micamente eficiente solo eliminar parcialmente el CO$_2$, adem\'{a}s que puede disminuir la tendencia de inicio de golpe \cite{KA18}. Tambi\'{e}n se podr\'{i}a aplicar la t\'{e}cnica de combusti\'{o}n sin llama (Figura 1), la cual puede ser un gran m\'{e}todo de combusti\'{o}n para biog\'{a}s, en donde podr\'{i}a mantenerse incluso en altas concentraciones de CO$_2$, la temperatura uniforme dentro de la c\'{a}mara sin llama, puede asegurar la durabilidad de un material refractario (cer\'{a}mica). El costo inicial del m\'{e}todo es alto, pero con esto se podr\'{i}a usar el biog\'{a}s sin problemas. La adici\'{o}n de hidr\'{o}geno al biog\'{a}s en un r\'{e}gimen de combusti\'{o}n sin llama, aumentar\'{i}a la estabilidad de la combusti\'{o}n, pero la formaci\'{o}n de contaminantes se intensificar\'{i}a \cite{HO14}. De acuerdo con \citeasnoun{HI14}, estudio la velocidad de llama laminar de CH$_4$-CO$_2$ en un amplio rango de temperaturas y presiones, encontraron que la velocidad de combusti\'{o}n disminuye la presi\'{o}n y aumenta la temperatura, cuando la fracci\'{o}n de CO$_2$ es del $40\%$, la velocidad de la combusti\'{o}n se reduce al $65\%$ compar\'{a}ndolo con el metano puro. Si el biog\'{a}s llegara a contener m\'{a}s del $45\%$ de di\'{o}xido de carbono, causar\'{i}a da\~nos en el funcionamiento del motor. Por lo tanto, la aplicaci\'{o}n directa del biog\'{a}s crudo (con una concentraci\'{o}n menor del $45\%$ de CO$_2$) es m\'{a}s econ\'{o}mica para motores o suministros de calor, por lo que se propone que la combusti\'{o}n del biog\'{a}s se podr\'{i}a enriquecer con hidr\'{o}geno u ox\'{i}geno, como m\'{e}todos potenciales para mejorar la combusti\'{o}n del biog\'{a}s \cite{LI17}. 
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\includegraphics[width=0.4\textwidth]{Figura1.jpg}}
+		\caption{Combustión sin llama, a) Combustión convencional, b) Combustión sin llama, c) Zona de reacción, d) Zona no reactiva, e) Zona de reacción posterior (Fuente: elaboración propia).}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+\section{ALTERNATIVAS EN EL MEJORAMIENTO DEL BIOCOMBUSTIBLE GASEOSO}
+
+Se ha realizado numerosos esfuerzos para mejorar el valor calor\'{i}fico del biog\'{a}s y el syngas, a trav\'{e}s de la adici\'{o}n de diversos tipos de combustibles con alto valor calor\'{i}fico, como el gas natural, di\'{e}sel, gasolina e hidr\'{o}geno. Tambi\'{e}n se han considerado para mejorar las condiciones de combusti\'{o}n, una mayor relaci\'{o}n de compresi\'{o}n, mezclas con etanol y el incremento de la presi\'{o}n del aire de admisi\'{o}n \cite{YA16}. Todo esto con el fin de evitar la reducci\'{o}n de potencia, y lograr una mayor eficiencia t\'{e}rmica \cite{CH11}. Considerando una calidad \'{o}ptima de mezcla, y con l\'{i}mites de extremidades ricos y magros, ser\'{a} la mejor respuesta general del motor \cite{NA18}. Para disminuir las emisiones derivadas de la combusti\'{o}n incompleta, se pueden aplicar la inyecci\'{o}n de combustibles oxigenados y el uso de EGR caliente. Otras opciones para lograr una mejor duraci\'{o}n de la combusti\'{o}n, es reduciendo la presi\'{o}n de inyecci\'{o}n o dividiendo el proceso de inyecci\'{o}n, la oportunidad de esta configuraci\'{o}n del motor depender\'{a} de los valores energ\'{e}ticos y ambientales \cite{HE15}.
+
+\section{BIOCOMBUSTIBLE GASEOSO ENRIQUECIDO CON OX\'{I}GENO}
+Los combustibles gaseosos exhiben amplios l\'{i}mites de ignici\'{o}n, y pueden formar f\'{a}cilmente mezclas homog\'{e}neas con aire, para favorecer la combusti\'{o}n completa \citeasnoun{RA16}. Tambi\'{e}n tienen la posibilidad de aplicar una mayor relaci\'{o}n de compresi\'{o}n, cuando se alimenta con gas productor, sin que este tenga una tendencia de detonaci\'{o}n, las altas concentraciones de nitr\'{o}geno (entre $40\%$ y $50\%$) de una mezcla de combustible-aire, evitan detonaciones, lo cual es ben\'{e}fico en casos que se empleen altas relaciones de compresi\'{o}n en el motor \cite{MA12}. El syngas (gas de s\'{i}ntesis) tiene un valor calor\'{i}fico m\'{a}s bajo en comparaci\'{o}n con el biog\'{a}s, evitando con esto el golpe en los motores alimentados de syngas con exceso de aire \cite{MA16}. El aumentar la disponibilidad de ox\'{i}geno en el cilindro, mejora la combusti\'{o}n y la eficiencia, y adem\'{a}s puede reducir las emisiones del biog\'{a}s, esto se puede lograr aumentando la concentraci\'{o}n de ox\'{i}geno en el aire de admisi\'{o}n. El aire se puede separar de sus componentes utilizando una variedad de t\'{e}cnicas tales como: las separaciones criog\'{e}nicas, adsorci\'{o}n por inversi\'{o}n de presi\'{o}n (Figura 2), la tecnolog\'{i}a de membrana y m\'{e}todos de subproductos de generaci\'{o}n de ox\'{i}geno, en cuanto a la tecnolog\'{i}a de separaci\'{o}n de aire, este puede producir ox\'{i}geno a diferentes purezas, presiones y caudales volum\'{e}tricas \cite{PO17}. El enriquecimiento de ox\'{i}geno es una t\'{e}cnica viable para del motor di\'{e}sel dual con biog\'{a}s en cargas ligeras, debido a las mejoras en el rendimiento y en su eficiencia t\'{e}rmica. Cuando se disminuye el retraso de encendido, este genera altas tasas de combusti\'{o}n con una disminuci\'{o}n de las emisiones \cite{CA12}. De acuerdo con \citeasnoun{DA13}, se\~nalaron que la mezcla de gas productor caliente con flujo de aire, reduce la cantidad de ox\'{i}geno requerido para la \'{o}n, esto da como resultado, un mayor CO, junto con un incremento de temperatura en el escape, el cual conduce a mayores p\'{e}rdidas, esto se puede solucionar con una mezcla m\'{a}s homog\'{e}nea de gas productor/aire, dando como resultado una mejor combusti\'{o}n. El uso de aire enriquecido con ox\'{i}geno en un motor dual con biog\'{a}s-di\'{e}sel, minimiza el efecto del CO$_2$ \cite{RG10}, esto tambi\'{e}n lo reafirman \citeasnoun{CA12}, en donde investigaron el efecto del ox\'{i}geno enriqueciendo con aire, sobre el rendimiento de biog\'{a}s en combusti\'{o}n dual. Los resultados indican, que el efecto negativo del CO$_2$ puede ser atenuado con una peque~na adici\'{o}n de ox\'{i}geno. Tambi\'{e}n realizaron mezclas de biog\'{a}s y le aumentaron la concentraci\'{o}n de O$_2$ en el aire de admisi\'{o}n con un $27\%$ en volumen. Los resultados muestran una reducci\'{o}n en el retraso de ignici\'{o}n, en todos los niveles de enriquecimiento de O$_2$, esto \'{u}ltimo fue debido, a la mayor cantidad de O$_2$ disponible en el proceso de ignici\'{o}n. Con el $40\%$ de O$_2$, genero un incremento de la eficiencia t\'{e}rmica del $28\%$, la cual se le atribuye a la tasa de reacci\'{o}n de oxidaci\'{o}n en el combustible, y las altas velocidades de propagaci\'{o}n de la llama.
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\includegraphics[width=0.4\textwidth]{Figura2.jpg}}
+		\caption{Método de adsorción de inversión de presión; a) entrada de aire, b) salida de gas, c) nitrógeno y d) oxígeno disuelto. (Fuente: Elaboración propia)}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+
+\section{APLICACI\'{O}N DE EGR (RECIRCULACI\'{O}N DE LOS GASES DE ESCAPE) CON BIOCOMBUSTIBLE GASEOSO}
+
+El gas metano presente en el biog\'{a}s se puede mezclar f\'{a}cilmente con el aire, aplicando SCR (reducci\'{o}n catal\'{i}tica selectiva) (Figura 3), es una tecnolog\'{i}a para reducir el NO$_\text{x}$. Estos dispositivos en veh\'{i}culos, tienen el inconveniente que debe estar instalado en el tubo de escape y son catalizadores caros (Figura 4). Por lo tanto, pueden resultar una mejor opci\'{o}n el EGR, el cual es capaz de bajar la temperatura en la c\'{a}mara de combusti\'{o}n, y por lo tanto reducir el NO$_\text{x}$ a bajo costo \citeasnoun{WA18}.
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\includegraphics[width=0.4\textwidth]{Figura3.jpg}}
+		\caption{Funcionamiento de catalizador SCR: a) Motor, b) Unidad de dosificación, c) Gases de escape, d) Catalizador SCR. (Fuente: Elaboración propia)}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+Las altas emisiones de NO$_\text{x}$ especialmente en altas cargas, y la tendencia a golpear \citeasnoun{LE14}, se reducen con la recirculaci\'{o}n de los gases de escape (EGR), pero tambi\'{e}n se traduce en un aument\'{o} de HC y CO. Las tasas de EGR por encima de un valor m\'{a}ximo, dan como resultado un fallo de encendido y un funcionamiento err\'{a}tico del motor \citeasnoun{KO11}.
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\includegraphics[width=0.4\textwidth]{Figura4.jpg}}
+		\caption{Catalizador de 3 vías en a) Combustión de biogás, b) Sensor de oxígeno, c) Catalizador de 3 vías, d) Termómetro, e) Catalizador de NOx, f) Sensor de NOx, g) Unidad de control electrónico (Fuente: Elaboración propia).}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+\section{GAS NATURAL COMO ADITIVO PARA EL BIOCOMBUSTIBLE}
+
+La administraci\'{o}n de informaci\'{o}n de energ\'{i}a de EE UU, predice que el consumo de gas natural crecer\'{a} en todo el mundo a partir de $108$ billones de m$^3$ en $2007$ a $156$ trillones de m$^3$ para el a\~no $2035$, por lo que este crecimiento conducir\'{a} a la propagaci\'{o}n de las redes de gas natural, esta expansi\'{o}n puede permitir, que las fuentes de biog\'{a}s y syngas est\'{e}n conectadas con ellas \cite{UU13}. Si se llega a unir a la red de gas natural, muchos autos de combusti\'{o}n de gasolina o di\'{e}sel, podr\'{i}an estar cambiando a la conversi\'{o}n de gases combustibles. Por lo tanto, el uso de syngas y biog\'{a}s en el transporte, puede ser conveniente para los autom\'{o}viles de pasajeros y para veh\'{i}culos pesados \cite{UU13}. Desafortunadamente el remplazo completo de combustible di\'{e}sel con syngas no podr\'{i}a ser posible, adem\'{a}s que el rendimiento de doble combustible de syngas y di\'{e}sel como combustible piloto, es m\'{a}s pobre en comparaci\'{o}n a la doble alimentaci\'{o}n de gas natural y di\'{e}sel. Por lo tanto, el syngas solo puede ser utilizado como combustible suplementario para reducir costo y reducir emisiones de NO$_\text{x}$ y part\'{i}culas (PM) \cite{HA14}. La mezcla de biog\'{a}s/gas natural, no requiere de modificaciones en el motor para un funcionamiento estable en la c\'{a}mara de combusti\'{o}n \cite{NI14}. De acuerdo con \citeasnoun{NI14}, quemar con una mezcla de gas natural y biog\'{a}s, contribuye a la reducci\'{o}n del CO$_2$ en un $19\%$ en la operaci\'{o}n a plena carga. En el estudio de \citeasnoun{MU13}, realizaron un estudio comparativo entre los motores alimentados con biog\'{a}s y gas natural, en donde reportaron una reducci\'{o}n del $12\%$ del NO$_\text{x}$ y otra reducci\'{o}n del $70\%$ de PM, en la operaci\'{o}n de gas natural-di\'{e}sel, en donde las emisiones de HC fueron mayores para el biog\'{a}s, debido a la presencia de CO$_2$. Tambi\'{e}n se observaron un aument\'{o} de BSFC y un retraso de ignici\'{o}n, cuando se introdujo biog\'{a}s en el motor, esto fue proporcional a la cantidad de CO$_2$ presente en los gases de escape. En la evaluaci\'{o}n comparativa de \citeasnoun{WL12}, investigaron diversos combustibles gaseosos (syngas, CNG, LPG y H$_2$) en combusti\'{o}n dual en motor di\'{e}sel. Los resultados mostraron que el incremento del NO$_\text{x}$, se encontr\'{o} con el uso de syngas y de hidr\'{o}geno. En el trabajo experimental de \citeasnoun{CH11}, estudiaron un motor di\'{e}sel (convertido inicialmente en motor a gasolina) en modo de alimentaci\'{o}n de gas natural, en donde enriquecieron al biog\'{a}s con gas natural. Esta mezcla mostr\'{o} en el motor, un comportamiento similar (al gas natural), en t\'{e}rminos de potencia de frenado, salida, consumo espec\'{i}fico de gas y eficiencia t\'{e}rmica. Finalmente, en el estudio de \citeasnoun{MA11}, analizaron el rendimiento del motor de gasolina de $4$ tiempos, alimentado con una mezcla de biog\'{a}s/LPG, en un solo cilindro y enfriado por aire. Los resultados mostraron que con una mezcla del $50\%$ de biog\'{a}s en el motor, obtuvo un rendimiento muy adecuado, con altos \'{i}ndices de BSFC y BTE, en comparaci\'{o}n con la gasolina \'{u}nica.
+
+\section{BIOCOMBUSTIBLE GASEOSO ENRIQUECIDO CON HIDR\'{O}GENO}
+
+Si bien se sabe, que la combusti\'{o}n de biog\'{a}s en motor di\'{e}sel, tiene el potencial de proporcionar bajas emisiones, la presencia de CO$_2$ en el biog\'{a}s, provoca unos aument\'{o}s en los periodos de demora de encendido, y reduce las velocidades de propagaci\'{o}n de la llama, lo que genera una ca\'{i}da en la eficiencia t\'{e}rmica del motor. Una forma potencial de contrarrestar este hecho, sin tener un efecto adverso sobre los niveles de emisiones, es agregar H$_2$ a la mezcla de biog\'{a}s, en donde la velocidad de la llama de H$_2$ ($23$ cm/segundo) es aproximadamente $6$ veces mayor que la de CH$_4$ ($42$ cm/s) en condiciones atmosf\'{e}ricas \cite{KA03}. La mezcla de hidr\'{o}geno-metano tiene un l\'{i}mite de llama y velocidad de combusti\'{o}n m\'{a}s r\'{a}pida, en comparaci\'{o}n con el metano puro, el cual es $5$ veces mayor que la del metano, lo que puede llevar a una combusti\'{o}n m\'{a}s completa y menor tiempo de duraci\'{o}n de la combusti\'{o}n \cite{AC15}. Tecnolog\'{i}as como la turbo-carga, tiempo de inyecci\'{o}n avanzado, alta presi\'{o}n en inyecci\'{o}n, mayor relaci\'{o}n de compresi\'{o}n y la adici\'{o}n de hidr\'{o}geno en el combustible gaseoso, pueden lograr un mejor rendimiento en el motor de doble combustible \cite{NA16}. El hidr\'{o}geno tiene el mayor contenido de energ\'{i}a entre todos los combustibles, y tiene muchas ventajas tales como; una alta velocidad de llama, corta distancia de enfriamiento, alto valor calor\'{i}fico y alta difusividad, que podr\'{i}a llevar a una alta eficiencia de combusti\'{o}n (Babu et al., 2013). Se puede lograr una mejora en la eficiencia, y a la vez reducir emisiones, si se usa syngas y biog\'{a}s, con un mayor contenido de hidr\'{o}geno en motores de combusti\'{o}n dual en condiciones adecuadas, adem\'{a}s se puede utilizar el syngas como combustible complementario, con la finalidad de reducir el costo y las emisiones de NO$_\text{x}$ y PM (Hagos et al., 2016). El gas de carb\'{o}n, por ejemplo, es desfavorable al usarlo en cualquier c\'{a}mara de combusti\'{o}n, esto se debe a la gran cantidad de nitr\'{o}geno que tiene, por lo que se puede enriquecer con hidr\'{o}geno, para convertirse en un combustible aplicable (Ilbas et al., 2015). La presencia de syngas enriquecido tanto con hidr\'{o}geno como con metano, crea un motor m\'{a}s suave, la operaci\'{o}n y el rendimiento final del motor son mejorados (Hagos et al., 2017). 
+
+\subsection{Mezcla de biog\'{a}s-syngas/H$_2$ y la eficiencia del motor}
+
+Diversas investigaciones se\~nalan, que la adici\'{o}n de una peque\~na cantidad de combustible que tenga mayor rango de inflamabilidad, mayor velocidad de la llama y mayor valor calor\'{i}fico (como el hidr\'{o}geno y el gas licuado de petr\'{o}leo), pueden mejorar el rendimiento de los biocombustibles gaseosos, tales como el biog\'{a}s y el syngas. Pequeñas dosis (dosificaci\'{o}n) de hidr\'{o}geno son una forma muy efectiva de mejorar las cualidades de los biocombustibles gaseosos, tanto el syngas y el biog\'{a}s cuando estos son producidos por m\'{e}todos no estandarizados (Chraplewska et al., 2011), en la Tabla 3 se presentan las dosis del enriquecimiento con hidr\'{o}geno en biocombustibles gaseosos. 
+
+\begin{table}[h]
+	\centering
+	\small{
+		\caption{Porcentajes de hidr\'{o}geno con biocombustibles gaseosos}
+		\vspace{5pt}
+		\begin{tabular}{llll}
+			\hline
+			Tipo de & Hidrógeno $\%$ & Argumento & Referencia \\
+			biocombustible
+			\\ \hline
+			Biogás & $15\%$ & Mejoró la potencia y eficiencia térmica & Porpatham et al., 2007 \\
+			& & y se redujo el HC \\
+			\hline
+			Gas metano & $15\%$ & Se redujo la irreversibilidad de la & Rakopoulosa et al., 2006 \\
+			& & combustión \\
+			\hline
+			Biogás y gas de & $30\%$ & Mayor eficiencia térmica, cuando se & Park et al., 2012 \\
+			síntesis & & agrega EGR \\
+			\hline
+			Gas metano & $20\%$ & Porcentaje óptimo para mejorar & Wang et al., 2007 \\
+			& & eficiencia y reducción de emisiones  \\
+			\hline
+			Gas productor & $20\%$ & Mayor eficiencia térmica de los frenos & Roy et al., 2009 \\
+			\hline
+			Gas metano & $5.3\%$ & Se redujo las emisiones de HC, CO y & Ji et al., 2016 \\
+			& & CO$_2$ (motor rotativo) \\
+			\hline
+			
+			
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+Cuando se aplica el hidrógeno, la duración de la combustión se reduce, lo que lleva a una mayor eficiencia (Khatri et al., 2020). La presencia de hidrógeno en syngas, provoca una combustión rápida y una presión mas alta en el cilindro (Hagos et al., 2016). Por lo que se ha encontrado que la presencia de hidrógeno en combustibles gaseosos (syngas) ha logrado eficiencias similares al gas natural (Cameretti et al., 2020). Sin embargo, cuando el contenido de hidrógeno en el syngas es demasiado alto, puede generar muchos problemas, esto se debe a que la combustión se puede volver inestable, generando un aumentó de presión excesivo. Por lo que el motor puede se puede llegar a golpear, este último fenómeno lo explican Sivabalakrishnan et al. (2014), en donde señalan, que el fenómeno del golpe, es debido a una menor ignición de energía, mayor rango de inflamabilidad y menor distancia de enfriamiento. El resultado de todo esto, es una disminución de la eficiencia del motor, además que las partes del motor pueden dañarse severamente. Por lo tanto, el contenido de hidrógeno, se reconoce como un factor crucial que afecta el rendimiento del motor alimentado con syngas. Aunque la tasa de propagación de hidrógeno, puede ser moderada con la presencia de diluyentes del syngas, como el N$_2$ y CO$_2$ (Kan et al., 2018). La mezcla de H$_2$ con biogás, puede mejorar la estabilidad de combustión de la llama (Yan et al., 2017), mejora la estabilidad operativa del motor (Xin et al., 2013), así como el rendimiento del motor y emisiones (Park et al., 2012). De acuerdo con Zhen et al. (2016), observaron un efecto favorable en la adición de hidrógeno sobre la estabilidad de la llama, y un efecto perjudicial de la concentración de dióxido de carbono. El hidrógeno promueve eficazmente la combustión magra, y un amplio rango de operación estable del motor, esto es debido a que la velocidad de propagación de la llama del hidrógeno, es relativamente rápida, lo que ayuda a las condiciones de operación pobres (syngas). Las emisiones de NO$_\text{x}$ aumentan a medida que se incrementa el hidrógeno, esto es debido a que el hidrógeno eleva la temperatura de combustión, y el NO$_\text{x}$ es producido por la alta temperatura de combustión, por lo que la presencia de N$_2$ y CO$_2$ del syngas, ayuda a disminuir esa emisión, y también permite que se apliquen condiciones de quemadura magra (Jeong et al., 2009). De acuerdo con el trabajo de Azimov et al. (2011), utilizaron syngas de biomasa, y encontraron que cuanto mayor H$_2$ agregan al syngas, menores emisiones de HC se generan. Pero al mismo tiempo se incrementa el NO$_\text{x}$, esto último se explica, por la mayor temperatura de ignición. En el caso de la reducción de HC sucede, al generar una mejor combustión. En un estudio comparativo entre syngas y biogás agregando H$_2$ lo presento, Hagos et al. (2014a), donde demostraron que el syngas puro, es un buen sustituto de los combustibles fósiles gaseosos en motores a gasolina. Con el aumentó de H$_2$ y una reducción de CO$_2$ en la mezcla con syngas alimentado a motor a gasolina, el motor tuvo mejor comportamiento de combustión, en comparación con los motores alimentados con biogás (Arroyo et al., 2014, Arroyo et al., 2015). 
+
+\subsection{La relación de biogás/CO$_2$ con respecto a sus emisiones con H$_2$}
+
+La adición de H$_2$ mejora el BMEP (presión media efectiva al freno), el BTE, con una reducción de CO, HC y una reducción de NO$_\text{x}$ (con la presencia de CO$_2$), en una relación de H$_2$-biogás (Chen et al., 2017). Las emisiones de CO$_2$ disminuyen, a medida que se incrementa el hidrógeno en la mezcla con biogás. El agregar hidrógeno al biogás, puede ser muy beneficioso, pero la cantidad debe ser controlada adecuadamente, porque la mezcla de biogás con H$_2$, puede ocasionar un aumentó del NO$_\text{x}$, así como la eficiencia y la máxima presión del cilindro, puede cambiar simultáneamente (Jeong et al., 2009), por lo que algunas características de H$_2$, puede causar resultados indeseables, como aumentós inesperados de NO$_\text{x}$ y deterioro en la eficiencia térmica, debido a las significativas perdidas de calor, en condiciones de alta mezcla de H$_2$, y una tendencia de golpes (Porpatham et al., 2007). Por lo que el biogás con hidrógeno, podría llegar a generar un aumentó en las emisiones (Hosseini et al., 2014), todo esto dependerá en intentar mantener niveles controlados de H$_2$. De acuerdo con el análisis de Park et al. (2011a), concluyeron que la mezcla de hidrógeno con biogás, es eficaz para inhibir las reacciones de crecimiento de los anillos aromáticos del benceno, y de la superficie de los HAP (Zhao et al., 2010). En el estudio de Park et al. (2011), aplicaron biogás ($20\%$ CH$_4$ y $80\%$ H$_2$) y confirmaron que usando niveles moderados de H$_2$, la emisión total de HC reduce, logrando un aumentó en la estabilidad de la combustión. Sin embargo, puede generar un incremento de NO$_\text{x}$ (Jeong et al., 2009). Por otro lado, en el estudio de Lilik et al. (2010) y Talibi et al. (2014), afirman que el uso de biogás con H$_2$ puede reducir las temperaturas del gas en el cilindro, reduciendo así los NO$_\text{x}$, es por ello que es muy importante determinar la dosis adecuada de biogás/H$_2$. 
+
+\subsection{Aplicación de biogás/H$_2$ en motor a gasolina}
+
+El motor alimentado con gas, con bajo poder calorífico (como el biodiésel), y encendido por chispa, tiene la desventaja de grandes variaciones de ciclo por ciclo, y una capacidad de quemado pobre, ocasiona una disminución en la potencia de salida del motor, y un aumentó del consumo de combustible. Sin embargo, el hidrógeno tiene una alta velocidad de propagación de la llama, y un amplio alcance inflamable, por lo que se espera que esta mezcla biogás/H$_2$, mejore las condiciones del motor (Zhunqing et al., 2012), en la Tabla 4, se observan las dosis de hidrógeno en motor a gasolina. De acuerdo con el trabajo realizado por Lee et al (2010a), compararon la combustión y emisión del gas natural, biogás y la mezcla de biogás/H$_2$ bajo diferentes EGR en motor a gasolina, llegaron a la conclusión, que el NO$_\text{x}$ y la eficiencia disminuye, cuando se alimenta con biogás. Cuando se trata del gas natural, este también disminuye ligeramente el NO$_\text{x}$ y la eficiencia, pero en el caso del biogás con H$_2$, NO$_\text{x}$ y la eficiencia aumentan.
+
+\begin{table}[h]
+	\centering
+	\small{
+		\caption{Porcentaje de hidr\'{o}geno con biocombustibles gaseosos en motor a gasolina}
+		\vspace{5pt}
+		\begin{tabular}{llll}
+			\hline
+			Tipo de & Hidrógeno $\%$ & Argumento & Referencia \\
+			biocombustible
+			\\ \hline
+			Gas metano & $20-25\%$ & Mejora el rendimiento y evita el golpe & Shrestha et \\
+			& & & al.,1999 \\
+			\hline
+			Biogás enriquecido & $10\%$ & La eficiencia térmica y la potencia de & Porpatham \\
+			con gas metano & & salida mejoran, y la emisión de HC & et al., 2012 \\
+			& & disminuye \\
+			\hline
+			Gas metano & $20-25\%$ & Tuvo una ganancia de potencia y evita el & Porpatham \\
+			& & golpe & et al., 2007 \\
+			\hline
+			Biogás & $15\%$ & Promueve el grado de reversibilidad del & Rakopoulos \\
+			& & proceso de combustión & et al., 2009 \\
+			\hline
+			Biogás & $15\%$ & Mejoró la eficiencia térmica del freno y la & Porpatham \\
+			& & potencia de salida & et al., 2007 \\
+			\hline
+			Biogás & $5-10\%$ & Mejora la eficiencia térmica y reduce el & Park et al., \\
+			& & HC, pero incrementa el NO$_\text{x}$ & 2011 \\
+			\hline
+			Biogás & $15\%$ & Aumenta la eficiencia y reduce la & Rakopoulos \\
+			& & irreversibilidad de la combustión & et al., 2008 \\
+			\hline
+			
+			
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+\section{MEJORAMIENTO DE LA CALIDAD DEL BIOGÁS}
+
+La razón en mejorar la calidad del biogás, es debido a que el biogás crudo, tiene un menor valor calorífico, es difícil y costoso licuarlo, ya que requiere una compresión muy alta, lo que hace a su vez que, a mayor peso del cilindro, afecte su portabilidad (Shah-Divyang et al., 2016) en la Figura 5 se muestra las condiciones de cómo se puede licuar el biogás.
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\includegraphics[width=0.6\textwidth]{Figura5.png}}
+		\caption{Condiciones para licuar el biogás (Fuente: Elaboración propia)}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+La eliminación o reducción de CO$_2$, mejora los límites de inflamabilidad, y mejora la velocidad de la llama, logrando así una mejor eficiencia térmica, reduciendo a la vez las emisiones (Kapdi et al., 2005, Porpatham et al., 2008). El número de octano, es una medida de resistencia a la auto-ignición (comúnmente conocida como detonación). Un mayor octanaje, indica una mayor resistencia a la auto-ignición, que a su vez permite utilizar relaciones de compresión más altas, las cuales dan como resultado una mayor eficiencia térmica (Korakianitis et al., 2011). La mayoría de los países, tienen como indicador principal de la calidad del biogás, a la concentración de metano. La cual debe ser al menos un $96\%$, y el CO$_2$ no debe exceder el $4\%$. El índice de Wobbe, es un indicador para el combustible, que mide un valor de calentamiento, el cual se puede utilizar comparativamente entre diferentes gases (Makareviciene et al., 2013). El biogás tiene un menor costo por unidad de energía, en comparación con la gasolina y el hidrógeno (Kukoyi et al., 2015). El biogás en su estado más puro (más del $95\%$ de metano), tiene valores caloríficos similares a los del gas natural, y puede ser utilizado en todas las aplicaciones de gas natural existentes (Persson et al., 2014). Una simulación numérica de Software de simulación Aspen HYSYS, puede servir para alcanzar la máxima pureza del metano a partir del biogás (Tawfeek et al., 2016). El futuro del biogás se centra principalmente en la materia prima, y en las directrices para purificar el biogás (Kadam et al., 2017).
+
+\subsection{Tipos de tratamiento para purificar el biogás}
+
+Aunque la producción del biogás es un asunto de desarrollo comercial, su utilización en todo el mundo es todavía muy limitado, esto es debido a sus rigurosos requisitos de purificación (Figura 6) antes de su uso (Ullah-Khan et al., 2017). En el estudio de Lindeboom et al. (2011), han sugerido que el costo de purificación del biogás, solo se convierte viable, económica y energéticamente, si la capacidad operativa de la planta supera los $100$ m$^3$ de biogás/h. El enfoque tecnológico del biogás, se ha enfocado en su pureza, el cual se ha sometido el biogás a una serie de técnicas, como el secado (la presencia de humedad del biogás puede corroer las partes metálicas del motor) (Shah-Divyang et al., 2016) y la eliminación de CO$_2$, NH$_3$, H$_2$S y otras impurezas traza, para lograr un contenido de metano del $95-99\%$ en el biogás (Sarker et al., 2018). En la Tabla 5 se muestran métodos para eliminar el H$_2$S el cual está presente en el biogás. 
+
+\begin{figure}[h]
+	\centering
+	\small{
+		\boxed{\mbox{Figura6.jpg}}
+		\caption{Esquema utilizado para la purificación de biogás con agua de presión; a) torre de lavado de biogás, b) secado, c) torre de remoción de gases, d) bomba, e) compresor, biogás sucio y f) compresor, biogás limpio (Fuente: Elaboración propia)}
+		%TÃ­tulo de la figura, tipo oraciÃ³n centrado
+		\label{fig:}
+	}
+\end{figure}
+
+\begin{table}[h]
+	\centering
+	\small{
+		\caption{Métodos de desulfuración económicos para eliminar el H$_2$S de biocombustible gaseosos (Piaptmanomai et al., 2009):}
+		\vspace{5pt}
+		\begin{tabular}{ll}
+			\hline
+			Tipo de tratamiento & Observación \\ \hline
+			Sistema de eliminación de líquidos & Uso de residuos a base de aminas de agua \\ \hline
+			Sistema de captación de medios sólidos & Basado en cerámica con óxido de hierro \\
+			& impregnado, usando una pirita de hierro \\ \hline
+			Redox de hierro & Utilizado con hierro como catalizador  \\
+			& regenerativo para la oxidación de H$_2$S \\
+			\hline
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+Una técnica práctica para eliminar el olor y el H$_2$S del biogás, es usar un lecho de carbón activado, y para eliminar la humedad del biogás, se puede usar una alúmina activada (Hernández et al., 2018). En el análisis de Chen et al. (2015), revelaron que, en los procesos híbridos con biogás, obtienen mejores resultados, cuando se combinan la separación de membrana con absorción, adsorción y la técnica criogénica. Estos procesos de separación combinados, pueden mejorar su funcionamiento, y a la vez reducen el costo del proceso, en la Tabla 6 se muestran técnicas para tratar el biogás. 
+
+\begin{table}[H]
+	\centering
+	\small{
+		\caption{Distintos tipos de métodos de tratamiento para purificar el biocombustible gaseoso.}
+		\vspace{5pt}
+		\begin{tabular}{lll}
+			\hline
+			Tipo de Método & Observaciones & Referencia
+			\\ \hline
+			Absorción química & Es muy usada, se realiza en una columna & Kapdi et al., 2005 \\
+			& empaquetada con solución salina & \\
+			\hline
+			Separación por & Es un método muy prometedor tanto & Kim et al., 2016, \\
+			membrana & técnico, económico y ambientalmente & Kapdi et al., 2005, \\
+			& & Ullah-Khan et al., 2017 \\
+			\hline
+			Separación criogénica & Es un método costoso para usar & Kadam et al., 2017, \\
+			& & Kapdi et al., 2005, \\
+			& & Ullah-Khan et al., 2017 \\
+			\hline
+			Lavado de agua a alta & Es el método más comúnmente usado, el & Ullah-Khan et al., \\
+			presión & cual se requiere de mucha agua & 2017, Shah- Divyang \\
+			& & et al., 2016, Kadam et \\
+			& & al., 2017 \\
+			\hline
+			Lavado con solvente & Es el mismo principio del lavado de agua, & Tock et al., 2010 \\
+			orgánico & pero se le agrega un solvente orgánico, es \\
+			& más eficiente, pero más costoso \\
+			\hline
+			Adsorción de & El método se basa en una alta presión, es & Cavenati et al., 2005, \\
+			oscilación de presión & un método muy flexible, pero costoso & Kadam et al., 2017 \\
+			\hline
+			Membrana de & Muy efectivo y más económico que la & Porpatham et al., 2017 \\
+			transporte de iones & separación criogénica \\
+			(ITM) \\
+			\hline
+			Agua presurizada & Método sencillo y no costoso & Yingjian et al., 2014 \\
+			como absorbente \\
+			\hline
+			Biofiltros & Se emplean bacterias en un biorreactor, es & Fernandez et al., 2013 \\
+			& un método eficiente, pero en desarrollo \\
+			\hline
+			Tratamiento de gas & Se usa en refinerías y centrales eléctricas, & Kadam et al., 2017, \\
+			amina (absorción de & tiene alta eficiencia, pero es costos y & Gomes et al., 2002 \\
+			amina) & complejo \\
+			\hline
+			Enriquecimiento de & Se logra una eficiencia del $60\%$, con una & Hayes et al., 1990 \\
+			metano in situ & gran cantidad de lixiviados a tratar, \\
+			& método en desarrollo \\
+			\hline
+			
+			
+		\end{tabular}
+		
+		\label{tab:}
+	}
+\end{table}
+
+
+\section{EFICIENCIA DEL BIOGÁS ENRIQUECIDO CON METANO}
+
+Usar como materia prima los residuos, es adecuado en el contexto del biogás, debido a que no compiten con los productos alimentarios agrícolas (Appels et al., 2011). Una ruta alternativa desarrollada en las últimas décadas, es la utilización del biogás, con un nivel mayor de metano, esto puede ser utilizado como biometano comprimido localmente, o como combustible renovable, directamente inyectado en la red del gas natural (Sun et al., 2015), el cual ha demostrado un interés comercial en pleno crecimiento (Sarker et al., 2018). El biogás enriquecido con metano, proporciona un rendimiento similar a GNC fósil. El biogás enriquecido, se podría utilizar para combustible para vehículos, ya que no se requiere de una instalación compleja, que suministre el combustible de gas en el motor. Sin embargo, si se usan dosis altas de combustible de gas, se puede esperar una disminución sustancial en la potencia del motor, como consecuencia, puede ser apropiado usar una dosis baja de biogás (alrededor del $40-60\%$ dependiendo de la carga), para que obtenga una potencia del motor relativamente alta, y de esta manera reducir los costos operativos para vehículos y máquinas. La propiedad de biogás purificado, es similar a la GNC, y se puede utilizar en vehículos operados con GNC sin ninguna modificación al motor (Barik et al., 2017). El gas enriquecido con metano, es tan bueno como el gas natural, y además el biogás es un combustible renovable, y tiene un CO$_2$ neutral en términos de emisiones netas de carbono a la atmosfera (Kirti et al., 2017). El biogás emite menos cantidades de NO$_\text{x}$, HC y CO, que la gasolina o el diésel además que, los motores alimentados con biogás purificado, son más silenciosos (Prajapati et al., 2015). Un análisis del efecto de diferentes composiciones de biogás en motor de combustión dual, fue realizado por Verma et al. (2017), ellos encontraron que con una composición de biogás del $93\%$ de metano, dio como resultado, un rendimiento comparable con el combustible diésel con $26.9\%$ y $27.4\%$ respectivamente, en la eficiencia de la segunda ley. Sin embargo, el biogás con menores porcentajes de metano, puede mostrar menor eficiencia, junto con el aumentó de las destrucciones de exergía. En el análisis de Porpatham et al. (2012), investigaron el efecto de la concentración de metano en el biogás, usando un motor a gasolina y encontraron que, con el aumentó del porcentaje de volumen de metano, las emisiones de HC disminuyeron significativamente, mientras que las emisiones de NO$_\text{x}$ se mantuvieron casi fijas. La eficiencia térmica también aumentó, mientras que el tiempo de encendido, debería ser pospuesto como una estrategia para controlar la variación cíclica. En el estudio de Chandra et al. (2011), analizaron experimentalmente la velocidad constante en términos de potencia de frenado, el biogás que contiene $95\%$ de metano (llamado biogás enriquecido con metano), exhibió un rendimiento del motor similar al gas natural comprimido. Los resultados que presenta Jung et al. (2015), mostraron que el comportamiento de combustión mejoro, cuando se le aumentó el metano en el biogás, el BTE, la potencia del freno y las emisiones de NO$_\text{x}$ aumentaron, a medida que el contenido de metano incrementaba. Una manera de reducir emisiones lo presenta, Montoya et al. (2015), en donde realizaron una investigación, donde un motor diésel se tranformó en motor a gasolina, con suma potencia de salida máxima de $8.5$W, con la finalidad de solo aplicar biogás. Su experimento se basó en $3$ combustibles; biogás simulado, biogás enriquecido con $25\%$ y $50\%$ de metano en volumen. Los resultados mostraron una reducción considerable de NO$_\text{x}$, CO y HC, cuando el biogás se enriqueció con metano al $50\%$. En el estudio de Subramanian et al. (2013), realizaron una evaluación en un vehículo de encendido por chispa automotriz, alimentado con biogás enriquecido con metano y GNC utilizando un dinamómetro de chasis, las emisiones CO, HC y NO$_\text{x}$ fueron ligeramente más altas con el biogás enriquecido, que con el combustible GNC base. Pero los resultados experimentales indican, que la emisión del vehículo con el combustible de biogás enriquecido cumple con las normas de emisión BS IV. No hubo un cambio significativo en la economía del combustible del vehículo alimentado con gas enriquecido ($24.11$ km/kg), en comparación con el combustible GNC base ($24.38$ km/kg). Dado que el biogás enriquecido con metano proporciona un rendimiento similar al de un GNC fósil, el biogás enriquecido, se podrá usar como combustible para vehículos después de eliminar el CO$_2$ y el H$_2$S, por medio del lavado, el biogás se enriquece en metano y se vuelve equivalente al gas natural. El biogás enriquecido con metano, tiene emisiones de HC, CO y NO$_\text{x}$ ligeramente mayores que el GNC, el biogás enriquecido, sin embargo, presenta un rendimiento similar a GNC, y podría utilizarse como combustible en el motor de encendido con chispa (Faria et al., 2017).
+
+\section{APLICACIÓN DE BIO-CNG EN VEHÍCULOS}
+
+El uso de GNC en motores diésel y a gasolina, ha sido ampliamente aplicado en la presente década (Verma et al., 2017), sin embargo, las reservas de gas natural han disminuido en los últimos años, y pueden provocar una crisis de disponibilidad de GNC para el $2030$ (Li et al., 2015). El biogás se puede convertir a biometano, a través de diferentes tecnologías, para aplicarlo directamente como combustible de transporte en motores de vehículos de gas natural (GNV), que están ampliamente disponibles. La infraestructura para vehículos de gas natural comprimido, están ampliamente disponibles, y brindan oportunidades para el empleo del biogás en el transporte (European Commission, 2020). En el futuro habrá muchos vehículos en el mundo, que funcionen con biogás o biometano, también conocido como gas natural renovable. El biometano limpio se puede comprimir para aumentar su utilidad, este se llama gas natural biocomprimido (bio-CNG), y se puede alimentar directamente a los vehículos de transporte (Kadam et al., 2017). El bio-CNG, tiene las mismas propiedades que el CNG, en términos del rendimiento del motor, consumo de gas y eficiencia, cuando se aplica como combustible vehicular (Lim et al., 2015, Rahbari et al., 2014). De acuerdo con Poeschl et al. (2010), señalaron que la entrega de biogás a través de la red de gas natural para el uso de vehículos, es la forma más prometedora de utilizar el biogás. El bio-CNG es ampliamente usado en Suecia, Italia, Alemania, Suiza, Francia, Austria, Países Bajos e Inglaterra, los cuales lo usan como combustible vehicular, inclusive Suecia, fue pionera en el empleo del $73\%$ de biometano en vehículos a GNC en $2015$ (Vijay et al., 2015). Con las concentraciones de metano en el biogás de al menos el $97\%$, se han aplicado en $64$ autobuses, y vehículos automotores pesados y livianos en Suecia. El uso de biogás, se ha generado desde el $2002$ solo en el transporte urbano, y con esto se han reducido las emisiones de CO$_2$ en $9000$ t/año (Makareviciene et al., 2013). No hay diferencia significativa entre bio-CNG y GNC, con respecto al nivel de emisión de CO$_2$, sin embargo, los niveles de emisión de NO$_\text{x}$, HC y CO para bio-GNC, son ligeramente más altos, comparándolos con GNC, en aplicaciones como combustible vehicular (Patterson et al., 2011, Subramanian et al., 2013). Para vehículos pesados, el uso de bio-GNC, es muy ventajoso, ya que tiene mayor poder calorífico, y es más respetuoso con el medio ambiente, en comparación con cualquier otro combustible. El aplicar bio-GNC en vehículos, genera menores emisiones de CO$_2$, comparándolo con los combustibles fósiles (Thamsiriroj et al., 2011). Hay una reducción del $63\%$ en la emisión de GI, cuando bio-GNC es utilizado en lugar de GNC, para vehículos pesados (Uusitalo et al., 2013, Makareviciene et al., 2013). Después de la eliminación de componentes no deseados de biogás, y al quedar un $97\%$ de CH$_4$, con esto se puede convertir al gas natural bio-comprimido (bio-GNC), con $20-25$ MPa ($2900-3600$ psi) (Molino et al., 2013, Farzaneh-Gord et al., 2011), y almacenar en un cilindro de gas, lo que ayuda a facilitar el reabastecimiento rápido de los cilindros, si el gas no se comprime, el volumen del gas contenido en el cilindro será menor, por lo que el motor funcionará durante un periodo corto de tiempo (Ray et al., 2013). La compresión también reduce su volumen de almacenamiento, con alta energía y presión. A pesar de que la compresión en alta presión es cara, el alto valor del bio-GNC es valioso, el cual puede justificar su costo (Elberry et al., 2021). Desde un punto de vista práctico, el almacenamiento de gas comprimido, es lo más común y razonable. Al comprimir el biogás, se reduce el almacenamiento, se concentra el contenido energético, se puede almacenar en tanques herméticos de acero, para su uso futuro (Weiland et al., 2010), y con esto puede aumentar el nivel de presión requerido, para superar la resistencia al flujo de gas (Singh et al., 2016). Finalmente, en el análisis de Chandra et al. (2011), informaron en un estudio sobre el rendimiento de un motor, originalmente estacionario CI de $5.9$ kW, ahora convertido en motor a gasolina. El funcionamiento del motor fue con GNC y bio-GNC. Los resultados revelaron que el bio-GNC, mostró un rendimiento muy similar el GNC, en términos de potencia de frenado, consumo específico de gas y eficiencia térmica.
+
+\section{CONCLUSIONES}
+
+La aplicación del biogás y el syngas crudo puede ser empleado para las zonas rurales, puesto que resulta muy atractivo su empleo debido a su escasa inversión, se pueden llegar a obtener un recurso energético de buen valor. Para la utilización del biogás y el syngas a escala comercial, representa muchos retos, pero estos se pueden solucionar, con una buena estrategia del mejoramiento del combustible, así como el desarrollo de su tecnología. La aplicación del biogás con hidrógeno, se puede presentar como el complemento ideal, puesto que, si al biogás le falta valor calorífico, pero le sobra gases inertes para evitar el fenómeno del golpe en el motor. De forma inversa el hidrógeno le ocurre exactamente lo contrario, tiene un alto valor calorífico, pero puede padecer de detonaciones, por lo que un complemento de ambos, es muy benéfico para el motor.
+
+%Sección de referencia, organizada en orden alfabético
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+	
+	\harvarditem{Aç?kgöz \textit{et al.}}{$2015$}{AC15} 
+	Aç?kgöz, B.; Çelik, C.; Soyhan, H.S.; Gökalp, B.; Karaba\v{g}, B. ($2015$). Emission characteristics of an hydrogen-CH $4$ fuelled spark ignition engine. \textit{Fuel}, $159:298-307$.
+	
+	\harvarditem{Appels \textit{et al.}}{$2011$}{AP15}
+	Appels, L,; Lauwers, J.; Degreve, J.; Helsen, L.; Lievens, B.; Willems, K.; Impe, J.V.; Dewil, R. ($2011$). Anaerobic digestion in global bio-energy production: potential and research challenges. \textit{Renew Sustain Energy Rev}, $15(9):4295-301$.
+	
+	\harvarditem{Arroyo \textit{et al.}}{$2014$}{AR14}
+	Arroyo, J.; Moreno, F.; Muñoz, M.; Monné, C.; Bernal, N. ($2014$). Combustion behavior of a spark ignition engine fueled with synthetic gases derived from biogas. \textit{Fuel}, $117:50-8$.
+	
+	\harvarditem{Arroyo \textit{et al.}}{$2015$}{AR15}
+	Arroyo, J.; Moreno, F.; Muñoz, M.; Monné, C. ($2015$). Experimental study of ignition timing and supercharging effects on a gasoline engine fueled with synthetic gases extracted from biogas. \textit{Energ Convers Manag}, $97:196-211$.
+	
+	\harvarditem{Asam \textit{et al.}}{$2015$}{AS15}
+	Asam, Z.Z.; Poulsen, T.G.; Nizami, A.S.; Rafique, R.; Kiely, G.; Murphy, J.D. ($2015$). How can we improve biomethane production per unit of feedstock in biogas plants? \textit{Appl. Energy} $88 (6)$; $2013-2018$.
+	
+	\harvarditem{Azimov \textit{et al.}}{$2011$}{AZ11}
+	Azimov, U.; Tomita, E.; Kawahara, N.; Harada, Y. ($2011$). Effect of syngas composition on combustion and exhaust emission characteristics in a pilot ignited dual-fuel engine operated in PREMIER combustion mode. \textit{Int J Hydrogen Energy}; $36(18):11985-96$.
+	
+	\harvarditem{Babu & Subramanian}{$2013$}{BS13}
+	Babu, M.K.G.; Subramanian, K.A. ($2013$). Alternative transportation fuels, utilisation in combustion engines. \textit{CRC Press, Taylor & Francis Group}. https://doi.org/10.1201/b14995
+	
+	\harvarditem{Bari}{$1996$}{BA96}
+	Bari, S. ($1996$). Effect of carbon dioxide on the performance of biogas /diesel dual-fuel engine. \textit{Renewable Energy}; $9(1-4):1007-10$. https://doi.org/10.1016/0960-1481(96)88450-3
+	
+	\harvarditem{Barik \textit{et al.}}{$2017$}{BA17}
+	Barik, D.; Murugan, S.; Samal, S.; Sivaram, N.M. ($2017$). Combined effect of compression ratio and diethyl ether (DEE) port injection on performance and emission characteristics of a DI diesel engine fueled with upgraded biogas (UBG)-biodiesel dual fuel. \textit{Fuel}. $209. 339-349$. https://doi.org/10.1016/j.fuel.2017.08.015
+	
+	\harvarditem{Byun & Park}{$2015$}{BY15}
+	Byun, J.S.; & Park, J. ($2015$). Predicting the performance and exhaust NOx emissions of a spark-ignition engine generator fuelled with methane based biogas es containing various amounts of CO$_2$. \textit{J Nat Gas Sci Eng}, $22:196-202$. https://doi.org/10.1016/j.jngse.2014.11.031
+	
+	\harvarditem{Cacua \textit{et al.}}{$2012$}{CA12}
+	Cacua, K., Amell, A., & Cadavid, F. (2012). Effects of oxygen enriched air on the operation and performance of a diesel-biogas dual fuel engine. \textit{Biomass Bioenergy}, $45:159?67$. https://doi.org/10.1016/j.biombioe.2012.06.003
+	
+	\harvarditem{Cameretti \textit{et al.}}{$2020$}{CA20}
+	Cameretti, M.C., Cappiello, A., De Robbio, R., & Tuccillo, R. ($2020$). Comparison between Hydrogen and Syngas Fuels in an Integrated Micro Gas Turbine/Solar Field with Storage. \textit{Energies}, $13, 4764$; doi:10.3390/en13184764, $1-24$.
+	
+	\harvarditem{Cavenati \textit{et al.}}{$2005$}{CA05}
+	Cavenati, S., Grande, C., & Rodrigues, A. ($2005$). Upgrade of methane from landfill gas by pressure swing adsorption. Energy Fuels, $19(6):2545-55$. https://doi.org/10.1021/ef050072h
+	
+	\harvarditem{Chandra \textit{et al.}}{$2011$}{CH11}
+	Chandra, R., Vijay, V.K., Subbarao, P.M.V., & Khura, T.K. ($2011$). Performance evaluation of a constant speed IC engine on CNG, methane enriched biogasaand biogas. \textit{Appl Energy}, $88(11):3969-77$. https://doi.org/10.1016/j.apenergy.2011.04.032
+	
+	\harvarditem{Chandra \textit{et al.}}{$2012$}{CH12}
+	Chandra, R., Vijay, V.K., Subbarao, P.M.V., & Khura, T.K. ($2012$). Production of methane from anaerobic digestion of jatropha and pongamia oil cakes, \textit{Appl. Energy} $93$; $148-159$. https://doi.org/10.1016/j.apenergy.2010.10.049
+	
+	\harvarditem{Chraplewska \textit{et al.}}{$2011$}{CHR11}
+	Chraplewska, N., Duda, K., & Meus, M. ($2011$). Evaluation of usage brown gas generator for aided admission of diesel engine with fermentative biogas and producer gas. \textit{Journal of KONES Powertrain and Transport}, Vol. $18$, No. $3$, $53-60$.
+	
+	\harvarditem{Chen \textit{et al.}}{$2016$}{CH16}
+	Chen, L., Song, P., Zeng, W., Zhang, J., Feng, C., & Ma, H. ($2016$). Exhaust emission characteristics of gaseous low-temperature biomass fuel in spark-ignition engine. \textit{Applied Thermal Engineering}, $108$, $1-10$. https://doi.org/10.1016/j.applthermaleng.2016.07.115
+	
+	\harvarditem{Chen \textit{et al.}}{$2015$}{CH15}
+	Chen, X., Vinh-Thang, H., Ramirez, A.A., Rodrigue, D., & Kaliaguine, S. ($2015$). Membrane gas separation technologies for biogas upgrading. \textit{RSC Adv}. $5(31): 24399-448$. http://dx.doi.org/10.1039/C5RA00666J.
+	
+	\harvarditem{Chen \textit{et al.}}{$2017$}{CH17}
+	Chen, L., Long, W., & Song, P. ($2017$). Combustion characteristics of an SI engine fueled with biogas fuel. \textit{AIP Conference Proceedings}, Volume $1834$, Issue $1$, $1-4$. https://doi.org/10.1063/1.4981596
+	
+	\harvarditem{Dasappa & Sridhar}{$2013$}{DA13}
+	Dasappa, S., & Sridhar, H.V. ($2013$). Performance of diesel engine in a dual fuel mode using producer gas for electricity power generation. \textit{Int J Sustain energy}, $32(3)$: $153-68$, http://dx.doi.org/10.1080/14786451.2011.605945.
+	
+	\harvarditem{Duarte \textit{et al.}}{$2014$}{DU14}
+	Duarte, J., Amador, G., Garcia, J., Fontalvo, A., Vasquez R., Sanjuan, M., & Gonzalez, A. ($2014$). Auto-ignition control in turbocharged internal combustion engines operating with gaseous fuels, \textit{Energy}, Volume $71$, Pages $137-147$, ISSN $0360-5442$, https://doi.org/10.1016/j.energy.2014.04.040.
+	
+	\harvarditem{Elberry \textit{et al.}}{$2021$}{EL21}
+	Elberry, A.M., Thakur, J., Santasalo-Aarnio, A., & Larmi, M. ($2021$). Large-scale compressed hydrogen storage as part of renewable electricity storage systems, \textit{International Journal of Hydrogen Energy}, Volume $46$, Issue $29$, Pages $15671-15690$, ISSN $0360-3199$, https://doi.org/10.1016/j.ijhydene.2021.02.080.
+	
+	\harvarditem{European Commission}{$2020$}{EC20}
+	European Commission ($2020$). Directorate-General for Maritime Affairs and Fisheries, Directorate-General for Mobility and Transport, Joint Research Centre, State of the art on alternative fuels transport systems in the European Union: 2020 update, \textit{Publications Office}, https://data.europa.eu/doi/10.2771/29117
+	
+	\harvarditem{Faria \textit{et al.}}{$2017$}{FA17}
+	Faria, M.M., Bueno, J., Ayad, S.M., & Belchior, C.R. ($2017$). Thermodynamic simulation model for predicting the performance of spark ignition engines using biogas as fuel.\textit{ Energy Conversion and Management}, $149$, $1096-1108$. https://doi.org/10.1016/j.enconman.2017.06.045
+	
+	\harvarditem{Farzaneh-Gord & Branch}{$2011$}{FB11}
+	Farzaneh-Gord, M., & Branch, S. ($2011$). Real and ideal gas thermodynamic analysis of single reservoir filling process of natural gas vehicle cylinders.\textit{ J Theor Appl Mec}h, $41(12):21-36$.
+	
+	\harvarditem{Fernandez \textit{et al.}}{$2013$}{FE13}
+	Fernandez, M., Ramirez, M., Perez, R.M., Gomez, J.M., & Cantero, D. ($2013$). Hydrogen sulfide removal from biogas by ananoxic biotrickling filter packed with pall rings. \textit{Chem Eng J}: $456-63$. https://doi.org/10.1016/j.cej.2013.04.020
+	
+	\harvarditem{Gomes \textit{et al.}}{$2002$}{GO02}
+	Gomes, V.G. & Yee, K.W.K. ($2002$). Pressure swing adsorption for carbon dioxide sequestration from exhaust gases. \textit{Sep Purif Technol}, $28:161-71$. http://dx.doi.org/10.1016/S1383-5866(02)00064-3.
+	
+	\harvarditem{Golimowski \textit{et al.}}{$2019$}{GO19}
+	Golimowski, W., Krzaczek, P., Marcinkowski, D., Gracz, W., & Wa?owski, G. ($2019$). Impact of Biogas and Waste Fats Methyl Esters on NO, NO$_2$, CO, and PM Emission by Dual Fuel Diesel Engine. \textit{Sustainability}, $11$, $1799$. https://doi.org/10.3390/su11061799
+	
+	\harvarditem{Hagos \textit{et al.}}{$2014$}{HA14}
+	Hagos, F.Y., Aziz, A.R.A., & Sulaiman, S.A. ($2014$). Trends of Syngas as a Fuel in Internal Combustion Engines. \textit{Advances in Mechanical Engineering}, $6$ [$401587$], https://doi.org/10.1155/2014/401587
+	
+	\harvarditem{Hagos \textit{et al.}}{$2014$a}{HA14A}
+	Hagos, F.Y., Aziz, A.R.A., & Sulaiman, S.A. ($2014$a). Syngas (H$_2$/CO) in a spark-ignition directinjection engine. Part 1: combustion, performance and emissions comparison with CNG. \textit{Int J Hydrog Energy}, $39:17884-95$. https://doi.org/10.1016/j.ijhydene.2014.08.141
+	
+	\harvarditem{Hagos \textit{et al.}}{$2017$}{HA17}
+	Hagos, F., Aziz, A.A.R., Sulaiman, S., Firmansyah, & Mamat, R. ($2017$). Effect of fuel injection timing of hydrogen rich syngas augmented with methane in direct-injection spark-ignition engine. \textit{International Journal of Hydrogen Energy}. $42 (37)$; $23846-23855$. https://doi.org/10.1016/j.ijhydene.2017.03.091
+	
+	\harvarditem{Hagos \textit{et al.}}{$2016$}{HA16}
+	Hagos, F., Aziz, A.A.R., Sulaiman S.A., & Mahgoub, K.M. ($2016$). Low and Medium Calorific Value Gasification Gas Combustion in IC Engines. \textit{In Developments in Combustion Technology IntechOpen}. https://doi.org/10.5772/64459
+	
+	\harvarditem{Hayes \textit{et al.}}{$1990$}{HA90}
+	Hayes, T.D., Issacson, H.R., Pfeffer, J.T., & Liu, Y.M. ($1990$). In situ methane enrichment in anaerobic digestion. \textit{Biotechnol Bioeng}, $35(1):73-86$. DOI: 10.1002/bit.260350111
+	
+	\harvarditem{Hernández & Villanueva}{$2018$}{HV18}
+	Hernández, N.M., & Villanueva, E.P. ($2018$). Production, Purification and Utilization of Biogas as Fuel For Internal Combustion Engine. AIP Conference Proceedings $1941$, $020009$, \textit{Engineering International Conference}, $1-11$. https://doi.org/10.1063/1.5028067
+	
+	\harvarditem{Hernández \textit{et al.}}{$2015$}{HE15}
+	Hernández, J.J., Lapuerta, M., & Barba, J. ($2015$). Effect of partial replacement of diesel or biodiesel with gas from biomass gasification in a diesel engine. \textit{Energy}. $89$. 10.1016/j.energy.2015.07.050.
+	
+	\harvarditem{Hilaire \textit{et al.}}{$2017$}{HI17}
+	Hilaire, F., Basset, E., Bayard, R., Gallardo, M., Thiebaut, D., & Vial, J. ($2017$). Comprehensive two-dimensional gas chromatography for biogas and biomethane analysis. \textit{Journal of Chromatography A}. $1524 (17)$, $222-232$ https://doi.org/10.1016/j.chroma.2017.09.071.
+	
+	\harvarditem{Hinton & Stone}{$2014$}{HI14}
+	Hinton, N., & Stone, R. ($2014$). Laminar burning velocity measurements of methane and carbon dioxide mixtures (biogas) over wide ranging temperatures and pressures. \textit{Fuel}, $116: 743-750$. https://doi.org/10.1016/j.fuel.2013.08.069
+	
+	\harvarditem{Hosseini & Wahid}{$2014$}{HO14}
+	Hosseini, S.E., & Wahid, M. ($2014$). Development of Biogas Combustion in Combined Heat and Power Generation. \textit{Renewable and Sustainable Energy Reviews}. ($40$), $868-875$. https://doi.org/10.1016/j.rser.2014.07.204
+	
+	\harvarditem{Azimov & Karyeyen}{$2015$}{AZ15}
+	Ilbas, M., & Karyeyen, S. ($2015$). A numerical study on combustion behaviours of hydrogen-enriched low calorific value coal gases.\textit{ International Journal of Hydrogen Energy}. $40$. https://doi.org/10.1016/j.ijhydene.2015.04.141
+	
+	\harvarditem{Nizar \textit{et al.}}{$2008$}{NI08}
+	Nizar, J., Takayuki, T., & Noboru, N. ($2008$). The Study on the Effect of Biogas Addition on the Diesel Tractor Engine for the Development of a Biogas Controller, \textit{IFAC Proceedings Volumes}, Volume $41$, Issue $2$, Pages $9585-9590$, ISSN $1474-6670$, ISBN $9783902661005$, https://doi.org/10.3182/20080706-5-KR-1001.01621.
+	
+	\harvarditem{Jena & Acharya}{$2019$}{JE19}
+	Jena, S.P., & Acharya, S.K. ($2019$). Investigation on influence of thermal barrier coating on diesel engine performance and emissions in dual-fuel mode using upgraded biogas. \textit{Sustain Environ Res} $29$, $24$. https://doi.org/10.1186/s42834-019-0025-4
+	
+	\harvarditem{Jeong \textit{et al.}}{$2009$}{JE09}
+	Jeong, C., Kim, T., Lee, K., Song, S., & Chun, K.M. ($2009$). Generating efficiency and emissions of a spark-ignition gas engine generator fuelled with biogas -hydrogen blends, \textit{International Journal of Hydrogen Energy}, Volume $34$, Issue $23$, Pages $9620-9627$, ISSN $0360-3199$, https://doi.org/10.1016/j.ijhydene.2009.09.099.
+	
+	\harvarditem{Ji \textit{et al.}}{$2016$}{JI16}
+	Ji, C., Su, T., Wang, S., Zhang, B., Yu, M., & Cong, X. ($2016$). Effect of hydrogen addition on combustion and emissions performance of a gasoline rotary engine at part load and stoichiometric conditions. \textit{Energy Conversion and Management}, $121: 272-280$. https://doi.org/10.1016/j.enconman.2016.05.040
+	
+	\harvarditem{Jung \textit{et al.}}{$2015$}{JU15}
+	Jung, C.J., Park, J., & Song, S. ($2015$). Performance and NO$_\text{x}$ emissions of a biogas -fueled turbocharged internal combustion engine,\textit{ Energy} $86$, $186-195$. https://doi.org/10.1016/j.energy.2015.03.122
+	
+	\harvarditem{Kadam & Panwar}{$2017$}{KA17}
+	Kadam, R., & Panwar, N.L. (2017). Recent advancement in biogas enrichment and its applications.\textit{ Renewable and Sustainable Energy Reviews}. 73, 892?903. https://doi.org/10.1016/j.rser.2017.01.167
+	
+	\harvarditem{Kan \textit{et al.}}{$2018$}{KA18}
+	Kan, X., Zhou, D., Yang, W.M., Zhai, X., & Wang, C. (2018). An investigation on utilization of biogas and syngas produced from biomass waste in premixed spark ignition engine.\textit{ Applied Energy}. 212. 210-222. https://doi.org/10.1016/j.apenergy.2017.12.037
+	
+	\harvarditem{Kapdi \textit{et al.}}{$2005$}{KA05}
+	Kapdi, S.S., Vijay, V.K., Rajesh, S.K., & Prasad, R. (2005). Biogas scrubbing, compression and storage: perspective and prospectus in Indian Context. \textit{Renew Energy}, 30(8):1195?202. http://dx.doi.org/10.1016/j.renene.2004.09.012.
+	
+	\harvarditem{Karim}{$2003$}{KA03}
+	Karim, G. (2003). Hydrogen as a spark ignition engine fuel. \textit{Int J Hydrogen Energy}, Volume 28, Issue 5, 569-577, https://doi.org/10.1016/S0360-3199(02)00150-7
+	
+	\harvarditem{Khatri & Khatri}{$2020$}{KK20}
+	Khatri, N., & Khatri, K.K. (2020). Hydrogen enrichment on diesel engine with biogas in dual fuel mode. \textit{International Journal of Hydrogen Energy}, Volume 45, Issue 11, Pages 7128-7140, ISSN 0360-3199, https://doi.org/10.1016/j.ijhydene.2019.12.167.
+	
+	\harvarditem{Kim \textit{et al.}}{$20116$}{KI16}
+	Kim, Y., Kawahara, N., Tsuboi, K., & Tomita, E. (2016). Combustion characteristics and NO$_\text{x}$ emissions of biogas fuels with various CO2 contents in a micro co-generation spark-ignition engine. \textit{Applied Energy}. 182, 539-547. https://doi.org/10.1016/j.apenergy.2016.08.152
+	
+	\harvarditem{Kirti \textit{et al.}}{$2017$}{KI17}
+	Kirti, M., Gosai, D.C., & Shah, A.V. (2017). Application of biogas in I.C engine: A review. \textit{International Journal of Advance Research in Science and Engineering}, Vol. 6, Issue 01, 122-127.
+	
+	\harvarditem{Korakianitis \textit{et al.}}{$2011$}{KO11}
+	Korakianitis, T., Namasivayam, A.M., & Crookes, R.J. (2011). Natural-gas fueled spark-ignition (SI) and compression-ignition (CI) engine performance and emissions. \textit{Progress in Energy and Combustion Science}, 37(1), 89-112, https://doi.org/10.1016/j.pecs.2010.04.002
+	
+	\harvarditem{Kovacs y Torok}{$2010$}{KT10}
+	Kovacs, V.B., & Torok, A. (2010). Investigation on transport related biogas utilization.\textit{ Transport}, 25:1, 77-80, DOI: 10.3846/transport.2010.10
+	
+	\harvarditem{Kukoyi \textit{et al.}}{$2015$}{KU15}
+	Kukoyi, T., Muzenda, E., & Mashamba, A. (2015). Biomethane and Bioethanol as alternative transport fuels, 7th International Conference on Latest Trends in Engineering & Technology (ICLTET'2015) Nov. 26-27, 2015 Irene, Pretoria (South Africa). http://dx.doi.org/10.15242/IIE.E1115054
+	
+	\harvarditem{Lee}{$2010$}{LE10}
+	Lee, J.A. (2010). Study on Performance and Emissions of a 4-stroke IC Engine Operating on Landfill Gas with the Addition of H$_2$, CO and Syngas. New York: Columbia University.
+	
+	\harvarditem{Lee \textit{et al.}}{$2010$a}{LEA10}
+	Lee, K., Kim, T., Cha, H., Song, S., & Chun, K.M. (2010a). Generating efficiency and NOx emissions of a gas engine generator fueled with a biogas ?hydrogen blend and using an exhaust gas recirculation system. \textit{International Journal of Hydrogen Energy}, 35(11): 5723?30. https://doi.org/10.1016/j.ijhydene.2010.03.076
+	
+	\harvarditem{Lee \textit{et al.}}{$2014$}{LE14}
+	Lee, S., Park, S., Kim, C., Kim, Y., Kim, & Park, C. (2014). Comparative study on EGR and lean burn strategies employed in an SI engine fueled by low calorific gas. \textit{Applied Energy}, (129), 10-16. https://doi.org/10.1016/j.apenergy.2014.04.082 
+	
+	\harvarditem{Li \textit{et al.}}{$2015$}{LI15}
+	Li, W., Dai, Y., Ma, L., Hao H., Lu, H., Albinson, R., & Li, Z. (2015). Oil-saving pathways until 2030 for road freight transportation in China based on a cost-optimization model. \textit{Energy}, 86:369?84. https://doi.org/10.1016/j.energy.2015.04.033
+	
+	\harvarditem{Li \textit{et al.}}{$2017$}{LI17}
+	Li, J., Huang, H., Huhetaoli, Osaka, Y., Bai, Y., Kobayashi, N., & Chen, Y. (2017). Combustion and Heat Release Characteristics of Biogas under Hydrogen- and Oxygen-Enriched Condition. \textit{Energies}, 10, 1200. https://doi.org/10.3390/en10081200
+	
+	\harvarditem{Lilik \textit{et al.}}{$2010$}{LI10}
+	Lilik, G., Zhang, H., & Herreros J. (2010). Hydrogen assisted diesel combustion. \textit{Int J Hydrogen Energy}, 35:4382-98. http://dx.doi.org/10.1016/j.ijhydene.2010.01.105.
+	
+	\harvarditem{Lindeboom \textit{et al.}}{$2011$}{LI11}
+	Lindeboom, R., Fermoso, F., Weijma, J., Zagt, K., Van, & Lier, J. (2011). Autogenerative high pressure digestion: anaerobic digestion and biogas upgrading in a single step reactor system.\textit{ Water Sci Technol}, 64(3):647?53. DOI: 10.2166/wst.2011.664
+	
+	\harvarditem{Maizonnasse \textit{et al.}}{$2013$}{MAI13}
+	Maizonnasse, M., Plante, J.-S., Oh, D., & Laflamme, C. (2013). Investigation of the degradation of a low-cost untreated biogas engine using preheated biogas with phase separation for electric power generation.\textit{ Renewable Energy}. 55. 501-513. https://doi.org/10.1016/j.renene.2013.01.006. 
+	
+	\harvarditem{Makareviciene \textit{et al.}}{$2013$}{MA13}
+	Makareviciene, V., Sendzikiene, E., Pukalskas, S., Rimkus, A., & Vegneris, R. (2013). Performance and emission characteristics of biogas used in diesel engine operation. \textit{Energy Conversion and Management}. 75:224?33. https://doi.org/10.1016/j.enconman.2013.06.012
+	
+	\harvarditem{Mamilla \textit{et al.}}{$2011$}{MA11}
+	Mamilla, V., Gopinath, V., Rao, C.V., & Rao, L. (2011). Performance and emission characteristics of 4 stroke petrol engine fueled with biogas / l.p.g blends. \textit{International Journal of Advanced Engineering Technology}. Vol.II (I), 209-213
+	
+	\harvarditem{Marculescu \textit{et al.}}{$2016$}{MA16}
+	Marculescu, C., Cenu??, V., & Alexe, F. (2016). Analysis of biomass and waste gasification lean syngases combustion for power generation using spark ignition engines, Waste Management, Volume 47, Part A, Pages 133-140, ISSN 0956-053X, https://doi.org/10.1016/j.wasman.2015.06.043.
+	
+	\harvarditem{Martínez \textit{et al.}}{$2012$}{MA12}
+	Martínez, J., Mahkamov, K., Andrade, R., & Lora, E. (2012). Syngas production in downdraft biomass gasifiers and its application using internal combustion engines. \textit{Renewable Energy}, 38 (1); 1-9. https://doi.org/10.1016/j.renene.2011.07.035 
+	
+	\harvarditem{Montoya \textit{et al.}}{$2015$}{MA15}
+	Montoya, J.P.G., Arrieta, A.A.A., & Lopez, J.F.Z. (2015). Spark ignition engine performance and emissions in a high compression engine using biogas and methane mixtures without knock occurrence. \textit{Therm}. Sci. 19, 1919?1930
+	
+	\harvarditem{Molino \textit{et al.}}{$2013$}{MO13}
+	Molino, A., Migliori, M., Ding, Y., Bikson, B., Giordano, G., & Braccio, G. (2013). Biogas upgrading via membrane process: modelling of pilot plant scale and the end uses for the grid injection. \textit{Fuel}, 107:585?92. http://dx.doi.org/10.1016/j.fuel.2012.10.058.
+	
+	\harvarditem{Mustafi \textit{et al.}}{$2013$}{MU13}
+	Mustafi, N.N., Raine, R.R., & Verhelst, S. (2013). Combustion and emissions characteristics of a dual fuel engine operated on alternative gaseous fuels. \textit{Fuel}, 109: 669-678. http://dx.doi.org/10.1016/j.fuel.2013.03.007.
+	
+	\harvarditem{Nadaleti \textit{et al.}}{$2018$}{NA18}
+	Nadaleti, W., & Przybyla, G. (2018). Emissions and performance of a spark-ignition gas engine generator operating with hydrogen-rich syngas, methane and biogas blends for application in Southern Brazil rice industries. \textit{Energy}. 154, Pages 38-51. https://doi.org/10.1016/j.energy.2018.04.046
+	
+	\harvarditem{Nataraj \textit{et al.}}{$2016$}{NA16}
+	Nataraj, K.M., Banapurmath, N., Manavendra, G., & Yaliwal, V. (2016). Development of cooling and cleaning systems for enhanced gas quality for 3.7 kW gasifier-engine integrated system. \textit{International Journal of Engineering, Science and Technology}. Vol. 8, No. 1, 2016, pp. 43-56. DOI: http://dx.doi.org/10.4314/ijest.v8i1.4 
+	
+	\harvarditem{Nikpey \textit{et al.}}{$2014$}{NI14}
+	Nikpey, H., Assadi, M., Breuhaus, P., & Mørkved, P.T. (2014). Experimental evaluation and ANN modeling of a recuperative micro gas turbine burning mixtures of natural gas and biogas, \textit{Applied Energy}, Volume 117, Pages 30-41, ISSN 0306-2619, https://doi.org/10.1016/j.apenergy.2013.11.074.
+	
+	\harvarditem{Park \textit{et al.}}{$2011$}{PA11}
+	Park, C.; Park, S.; Lee, Y.; Kim, C.; Lee, S.; Moriyoshi, Y. (2011). Performance and emission characteristics of a SI engine fueled by low calorific biogas blended with hydrogen. \textit{Int J Hydrog Energy}, 36(16):10080?8. https://doi.org/10.1016/j.ijhydene.2011.05.018
+	
+	\harvarditem{Park \textit{et al.}}{$2011$a}{PAA11}
+	Park, S.-H., Lee, K.-M., & Hwang, C.-H. (2011a). Effects of hydrogen addition on soot formation and oxidation in laminar premixed C 2 H 2/air flames.\textit{ International Journal of Hydrogen Energy}, 36 (15); 9304?9311. https://doi.org/10.1016/j.ijhydene.2011.05.031
+	
+	\harvarditem{Park \textit{et al.}}{$2012$}{PA12}
+	Park, C., Park, S., Kim, C., & Lee, S. (2012). Effects of EGR on performance of engines with spark gap projection and fueled by biogas?hydrogen blends. \textit{International Journal of Hydrogen Energy}. 37 (19), 14640?14648. https://doi.org/10.1016/j.ijhydene.2012.07.080
+	
+	\harvarditem{Patterson \textit{et al.}}{$2011$}{PAT11}
+	Patterson, T., Esteves, S., Dinsdale, R., & Guwy, A. (2011). An evaluation of the policy and techno-economic factors affecting the potential for biogas upgrading for transport fuel use in the UK. \textit{Energy Policy}; 39:1806?16. http://dx.doi.org/10.1016/j.enpol.2011.01.017.
+	
+	\harvarditem{Persson & Baxter}{$2014$}{PB14}
+	Persson, T., & Baxter, D. (2014). Task 37 country overview-Energy from biogas, IEA Bioenergy.
+	
+	\harvarditem{Piaptmanomai \textit{et al.}}{$2009$}{PI09}
+	Piaptmanomai, S., Kaewluan, S., & Vitidsant T. (2009). Economic assessment of biogas-to-electricity generation system with H2S removal by activated carbon in small pig farms. \textit{Applied Energy}, Volume 86, Issue 5, Pages 669-674, https://doi.org/10.1016/j.apenergy.2008.07.007 
+	
+	\harvarditem{Pizzuti \textit{et al.}}{$2016$}{PI16}
+	Pizzuti, L., Martins, C.A., & Lacava, P.T. (2016). Laminar burning velocity and flammability limits in biogas: A literature review, \textit{Renewable and Sustainable Energy Reviews}, Volume 62, Pages 856-865, ISSN 1364-0321, https://doi.org/10.1016/j.rser.2016.05.011.
+	
+	\harvarditem{Poeschl \textit{et al.}}{$2010$}{PO10}
+	Poeschl, M., Ward, S., & Owende, P. (2010). Prospects for expanded utilization of biogas in Germany.\textit{ Renewable and Sustainable Energy Reviews}, Volume 14, Issue 7, Pages 1782-1797, https://doi.org/10.1016/j.rser.2010.04.010
+	
+	\harvarditem{Porpatham \textit{et al.}}{$2007$}{PO07}
+	Porpatham, E., Ramesh, A., & Nagalingam, B. (2007). Effect of hydrogen addition on the performance of a biogas fuelled spark ignition engine. \textit{Int J Hydrogen Energy}, 32(12): 2057?2065. https://doi.org/10.1016/j.ijhydene.2006.09.001
+	
+	\harvarditem{Porpatham \textit{et al.}}{$2008$}{PO08}
+	Porpatham, E., Ramesh, A., & Nagalingam, B. (2008). Investigation on the effect of concentration of methane in biogas when used as a fuel for a spark ignition engine. Fuel, Volume 87, Issues 8?9, Pages 1651-1659, https://doi.org/10.1016/j.fuel.2007.08.014
+	
+	\harvarditem{Porpatham \textit{et al.}}{$2012$}{PO12}
+	Porpatham, E., Ramesh, A. & Nagalingam, B. (2012). Effect of compression ratio on the performance and combustion of a biogas fuelled spark ignition engine. \textit{Energy Convers Manage}, 95(1):247?56. https://doi.org/10.1016/j.fuel.2011.10.059
+	
+	\harvarditem{Porpatham \textit{et al.}}{$2017$}{PO17}
+	Porpatham, E., Ramesh, A., & Nagalingam, B. (2017). Experimental studies on the effects of enhancing the concentration of oxygen in the inducted charge of a biogas fuelled spark ignition engine. \textit{Energy}, Volume 142, Pages 303-312, https://doi.org/10.1016/j.energy.2017.10.025 
+	
+	\harvarditem{Prajapati \textit{et al.}}{$2015$}{PR15}
+	Prajapati, A.K., Randa, R., & Parmar, N. (2015). Experimental study on utilization of biogas in IC engine. \textit{International Journal of Engineering Sciences & Research Technology}, 4(8), 827-835.
+	
+	\harvarditem{Rahbari \textit{et al.}}{$2014$}{RA14}
+	Rahbari, H.R. (2014). Effects of natural gas compositions on CNG fast filling process for buffer storage system. \textit{Oil Gas Sci Technol?Revue d?IFP Energies Nouvelles}, 69: 319?30. http://dx.doi.org/10.2516/ogst/2012010.
+	
+	\harvarditem{Rahman \textit{et al.}}{$2017$}{RA17}
+	Rahman, K., & Ramesh, A. (2017). Effect of reducing the methane concentration on the combustion and performance of a biogas diesel predominantly premixed charge compression ignition engine, \textit{Fuel}, Volume 206, Pages 117-132, ISSN 0016-2361, https://doi.org/10.1016/j.fuel.2017.05.100.
+	
+	\harvarditem{Rajkumari & Govindarajan}{$2010$}{RG10}
+	Rajkumari, K. & Govindarajan, P. (2010). Experimental investigation of oxygen enriched air intake on combustion parameters of a single cylinder diesel engine. Int J Eng Sci Technol, ISSN: 0975-5462, Vol. 2(8), 3621-3627.
+	
+	\harvarditem{Rakopoulos \textit{et al.}}{$2008$}{RA08}
+	Rakopoulos, C.D., Michos, C.N., & Giakoumis, E.G. (2008). Studying the effects of hydrogen addition on the second-law balance of a biogas-fuelled spark ignition engine by use of a quasidimensional multi-zone combustion model. \textit{Proc Inst Mech Eng, J Autom Eng}, 222(11): 2249?68.
+	
+	\harvarditem{Rakopoulos \textit{et al.}}{$2006$}{RA06}
+	Rakopoulos, C.D., & Kyritsis, D.C. (2006). Hydrogen enrichment effects on the second law analysis of natural and landfill gas combustion in engine cylinders. \textit{Int J Hydrog Energy}, 31(10): 1384?1393. https://doi.org/10.1016/j.ijhydene.2005.11.002
+	
+	\harvarditem{Rakopoulos \textit{et al.}}{$2009$}{RA09}
+	Rakopoulos, C.D., & Michos, C.N. (2009). Generation of combustion irreversibilities in a spark ignition engine under biogas?hydrogen mixtures fueling. \textit{Int J Hydrogen Energy}, 34: 4422?37. https://doi.org/10.1016/j.ijhydene.2009.02.087
+	
+	\harvarditem{Ravi \textit{et al.}}{$2016$}{RA16}
+	Ravi, K., Mathew, S., Bhasker, P., & Porpatham, E. (2016). Gaseous alternative fuels for CI engines - a technical review. \textit{International Journal of Pharmacy and Technology}. 8(4); 5257-5268.
+	
+	\harvarditem{Ray \textit{et al.}}{$2013$}{RA13}
+	Ray, N., Mohanty, M.K., & Mohanty, R. (2013). A Study on Application of Biogas as fuel in Compression Ignition Engines.\textit{ International Journal of Innovations in Engineering and Technology}, 3(1): 239-245. ISSN: 2319 ? 1058.
+	
+	\harvarditem{Razbani \textit{et al.}}{$2011$}{RA11}
+	Razbani, O., Mirzamohammad, N., & Assadi, M. (2011). Literature review and road map for using biogas in internal combustion engines. \textit{Third International Conference on Applied Energy}: 16-18
+	
+	\harvarditem{Royov \textit{et al.}}{$2009$}{RO09}
+	Roy, M.M., Tomita E., Kawahara N., Harada Y., & Sakane A. (2009). Performance and emission comparison of a supercharged dual-fuel engine fueled by producer gases with varying hydrogen content. \textit{Hydrog Energy}, 34(18): 7811?22. https://doi.org/10.1016/j.ijhydene.2009.07.056
+	
+	\harvarditem{Sarker \textit{et al.}}{$2018$}{SA18}
+	Sarker, S., Lamb, J., Hjelme, D., & Lien, K. (2018). Overview of recent progress towards in-situ biogas upgradation techniques. \textit{Fuel}. 226. 686-697. https://doi.org/10.1016/j.fuel.2018.04.021
+	
+	\harvarditem{Shah \textit{et al.}}{$2016$}{SH16}
+	Shah, D.R., Nagarsheth, H.J., & Acharya, P. (2016). Purification of Biogas using Chemical Scrubbing and Application of Purified Biogas as Fuel for Automotive Engines. Research Journal of Recent Sciences. \textit{International Science Community Association}, Vol. 5, 1-7.
+	
+	\harvarditem{Shigarkanthi \textit{et al.}}{$2005$}{SH05}
+	Shigarkanthi, V.M., Porpatham, E., & Ramesh, A. (2005). Experimental investigation and modeling of cycle by cycle variations in a gas fuelled SI engine, SAE Technical Paper.
+	
+	\harvarditem{Shrestha \textit{et al.}}{$1999$}{SH99}
+	Shrestha, B., & Karim, G.A. (1999). Hydrogen as an additive to methane for spark ignition engine applications. \textit{Int J Hydrogen Energy}, Volume 24, Issue 6, https://doi.org/10.1016/S0360-3199(98)00103-7
+	
+	\harvarditem{Singh \textit{et al.}}{$2016$}{SI16}
+	Singh, D., Devnani, G.L., & Pal, D. (2016). Biomethane an efficient source of production of CNG and formaldehyde. Int J Sci Eng Appl Sci, 2(1):466?70.
+	
+	\harvarditem{Sivabalakrishnan & Jegadheesan}{$2014$}{SJ14}
+	Sivabalakrishnan, R., & Jegadheesan, C. (2014). Study of Knocking Effect in Compression Ignition Engine with Hydrogen as a Secondary Fuel. Chin J Eng, 2014:1?8. https://doi.org/10.1155/2014/102390
+	
+	\harvarditem{Subramanian \textit{et al.}}{$2013$}{SU13}
+	Subramanian, K.A., Mathad, V.C., Vijay, V.K., & Subbarao, P.M.V. (2013). Comparative evaluation of emission and fuel economy of an automotive spark ignition vehicle fuelled with methane enriched biogas and CNG using chassis dynamometer. Appl Energy, 105:17?29. http://dx.doi.org/10.1016/j.apenergy.2012.12.011.
+	
+	\harvarditem{Sun \textit{et al.}}{$2015$}{SU15}
+	Sun, Q., Li, H., Yan, J., Liu, L., Yu, Z., & Yu, X. (2015). Selection of appropriate biogas upgrading technology-a review of biogas cleaning, upgrading and utilisation. \textit{Renew Sustain Energy Rev}, 51:521?32. https://doi.org/10.1016/j.rser.2015.06.029
+	
+	\harvarditem{Talibi \textit{et al.}}{$2014$}{TA14}
+	Talibi, M., Hellier, P., Balachandran, R., & Ladommatos, N. (2014). Effect of hydrogen-diesel fuel co-combustion on exhaust emissions with verification using an inecylinder gas sampling technique. \textit{Int J Hydrogen Energy}, 39: 15088-102. http://dx.doi.org/10.1016/j.ijhydene.2014.07.039.
+	
+	\harvarditem{Elfattah \textit{et al.}}{$2016$}{EL16}
+	Elfattah, S.T.A., Eldrainy, Y.A., & Attia, A. (2016). Upgrade Egyptian biogas to meet the natural gas network quality standard. Alexandria Engineering Journal. 55(3), Pages 2279-2283. https://doi.org/10.1016/j.aej.2016.05.015.
+	
+	\harvarditem{Thamsiriroj \textit{et al.}}{$2011$}{TH11}
+	Thamsiriroj, T., Smyth, H., & Murphy, J.D. (2011). A roadmap for the introduction of gaseous transport fuel: a case study for renewable natural gas in Ireland. \textit{Renew Sustain Energy Rev}, 15:4642?51. http://dx.doi.org/10.1016/j.rser.2011.07.088.
+	
+	\harvarditem{Tock \textit{et al.}}{$2010$}{TO10}
+	Tock, L., Gassner, M., & Maréchal, F. (2010). Thermochemical production of liquid fuels from biomass: thermo-economic modeling, process design and process integration analysis. \textit{Biomass Bioenerg}, 34(12): 1838?54. https://doi.org/10.1016/j.biombioe.2010.07.018
+	
+	\harvarditem{Tricase & Lombardi}{$2009$}{TL09}
+	Tricase, C., & Lombardi, M. (2009). State of the art and prospects of Italian biogas production from animal sewage: technical-economic considerations. Renew Energy, 34:477-85. http://dx.doi.org/10.1016/j.renene.2008.06.013.
+	
+	\harvarditem{Khan \textit{et al.}}{$2017$}{KH17}
+	Khan, U.I., Othman, M.H.D., Hashim, H., Matsuura, T., Ismail, A.F., Rezaei-DashtArzhandi, M., & Azelee, I.W. (2017). Biogas as a renewable energy fuel ? A review of biogas upgrading, utilisation and storage, Energy Conversion and Management, Volume 150, Pages 277-294, ISSN 0196-8904, https://doi.org/10.1016/j.enconman.2017.08.035.
+	
+	\harvarditem{Uusitalo \textit{et al.}}{$2013$}{UU13}
+	Uusitalo, V., Soukka, R., Horttanainen, M., Niskanen, A., & Havukainen, J. (2013). Economics and Greenhouse Gas Balance of Biogas use systems in the Finnish Transportation Sector.\textit{ Renewable Energy}. 51. 132-140. https://doi.org/10.1016/j.renene.2012.09.002
+	
+	\harvarditem{Verma \textit{et al.}}{$2017$}{VE17}
+	Verma, S., Das, L.M., & Kaushik, S.C. (2017). Effects of varying composition of biogas on performance and emission characteristics of compression ignition engine using exergy analysis. \textit{Energy Conversion and Management}, Volume 138, Pages 346-359, ISSN 0196-8904, https://doi.org/10.1016/j.enconman.2017.01.066.
+	
+	\harvarditem{Vijay \textit{et al.}}{$2015$}{VI15}
+	Vijay, V., Kapoor, R., Trivedi, A., & Narale, P. (2015). Biogas upgrading and bottling technology for vehicular and cooking applications. \textit{Manage Nat Resour Chang Environ}, 1:135?53. DOI:10.1007/978-3-319-12559-6_10
+	
+	\harvarditem{Wagemakers & Leermakers}{$2012$}{WL12}
+	Wagemakers, A., & Leermakers, C. (2012). Review on the Effects of Dual Fuel Operation, Using Diesel and Gaseous Fuels, on Emissions and Performance, SAE Paper 2012-01- 0869. https://doi.org/10.4271/2012-01-0869.
+	
+	\harvarditem{Wang \textit{et al.}}{$2007$}{WA07}
+	Wang, J., Huang, Z., Fang, Y., Liu, B., Zeng, K., Miao, H., & Jiang, D. (2007). Combustion behaviors of a direct injection engine operating on various fractions of natural gas?hydrogen blends. \textit{International Journal of Hydrogen Energy}; 32(15): 3555?3564. ISSN 0360-3199, https://doi.org/10.1016/j.ijhydene.2007.03.011.
+	
+	\harvarditem{Wang \textit{et al.}}{$2018$}{WA18}
+	Wang, H., Zhao, X., Tong, L., & Yao, M. (2018). The effects of DI fuel properties on the combustion and emissions characteristics of RCCI combustión, \textit{Fuel}, 227, pp. 457-468, https://doi.org/10.1016/j.fuel.2018.04.025
+	
+	\harvarditem{Weiland}{$2010$}{WE10}
+	Weiland, P. (2010). Biogas production: current state and perspectives. \textit{Appl Microbiol Biotechnol}, 85(4):849?60. http://dx.doi.org/10.1007/s00253-009-2246-7.
+	
+	\harvarditem{Yaliwal \textit{et al.}}{$2016$}{YA16}
+	Yaliwal, V.S., Banapurmath, N.R., Gireesh, N.M., Hosmath, R.S., Donateo, T., & Tewari, P.G. (2016). Effect of nozzle and combustion chamber geometry on the performance of a diesel engine operated on dual fuel mode using renewable fuels, \textit{Renewable Energy}, Volume 93, Pages 483-501, ISSN 0960-1481, https://doi.org/10.1016/j.renene.2016.03.020.
+	
+	\harvarditem{Yamasaki \textit{et al.}}{$2013$}{YA13}
+	Yamasaki, Y., Kanno, M., Suzuki, Y., & Kaneko, S. (2013). Development of an engine control system using city gas and biogas fuel mixture. \textit{Applied Energy}. 101. 465?474. https://doi.org/10.1016/j.apenergy.2012.06.013
+	
+	\harvarditem{Yan \textit{et al.}}{$2017$}{YA17}
+	Yan, F., Xu, L., & Wang, Y. (2017). Application of hydrogen enriched natural gas in spark ignition IC engines: From fundamental fuel properties to engine performances and emissions. \textit{Renewable and Sustainable Energy Reviews}. 82 (1). Pages 1457-1488 https://doi.org/10.1016/j.rser.2017.05.227
+	
+	\harvarditem{Yilmaz \textit{et al.}}{$2017$}{YG17}
+	Yilmaz, I., & Gumus, M. (2017). Investigation of the effect of biogas on combustion and emissions of TBC diesel engine. Fuel. 188: 69-78. https://doi.org/10.1016/j.fuel.2016.10.034
+	
+	\harvarditem{Yingjian \textit{et al.}}{$2014$}{YI14}
+	Yingjian, L., Qiu, Q., Xiangzhu, H., & Jiezhi, L. (2014). Energy balance and efficiency analysis for power generation in internal combustion engine sets using biogas. Sustainable Energy Technologies and Assessments. 6. 25?33. https://doi.org/10.1016/j.seta.2014.01.003
+	
+	\harvarditem{Yousef \textit{et al.}}{$2016$}{YO16}
+	Yousef, A.M.I., Eldrainy, Y.A., El-Maghlany, W.M., & Attia, A. (2016). Upgrading biogas by a low-temperature CO2 removal technique, \textit{Alexandria Engineering Journal}, Volume 55, Issue 2, Pages 1143-1150, ISSN 1110-0168, https://doi.org/10.1016/j.aej.2016.03.026.
+	
+	\harvarditem{Xin \textit{et al.}}{$2013$}{YI13}
+	Xin, Z., Jian, X., Shizhuo, Z., Xiaosen, H., & Jianhua, L. (2013). The experimental study on cyclic variation in a spark ignited engine fueled with biogas and hydrogen blends. Int J Hydrog Energy, 38:11164?8. https://doi.org/10.1016/j.ijhydene.2013.01.097
+	
+	\harvarditem{Zhaomov \textit{et al.}}{$2010$}{ZH10}
+	Zhao, H., Stone, R., & Zhou, L. (2010). Analysis of the particulate emissions and combustion performance of a direct injection spark ignition engine using hydrogen and gasoline mixtures. \textit{International Journal of Hydrogen Energy}, 35 (10), 4676?4686. https://doi.org/10.1016/j.ijhydene.2010.02.087
+	
+	\harvarditem{Zhen \textit{et al.}}{$2016$}{ZH16}
+	Zhen, H., Leung, C.W., Cheung, C.S., & Huang, Z. (2016). Combustion characteristic and heating performance of stoichiometric biogas?hydrogen?air flame. Int. J. Heat Mass Transf. 92, 807?814. https://doi.org/10.1016/j.ijheatmasstransfer.2015.09.040
+	
+	\harvarditem{Zhunqing \textit{et al.}}{$2012$}{ZH12}
+	Zhunqing, H., & Xin, Z. (2012). Experimental study on performance and emissions of engine fueled with lower heat value gas?hydrogen mixtures, International Journal of Hydrogen Energy, Volume 37, Issue 1, Pages 1080-1083, ISSN 0360-3199, https://doi.org/10.1016/j.ijhydene.2011.02.088.                  
+
+\end{thebibliography}
+}
+
+\end{document}
