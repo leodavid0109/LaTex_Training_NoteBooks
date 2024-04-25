@@ -1,6 +1,6 @@
 # LaTex_Training_NoteBooks
 
-Este repositorio contiene una serie de documentos escritos en LaTeX como evidencia de mi aprendizaje en este lenguaje de marcado. LaTeX es una herramienta poderosa para la creación de documentos científicos y técnicos, y a través de este repositorio, pretendo demostrar mis habilidades en su uso y la evolución de mi aprendizaje.
+Este repositorio contiene una serie de documentos escritos en LaTeX como evidencia de mi aprendizaje en este lenguaje de marcado. LaTeX es una herramienta poderosa para la creación de documentos científicos y técnicos, y a través de este repositorio, pretendo demostrar mis habilidades en su uso y la evolución de mi aprendizaje. Algunos de los documentos que se encuentran en este repositorio han sido desarrollados en conjunto con algún equipo de trabajo, en cuyo caso será notado en dicho caso.
 
 ## Contenido
 
